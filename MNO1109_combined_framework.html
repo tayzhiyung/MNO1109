@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        body {
+            font-size: 20px;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        .question {
+            font-weight: 600;
+        }
+
+        .answers {
+            margin-bottom: 20px;
+        }
+
+        #submit {
+            font-family: sans-serif;
+            font-size: 20px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #submit:hover {
+            background-color: #3a8;
+        }
+
+        .quiz_box {
+            width: 200px;
+            height: 50px;
+            border: 2px solid black;
+            background-color: lightblue;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+            margin: 100px 200px 150px 200px;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+
+        button:hover {
+            background: #00898E;
+        }
+
+        button:visited {
+            background: purple
+        }
+
+
+        .button-clicked {
+            background: red;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .elementToFadeInAndOut {
+            -webkit-animation: fadein 4s linear forwards;
+            animation: fadein 4s linear forwards;
+            opacity: 0;
+        }
+
+        @-webkit-keyframes fadein {
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<!--
+                          TITLE
+                            |
+        ---------------------------------------------------------
+        |                       |                               |
+    CHAPTER 1 (BASIC)       CHAPTER 2                        CHAPTER 3                       
+        |                       |                               |
+    -------------        ----------------            -----------------------    
+    |     |     |        |      |       |            |           |          |
+SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
+          |
+    --------------------------... -----------
+    |     |        |      |        |       |
+   NOTE1 MCQ1    NOTE2   MCQ2 ... NOTE3   FIB1      
+
+   CP1-S1-MCQ1
+   CP1-S1-MCQ2
+   CP1-S1-FIB1
+-->
+
+<body>
+    <p>hi</p>
+    <!--CHAPTER 1-->
+    <h2>Chapter 1 BASIC</h2>
+
+
+    <!--Section 1 Linesplan-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP1_SC1_myBtn">Linesplan</button>
+
+            <!-- The Modal -->
+            <div id="CP1_SC1_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP1_SC1_modal_content_ID' style="display:none">
+                    <span class="close">&times;</span>
+
+                    <div class="grid-container">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP1_SC1_function_notebtn(1)">Note 1</button>
+                            <input type="text" id="CP1_SC1_inc_Btn0" value="100"></input>
+                            <input type="text" id="CP1_SC1_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP1_SC1_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_notespan(1)>&times;</span>
+
+                                    <p> my name is tay zhi yung</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC1_function_btn(1)">Quiz 1</button>
+                            <input type="text" id="CP1_SC1_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP1_SC1_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_span(1)>&times;</span>
+
+                                    <div id="CP1_SC1_quiz1"></div>
+                                    <button id="CP1_SC1_submit1">Submit</button>
+                                    <div id="CP1_SC1_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC1_function_notebtn(2)">Note 2</button>
+                            <input type="text" id="CP1_SC1_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP1_SC1_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_notespan(2)>&times;</span>
+
+                                    <p> my name is zhi yung tay</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC1_function_btn(2)">Quiz 2</button>
+                            <input type="text" id="CP1_SC1_inc_Btn2" value="0"></input>
+
+                            <div id="CP1_SC1_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_span(2)>&times;</span>
+
+                                    <div id="CP1_SC1_quiz2"></div>
+                                    <button id="CP1_SC1_submit2">Submit</button>
+                                    <div id="CP1_SC1_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC1_function_notebtn(3)">Note 3</button>
+                            <input type="text" id="CP1_SC1_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP1_SC1_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_notespan(3)>&times;</span>
+
+                                    <p> my name is zhi yung tay</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC1_function_btn(3)">Quiz 3</button>
+                            <input type="text" id="CP1_SC1_inc_Btn3" value="0"></input>
+
+                            <div id="CP1_SC1_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_span(3)>&times;</span>
+
+                                    <form id='CP1_SC1_question3' action="" method="post">
+                                        <div>
+
+                                            <b>When taking a supine length measurement, straighten the infant's
+                                                <input type="text" name="CP1_SC1_question3_a" size="10" />,
+                                                <input type="text" name="CP1_SC1_question3_b" size="10" />, and
+                                                <input type="text" name="CP1_SC1_question3_c" size="10" />.</b>
+                                            <p> Choice: hips, knees, hands, legs, body, head </p>
+
+                                            <input type="text" id="CP1_SC1_click_no3" value="0"></input>
+                                            <input type="button" id="CP1_SC1_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[0].CP1_SC1_question3_a.value,document.forms[0].CP1_SC1_question3_b.value,document.forms[0].CP1_SC1_question3_c.value]);
+                                                    CP1_SC1_CheckAnswers3();this.disabled=true " />
+                                            <div id="CP1_SC1_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+
+
+                        <!--start note 4-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC1_function_notebtn(4)">Note 4</button>
+                            <input type="text" id="CP1_SC1_inc_noteBtn4" value="0"></input>
+
+                            <div id="CP1_SC1_myNoteModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_notespan(4)>&times;</span>
+
+                                    <p> my name is zhi </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 4-->
+
+                        <!--start FIB 4 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC1_function_btn(4)">Quiz 4</button>
+                            <input type="text" id="CP1_SC1_inc_Btn4" value="0"></input>
+
+                            <div id="CP1_SC1_myModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_span(4)>&times;</span>
+
+                                    <form id='CP1_SC1_question4' action="" method="post">
+                                        <div>
+
+                                            <b>VLFS exists in
+                                                <input type="text" name="CP1_SC1_question4_a" size="10" />,
+                                                <input type="text" name="CP1_SC1_question4_b" size="10" />, and
+                                                <input type="text" name="CP1_SC1_question4_c" size="10" />.</b>
+                                            <p> Choice: Japan, Singapore, Korea, USA, Netherlands </p>
+
+                                            <input type="text" id="CP1_SC1_click_no4" value="0"></input>
+                                            <input type="button" id="CP1_SC1_submit4" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[1].CP1_SC1_question4_a.value,document.forms[1].CP1_SC1_question4_b.value,document.forms[1].CP1_SC1_question4_c.value]);
+                                                    CP1_SC1_CheckAnswers4(); this.disabled = true;" />
+                                            <div id="CP1_SC1_results4"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 4-->
+
+
+                        <!--start note 5-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC1_function_notebtn(5)">Note 5</button>
+                            <input type="text" id="CP1_SC1_inc_noteBtn5" value="0"></input>
+
+                            <div id="CP1_SC1_myNoteModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_notespan(5)>&times;</span>
+
+                                    <p> my name is Dr. Tay</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 5-->
+
+                        <!--start MCQ 5-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC1_function_btn(5)">Quiz 5</button>
+                            <input type="text" id="CP1_SC1_inc_Btn5" value="0"></input>
+
+                            <div id="CP1_SC1_myModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_span(5)>&times;</span>
+
+                                    <div id="CP1_SC1_quiz5"></div>
+                                    <button id="CP1_SC1_submit5">Submit</button>
+                                    <div id="CP1_SC1_results5"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 5-->
+
+                        <!--start note 6-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC1_function_notebtn(6)">Note 6</button>
+                            <input type="text" id="CP1_SC1_inc_noteBtn6" value="0"></input>
+
+                            <div id="CP1_SC1_myNoteModal6" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_notespan(6)>&times;</span>
+
+                                    <p> my name is ah Tay </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 6-->
+                        <!--start FIB 6 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC1_function_btn(6)">Quiz 6</button>
+                            <input type="text" id="CP1_SC1_inc_Btn6" value="0"></input>
+
+                            <div id="CP1_SC1_myModal6" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC1_function_span(6)>&times;</span>
+
+                                    <form id='CP1_SC1_question6' action="" method="post">
+                                        <div>
+
+                                            <b>States in Sarawak:
+                                                <input type="text" name="CP1_SC1_question6_a" size="10" />,
+                                                <input type="text" name="CP1_SC1_question6_b" size="10" />, and
+                                                <input type="text" name="CP1_SC1_question6_c" size="10" />.</b>
+                                            <p> Choice: Limbang, Lawas, Linggam, Lemon, Kuching, Sri Aman </p>
+
+                                            <input type="text" id="CP1_SC1_click_no6" value="0"></input>
+                                            <input type="button" id="CP1_SC1_submit6" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[2].CP1_SC1_question6_a.value,document.forms[2].CP1_SC1_question6_b.value,document.forms[2].CP1_SC1_question6_c.value]);
+                                                CP1_SC1_CheckAnswers6(); this.disabled = true;" />
+                                            <div id="CP1_SC1_results6"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 6-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+
+    <!--Section 2 Buoyancy-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP1_SC2_myBtn">Buoyancy</button>
+
+            <!-- The Modal -->
+            <div id="CP1_SC2_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP1_SC2_modal_content_ID' style="display:none">
+                    <span id="close2" class="close">&times;</span>
+
+                    <div class="grid-container">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP1_SC2_function_notebtn(1)">Note 1</button>
+                            <input type="text" id="CP1_SC2_inc_Btn0" value="0"></input>
+                            <input type="text" id="CP1_SC2_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP1_SC2_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick = CP1_SC2_function_notespan(1)>&times;</span>
+
+                                    <p> my name is tay zhi yung</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC2_function_btn(1)">Quiz 1</button>
+                            <input type="text" id="CP1_SC2_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP1_SC2_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_span(1)>&times;</span>
+
+                                    <div id="CP1_SC2_quiz1"></div>
+                                    <button id="CP1_SC2_submit1">Submit</button>
+                                    <div id="CP1_SC2_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC2_function_notebtn(2)">Note 2</button>
+                            <input type="text" id="CP1_SC2_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP1_SC2_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_notespan(2)>&times;</span>
+
+                                    <p> my name is zhi yung tay</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC2_function_btn(2)">Quiz 2</button>
+                            <input type="text" id="CP1_SC2_inc_Btn2" value="0"></input>
+
+                            <div id="CP1_SC2_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_span(2)>&times;</span>
+
+                                    <div id="CP1_SC2_quiz2"></div>
+                                    <button id="CP1_SC2_submit2">Submit</button>
+                                    <div id="CP1_SC2_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC2_function_notebtn(3)">Note 3</button>
+                            <input type="text" id="CP1_SC2_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP1_SC2_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_notespan(3)>&times;</span>
+
+                                    <p> my name is zhi yung tay</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC2_function_btn(3)">Quiz 3</button>
+                            <input type="text" id="CP1_SC2_inc_Btn3" value="0"></input>
+
+                            <div id="CP1_SC2_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_span(3)>&times;</span>
+
+                                    <form id='CP1_SC2_question3' action="" method="post">
+                                        <div>
+
+                                            <b>When taking a supine length measurement, straighten the infant's
+                                                <input type="text" name="CP1_SC2_question3_a" size="10" />,
+                                                <input type="text" name="CP1_SC2_question3_b" size="10" />, and
+                                                <input type="text" name="CP1_SC2_question3_c" size="10" />.</b>
+                                            <p> Choice: hips, knees, hands, legs, body, head </p>
+
+                                            <input type="text" id="CP1_SC2_click_no3" value="0"></input>
+                                            <input type="button" id="CP1_SC2_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[3].CP1_SC2_question3_a.value,document.forms[3].CP1_SC2_question3_b.value,document.forms[3].CP1_SC2_question3_c.value]);
+                                                    CP1_SC2_CheckAnswers3(); this.disabled=true" />
+                                            <div id="CP1_SC2_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+
+
+                        <!--start note 4-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC2_function_notebtn(4)">Note 4</button>
+                            <input type="text" id="CP1_SC2_inc_noteBtn4" value="0"></input>
+
+                            <div id="CP1_SC2_myNoteModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_notespan(4)>&times;</span>
+
+                                    <p> my name is zhi </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 4-->
+
+                        <!--start FIB 4 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC2_function_btn(4)">Quiz 4</button>
+                            <input type="text" id="CP1_SC2_inc_Btn4" value="0"></input>
+
+                            <div id="CP1_SC2_myModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_span(4)>&times;</span>
+
+                                    <form id='CP1_SC2_question4' action="" method="post">
+                                        <div>
+
+                                            <b>VLFS exists in
+                                                <input type="text" name="CP1_SC2_question4_a" size="10" />,
+                                                <input type="text" name="CP1_SC2_question4_b" size="10" />, and
+                                                <input type="text" name="CP1_SC2_question4_c" size="10" />.</b>
+                                            <p> Choice: Japan, Singapore, Korea, USA, Netherlands </p>
+
+                                            <input type="text" id="CP1_SC2_click_no4" value="0"></input>
+                                            <input type="button" id="CP1_SC2_submit4" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[4].CP1_SC2_question4_a.value,document.forms[4].CP1_SC2_question4_b.value,document.forms[4].CP1_SC2_question4_c.value]);
+                                                    CP1_SC2_CheckAnswers4(); this.disabled = true;" />
+                                            <div id="CP1_SC2_results4"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 4-->
+
+
+                        <!--start note 5-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC2_function_notebtn(5)">Note 5</button>
+                            <input type="text" id="CP1_SC2_inc_noteBtn5" value="0"></input>
+
+                            <div id="CP1_SC2_myNoteModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_notespan(5)>&times;</span>
+
+                                    <p> my name is Dr. Tay</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 5-->
+
+                        <!--start MCQ 5-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC2_function_btn(5)">Quiz 5</button>
+                            <input type="text" id="CP1_SC2_inc_Btn5" value="0"></input>
+
+                            <div id="CP1_SC2_myModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_span(5)>&times;</span>
+
+                                    <div id="CP1_SC2_quiz5"></div>
+                                    <button id="CP1_SC2_submit5">Submit</button>
+                                    <div id="CP1_SC2_results5"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 5-->
+
+                        <!--start note 6-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1_SC2_function_notebtn(6)">Note 6</button>
+                            <input type="text" id="CP1_SC2_inc_noteBtn6" value="0"></input>
+
+                            <div id="CP1_SC2_myNoteModal6" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_notespan(6)>&times;</span>
+
+                                    <p> my name is ah Tay </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 6-->
+                        <!--start FIB 6 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1_SC2_function_btn(6)">Quiz 6</button>
+                            <input type="text" id="CP1_SC2_inc_Btn6" value="0"></input>
+
+                            <div id="CP1_SC2_myModal6" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1_SC2_function_span(6)>&times;</span>
+
+                                    <form id='CP1_SC2_question6' action="" method="post">
+                                        <div>
+
+                                            <b>States in Sarawak:
+                                                <input type="text" name="CP1_SC2_question6_a" size="10" />,
+                                                <input type="text" name="CP1_SC2_question6_b" size="10" />, and
+                                                <input type="text" name="CP1_SC2_question6_c" size="10" />.</b>
+                                            <p> Choice: Limbang, Lawas, Linggam, Lemon, Kuching, Sri Aman </p>
+
+                                            <input type="text" id="CP1_SC2_click_no6" value="0"></input>
+                                            <input type="button" id="CP1_SC2_submit6" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[5].CP1_SC2_question6_a.value,document.forms[5].CP1_SC2_question6_b.value,document.forms[5].CP1_SC2_question6_c.value]);
+                                                CP1_SC2_CheckAnswers6(); this.disabled = true;" />
+                                            <div id="CP1_SC2_results6"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 6-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+
+    <p> SCORE = </p>
+    <input id="totScore" value="0"> </input>
+
+    <script src="general_script.js"></script>
+    <script src="CP1_SC1_MCQ.js"></script>
+    <script src="CP1_SC1_FIB.js"></script>
+    <script src="CP1_SC2_MCQ.js"></script>
+    <script src="CP1_SC2_FIB.js"></script>
+    <!--<script src="FIB2.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $(this).css('background', 'pink');
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP1_SC1_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP1_SC2_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+
+    <script>
+        var x = totalScore();
+        document.getElementById("totScore").innerHTML = x;
+        function totalScore() {
+            var xxx = document.getElementById("totScore").value;
+            return xxx;
+        } 
+    </script>
+</body>
+
+</html>

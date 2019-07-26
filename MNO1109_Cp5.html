@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        body {
+            font-size: 20px;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        .question {
+            font-weight: 600;
+        }
+
+        .answers {
+            margin-bottom: 20px;
+        }
+
+        #submit {
+            font-family: sans-serif;
+            font-size: 20px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #submit:hover {
+            background-color: #3a8;
+        }
+
+        .quiz_box {
+            width: 200px;
+            height: 50px;
+            border: 2px solid black;
+            background-color: lightblue;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+            margin: 10px 200px 15px 200px;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+
+        button:hover {
+            background: #00898E;
+        }
+
+        button:visited {
+            background: purple
+        }
+
+
+        .button-clicked {
+            background: red;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            text-align: justify;
+
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .elementToFadeInAndOut {
+            -webkit-animation: fadein 4s linear forwards;
+            animation: fadein 4s linear forwards;
+            opacity: 0;
+        }
+
+        @-webkit-keyframes fadein {
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .common_size {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .background_colour {
+            font-size: 16px;
+            background-color: rgb(222, 247, 222);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<!--
+                          TITLE
+                            |
+        ---------------------------------------------------------
+        |                       |                               |
+    CHAPTER 1 (BASIC)       CHAPTER 2                        CHAPTER 3                       
+        |                       |                               |
+    -------------        ----------------            -----------------------    
+    |     |     |        |      |       |            |           |          |
+SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
+          |
+    --------------------------... -----------
+    |     |        |      |        |       |
+   NOTE1 MCQ1    NOTE2   MCQ2 ... NOTE3   FIB1      
+
+   CP1-S1-MCQ1
+   CP1-S1-MCQ2
+   CP1-S1-FIB1
+-->
+
+<body class="background_colour">
+    <!--CHAPTER 1-->
+    <h2>CHAPTER 5 COMBINED LIST AND TRIM, FREE SURFACE EFFECT AND BILGING</h2>
+
+
+    <!--===========================================================Section 1 Combined List and Trim==============================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP5_SC1_myBtn">Combined List and Trim</button>
+
+            <!-- The Modal -->
+            <div id="CP5_SC1_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP5_SC1_modal_content_ID' style="display:none">
+                    <span class="close">&times;</span>
+
+                    <div class="grid-container">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP5_SC1_function_notebtn(1)">Note 1 General</button>
+                            <input type="text" id="CP5_SC1_inc_Btn0" value="100"></input>
+                            <input type="text" id="CP5_SC1_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP5_SC1_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC1_function_notespan(1)>&times;</span>
+
+                                    <p> <b>General</b><br>
+                                        In <span style="color:green">actual operation</span>, the ship will <span
+                                            style="color:blue">list</span> and <span style="color:blue">trim</span> at
+                                        the <span style="color:green">same time</span>.<br><br>
+
+                                        For the
+                                        analysis for <span style="color:red">combined list and trim</span>, the two
+                                        parts must be <span style="color:blue">treated separately</span>.<br><br>
+
+                                        It is usually more <span style="color:green">convenient</span> to starts with
+                                        the
+                                        <span style="color:blue">trim</span> part and
+                                        followed by the <span style="color:blue">list</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP5_SC1_function_btn(1)">Quiz 1</button>
+                            <input type="text" id="CP5_SC1_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP5_SC1_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC1_function_span(1)>&times;</span>
+
+                                    <div id="CP5_SC1_quiz1"></div>
+                                    <button id="CP5_SC1_submit1">Submit</button>
+                                    <div id="CP5_SC1_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+
+    <!--==========================================================Section 2 Effect of Free Surface Effect=========================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP5_SC2_myBtn">Effect of Free Surface Effect</button>
+
+            <!-- The Modal -->
+            <div id="CP5_SC2_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP5_SC2_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP5_SC2_function_notebtn(1)">Note 1 General</button>
+                            <input type="text" id="CP5_SC2_inc_Btn0" value="100"></input>
+                            <input type="text" id="CP5_SC2_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP5_SC2_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC2_function_notespan(1)>&times;</span>
+
+                                    <p> <b>General</b>
+
+                                        <figure>
+                                            <img src="CP5_SC2_FIG1.png" width="404" class="center">
+                                        </figure>
+
+                                        When a ship such as tanker and LNG is <span style="color:blue">carrying
+                                            liquid</span>, it is subjected to
+                                        <span style="color:green">movement of liquid</span> known as <span
+                                            style="color:red">sloshing</span>.<br><br>
+
+                                        As a results, <span style="color:red">additional moment</span> known as
+                                        <span style="color:blue">free surface moment</span> from the surface of the
+                                        liquid is induced on to the ship,
+                                        thus <span style="color:red">reducing the stability </span>of the ship.<br><br>
+
+                                        Such effect is known as the <span style="color:green">free
+                                            surface effect, FSE</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP5_SC2_function_btn(1)">Quiz 1</button>
+                            <input type="text" id="CP5_SC2_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP5_SC2_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC2_function_span(1)>&times;</span>
+
+                                    <div id="CP5_SC2_quiz1"></div>
+                                    <button id="CP5_SC2_submit1">Submit</button>
+                                    <div id="CP5_SC2_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP5_SC2_function_notebtn(2)">Note 2 Reducing Free Surface
+                                Moment</button>
+                            <input type="text" id="CP5_SC2_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP5_SC2_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC2_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Reducing Free Surface Moment</b>
+                                        The <span style="color:red"></span>FSE will <span style="color:blue">reduce the
+                                            GM</span> of the ship.<br><br>
+
+                                        There are <span style="color:green">several ways to reduce the FSE</span>, and
+                                        one of the common methods is to
+                                        introduce <span style="color:blue">longitudinal divisional
+                                            bulkheads</span>.
+
+                                        <figure>
+                                            <img src="CP5_SC2_FIG2.png" width="30%" class="center">
+                                        </figure>
+
+                                        The <span style="color:green">divisional bulkhead</span> is able to
+                                        <span style="color:blue">reduce the virtual loss of GM</span>, which is
+                                        calculated by, <br>
+
+                                        <div lang="latex">
+                                            GM_{virtual loss}=\frac{i}{W} \times \rho \times \frac{1}{n^2} [meters]
+
+                                        </div>
+                                        where <br>
+                                        <i>i</i> is the second moment of the free surface about the centerline
+                                        [m<sup>4</sup>] <br>
+                                        <i>W</i> is the ship's displacement [tonnes] <br>
+                                        <i>&#961</i> is the mass density of the liquid in the tank [tonnes/cubic meter]
+                                        <br>
+                                        <i>n</i> is the number of longitudinal compartments into which the tank is
+                                        equally subdivided
+
+
+                                        <br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP5_SC2_function_btn(2)">Quiz 2</button>
+                            <input type="text" id="CP5_SC2_inc_Btn2" value="0"></input>
+
+                            <div id="CP5_SC2_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC2_function_span(2)>&times;</span>
+
+                                    <div id="CP5_SC2_quiz2"></div>
+                                    <button id="CP5_SC2_submit2">Submit</button>
+                                    <div id="CP5_SC2_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+    <!--===========================================================Section 3 Bilging Effect of Stability====================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP5_SC3_myBtn">Bilging Effects of Stability</button>
+
+            <!-- The Modal -->
+            <div id="CP5_SC3_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP5_SC3_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP5_SC3_function_notebtn(1)">Note 1 General(1)</button>
+                            <input type="text" id="CP5_SC3_inc_Btn0" value="100"></input>
+                            <input type="text" id="CP5_SC3_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP5_SC3_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_notespan(1)>&times;</span>
+
+                                    <p><b>General(1)</b></p>
+                                    <figure>
+                                        <img src="CP5_SC3_FIG1.png" width="30%" class="center">
+                                    </figure>
+
+                                    If a <span style="color:blue;">compartment</span> in the ship below the <span
+                                        style="color:red;">waterline is holed (damaged)</span> such to an
+                                    extent that <span style="color:blue;">water flow freely into and out </span>of the
+                                    compartment, the vessel is said to
+                                    be <span style="color:green;">bilged.</span><br><br><br><br>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP5_SC3_function_btn(1)">Quiz 1</button>
+                            <input type="text" id="CP5_SC3_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP5_SC3_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_span(1)>&times;</span>
+
+                                    <div id="CP5_SC3_quiz1"></div>
+                                    <button id="CP5_SC3_submit1">Submit</button>
+                                    <div id="CP5_SC3_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP5_SC3_function_notebtn(2)">Note 2 General(2)</button>
+                            <input type="text" id="CP5_SC3_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP5_SC3_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_notespan(2)>&times;</span>
+
+                                    <p> <b>General(2)</b><br>
+                                        When the ship is <span style="color:red;">bilged</span>, the <span
+                                            style="color:blue;">buoyancy</span> provided by the bilged compartment is
+                                        <span style="color:red;">lost</span>. <br><br>
+
+                                        The <span style="color:blue;">draft has increased</span> and the vessel now
+                                        floats at waterline W<sub>1</sub>L<sub>1</sub>. <br><br>
+
+
+                                        <figure>
+                                            <img src="CP5_SC3_FIG2.png" width="50%" class="center">
+                                        </figure>
+
+
+                                        The
+                                        <span style="color:blue;">increase of draft</span> is given as , <br>
+
+                                        <div lang="latex">
+                                            T_{increase}=\frac{V_{lost}}{WPA_{intact}}
+                                        </div> <br>
+
+                                        <div lang="latex">
+                                            T_{increase}=\frac{V}{A-a}
+                                        </div>
+                                        where, <br>
+                                        <i>T<sub>increase</sub></i> is the amount of increased draft <br>
+                                        <i>V<sub>lost</sub></i> is the lost of volume <i>V</i> <br>
+                                        <i>WPA<sub>intact</sub></i> is the intact waterplane area <br>
+                                        <i>A</i> is the WPA before bilging <br>
+                                        <i>a</i> is the area of bilge compartment <br><br>
+
+                                        <strong>Note1</strong>: that since water at the bildge area is <span
+                                            style="color:blue;">free to
+                                            move in and
+                                            out</span>, thus there is <span style="color:green;">no change</span> in the
+                                        <span style="color:blue;">distribution of weight </span>within the vessel.
+                                        Therefore the <span style="color:blue;">KG after bilging</span> will be <span
+                                            style="color:green;">the same </span> as the <span style="color:blue;">KG
+                                            before bilging</span>.
+                                        <br><br>
+
+                                        <strong>Note 2</strong>: The <span style="color:blue;"></span>draft increases
+                                        because due to the <span style="color:red;"></span>lost of buoyancy, the ship
+                                        needs to
+                                        <span style="color:blue;"></green>displace more water to <span
+                                                style="color:blue;"></red>make up the buoyancy lost.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP5_SC3_function_btn(2)">Quiz 2</button>
+                            <input type="text" id="CP5_SC3_inc_Btn2" value="0"></input>
+
+                            <div id="CP5_SC3_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_span(2)>&times;</span>
+
+                                    <div id="CP5_SC3_quiz2"></div>
+                                    <button id="CP5_SC3_submit2">Submit</button>
+                                    <div id="CP5_SC3_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP5_SC3_function_notebtn(3)">Note 3 Permeability</button>
+                            <input type="text" id="CP5_SC3_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP5_SC3_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_notespan(3)>&times;</span>
+
+                                    <p> <b>Permeability</b><br>
+
+                                        <span style="color:green;">Permeability</span> is the <span
+                                            style="color:blue;">amount of water</span> that can <span
+                                            style="color:red;">enter a compartment or
+                                            tank</span> <span style="color:blue;">after</span>
+                                        it has been bilged.<br><br>
+
+                                        When an <span style="color:red;">empty compartment is bilged</span>, the <span
+                                            style="color:blue;">whole of the
+                                            buoyancy</span> provided by that compartment is <span
+                                            style="color:red;">lost</span>.<br><br>
+
+                                        <span style="color:blue;">Typical values</span> for permeability
+                                        mu are as follows
+
+                                        <figure>
+                                            <img src="CP5_SC3_FIG3.png" width="100%" class="center">
+                                        </figure>
+
+                                        Therefore, a <span style="color:blue;">higher value of permeability</span> for a
+                                        bilged compartment indicates the
+                                        <span style="color:green;">greater the ship's loss of buoyancy</span>.<br><br>
+
+                                        The <span style="color:blue;">permeability</span> of a compartment can be
+                                        found from the formula, <br>
+
+                                        <div lang="latex">
+                                            \mu = \frac{Broken Stowage}{Stowage Factor} \times 100
+
+                                        </div>
+                                        <br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP5_SC3_function_btn(3)">Quiz 3</button>
+                            <input type="text" id="CP5_SC3_inc_Btn3" value="0"></input>
+
+                            <div id="CP5_SC3_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_span(3)>&times;</span>
+
+                                    <form id='CP5_SC3_question3' action="" method="post">
+                                        <div>
+
+                                            <b>Permeability is the amount of
+                                                <input type="text" name="CP5_SC3_question3_a" size="10" /> that can
+                                                enter a
+                                                <input type="text" name="CP5_SC3_question3_b" size="10" /> or tank after
+                                                it has been
+                                                <input type="text" name="CP5_SC3_question3_c" size="10" />.</b>
+                                            <p> Choice: compartment, cargo, storage, sealed, bilged, water, </p>
+
+                                            <input type="text" id="CP5_SC3_click_no3" value="0"></input>
+                                            <input type="button" id="CP5_SC3_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[0].CP5_SC3_question3_a.value,document.forms[0].CP5_SC3_question3_b.value,document.forms[0].CP5_SC3_question3_c.value]);
+                                                        CP5_SC3_CheckAnswers3(); this.disabled=true" />
+                                            <div id="CP5_SC3_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+
+
+                        <!--start note 4-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP5_SC3_function_notebtn(4)">Note 4 Broken Stowage</button>
+                            <input type="text" id="CP5_SC3_inc_noteBtn4" value="0"></input>
+
+                            <div id="CP5_SC3_myNoteModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_notespan(4)>&times;</span>
+
+                                    <p> <b>Broken Stowage</b> </p><br>
+                                    <span style="color:blue;">Broken Stowage</span> is <span style="color:red;">lost
+                                        cargo space in the holds</span> of a vessel due to the
+                                    <span style="color:green;">contour of
+                                        the hull</span> and/or the <span style="color:blue;">shape of the cargo</span>.
+                                    Dunnage,
+                                    ladders, and stanchions are example
+                                    of broken stowage.<br><br>
+
+                                    <span style="color:blue;">Broken stowage </span>is shown as a <span
+                                        style="color:green;">percentage figure</span>
+                                    which is
+                                    <span style="color:blue;">estimation</span> of the <span style="color:red;">space
+                                        that will be lost</span>.<br><br>
+
+                                    The Broken Stowage is taken as the <span style="color:blue;">broken
+                                        stowage per tonne of stow</span><br><br><br><br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 4-->
+
+                        <!--start FIB 4 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP5_SC3_function_btn(4)">Quiz 4</button>
+                            <input type="text" id="CP5_SC3_inc_Btn4" value="0"></input>
+
+                            <div id="CP5_SC3_myModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_span(4)>&times;</span>
+
+                                    <form id='CP5_SC3_question4' action="" method="post">
+                                        <div>
+
+                                            <b>
+                                                <input type="text" name="CP5_SC3_question4_a" size="10" /> is the lost
+                                                of cargo space in the
+                                                <input type="text" name="CP5_SC3_question4_b" size="10" /> of a vessel
+                                                due to the contour of the
+                                                <input type="text" name="CP5_SC3_question4_c" size="10" /> or shape of
+                                                the cargo.</b>
+                                            <p> Choice: broken stowage, hull, holds, cargo, permeability, structure </p>
+
+                                            <input type="text" id="CP5_SC3_click_no4" value="0"></input>
+                                            <input type="button" id="CP5_SC3_submit4" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[1].CP5_SC3_question4_a.value,document.forms[1].CP5_SC3_question4_b.value,document.forms[1].CP5_SC3_question4_c.value]);
+                                                        CP5_SC3_CheckAnswers4(); this.disabled = true;" />
+                                            <div id="CP5_SC3_results4"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 4-->
+
+
+                        <!--start note 5-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP5_SC3_function_notebtn(5)">Note 5 Stowage Factor</button>
+                            <input type="text" id="CP5_SC3_inc_noteBtn5" value="0"></input>
+
+                            <div id="CP5_SC3_myNoteModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_notespan(5)>&times;</span>
+
+                                    <p> <b>Stowage Factor</b></p>
+                                    <span style="color:blue;">Stowage Factor</span> indicates how many <span
+                                        style="color:green;">cubic meters of space one metric tonne</span> of a
+                                    particular type of cargo <span style="color:blue;">occupies</span> in a hold of a
+                                    cargo ship<br><br><br><br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 5-->
+
+                        <!--start MCQ 5-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP5_SC3_function_btn(5)">Quiz 5</button>
+                            <input type="text" id="CP5_SC3_inc_Btn5" value="0"></input>
+
+                            <div id="CP5_SC3_myModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP5_SC3_function_span(5)>&times;</span>
+
+                                    <div id="CP5_SC3_quiz5"></div>
+                                    <button id="CP5_SC3_submit5">Submit</button>
+                                    <div id="CP5_SC3_results5"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 5-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+
+    <!--==================================================================END================================================================-->
+    <p class="common_size"> SCORE = </p>
+    <input class="common_size" id="totScore" value="0"> </input>
+
+    <script src="CP5_general_script.js"></script>
+    <script src="CP5_SC1_MCQ.js"></script>
+    <script src="CP5_SC2_MCQ.js"></script>
+    <script src="CP5_SC3_MCQ.js"></script>
+    <script src="CP5_SC3_FIB.js"></script>
+
+    <!--<script src="FIB2.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $(this).css('background', 'pink');
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP5_SC1_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP5_SC2_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP5_SC3_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+
+
+    <script>
+        var totScore_store = localStorage.getItem("finalScore");
+        /*alert(totScore_store)*/
+        document.getElementById("totScore").value = localStorage.getItem("finalScore");
+    </script>
+
+
+
+</body>
+
+</html>
