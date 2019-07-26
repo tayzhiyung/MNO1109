@@ -1,155 +1,135 @@
-<?php
-session_start();
-?>
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Page</title>
     <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: auto auto auto;
-            background-color: #2196F3;
-            padding: 10px;
-            margin: 10px 200px 15px 200px;
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #5df0f5;
+            margin: 0 auto 0 auto;
+            width: 100%;
+            text-align: center;
+            margin: 20px 0px 20px 0px;
         }
 
-        .grid-item {
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            font-size: 30px;
-            text-align: center;
-        }
-
-        .button {
-            background-color: rgb(2, 163, 163);
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
+        p {
+            font-size: 12px;
             text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
+            color: #ffffff;
         }
 
-        .common_size {
-            font-size: 24px;
-            font-weight: bold;
-            color: blueviolet
+        h1 {
+            font-size: 1.5em;
+            color: #525252;
         }
 
-        .background_colour {
-            font-size: 16px;
-            background-color: rgb(222, 247, 222);
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
+        .email {
+            background: #ecf0f1;
+            border: #ccc 1px solid;
+            border-bottom: #ccc 2px solid;
+            padding: 8px;
+            width: 250px;
+            color: #AAAAAA;
+            margin-top: 10px;
+            font-size: 1em;
+            border-radius: 4px;
+        }
+
+        .password {
+            border-radius: 4px;
+            background: #ecf0f1;
+            border: #ccc 1px solid;
+            padding: 8px;
+            width: 250px;
+            font-size: 1em;
+        }
+
+        .btn {
+            background: #2ecc71;
+            width: 125px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: white;
+            border-radius: 4px;
+            border: #27ae60 1px solid;
+
+            margin-top: 20px;
+            margin-bottom: 20px;
+            float: left;
+            margin-left: 16px;
+            font-weight: 800;
+            font-size: 0.8em;
+        }
+
+        .btn:hover {
+            background: #2CC06B;
+        }
+
+        #btn2 {
+            float: left;
+            background: #3498db;
+            width: 125px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: white;
+            border-radius: 4px;
+            border: #2980b9 1px solid;
+
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            font-weight: 800;
+            font-size: 0.8em;
+        }
+
+        #btn2:hover {
+            background: rgb(125, 233, 157);
         }
     </style>
-
 </head>
 
-<body class="background_colour">
-    <?php
-        // Echo session variables that were set on previous page
-        echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
-        echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
-        ?>
-    <p class='common_size'>Welcome,</p>
+<body>
+    <form name="loginForm" method="post"
+        action="file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_main_page.html">
+        
+        <table width="20%" bgcolor="0099CC" align="center">
+            <h1>Sign Up/Log In to MNO1109 Online Lecture and Tutorial</h1>
 
-    <p class="common_size" id="user_this_exercise"> </p>
-    <h1>MNO1109 NAVAL ARCHITECTURE 1A</h1>
-    <h3>Welcome to the online lecture and tutorials for MNO1109 Naval Architecture 1A. Please complete the lecture
-        and tutorial before the class lectures every week. Upon completion of the excercise, you will be better
-        equipped with the
-        learning outcome to be achieved from the lectures every week.
-        </h2>
-        <button class="button" id="start_button">Click to Reset Score</button>
-        <div class='grid-container'>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" size=25 name="email" value="email" onFocus="this.value=''"
+                        onblur="field_blur(this, 'email');" class="email" /></td>
 
-            <div class='grid-item'>
-                <!--SECTION 1-->
-                <!-- Trigger/Open The Modal -->
-                <button class="button"
-                    onclick="window.location.href ='file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_Cp1.html'">
-                    Chapter 1 Basic Quantities</button>
 
-            </div>
+            </tr>
 
-            <div class='grid-item'>
-                <!--SECTION 1-->
-                <!-- Trigger/Open The Modal -->
-                <button class="button"
-                    onclick="window.location.href ='file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_Cp2.html'">
-                    Chapter 2 Approximate Integration</button>
+            <tr>
+                <td>Password:</td>
+                <td><input type="Password" size=25 name="password" value="password" onFocus="this.value=''"
+                        onblur="field_blur(this, 'password');" class="email" /></td>
+            </tr>
 
-            </div>
+            <tr>
+                <td><input type="Reset"></td>
+                <td><input type="submit" onclick="return check(this.form)" value="Login"></td>
+                <td><input type="submit" value="Sign Up"></td>
+            </tr>
 
-            <div class='grid-item'>
-                <!--SECTION 1-->
-                <!-- Trigger/Open The Modal -->
-                <button class="button"
-                    onclick="window.location.href ='file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_Cp3.html'">
-                    Chapter 3 List and trim</button>
+        </table>
+    </form>
+    <script language="javascript">
+        function check(form) {
 
-            </div>
-
-            <div class='grid-item'>
-                <!--SECTION 1-->
-                <!-- Trigger/Open The Modal -->
-                <button class="button"
-                    onclick="window.location.href ='file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_Cp4.html'">
-                    Chapter 4 Flotation and Initial Stability</button>
-
-            </div>
-
-            <div class='grid-item'>
-                <!--SECTION 1-->
-                <!-- Trigger/Open The Modal -->
-                <button class="button"
-                    onclick="window.location.href ='file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_Cp5.html'">
-                    Chapter 5 Combined List and Trim, Free Surface, Bilging</button>
-
-            </div>
-
-            <div class='grid-item'>
-                <!--SECTION 1-->
-                <!-- Trigger/Open The Modal -->
-                <button class="button"
-                    onclick="window.location.href ='file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_Cp6.html'">
-                    Chapter 6 Large Angle Stability</button>
-
-            </div>
-
-        </div>
-
-        <p class="common_size"> SCORE = </p>
-        <input class="common_size" id="totScore_i" value="0"> </input>
-
-        <script>
-            var myBtn_i = document.getElementById("start_button");
-            myBtn_i.onclick = function () {
-                document.getElementById("totScore_i").value = 0;
-                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
-
+            if (form.email.value == "a" && form.password.value == "a") {
+                localStorage.setItem("current_user", form.email.value);
+                return true;
             }
-        </script>
-        <script>document.getElementById("user_this_exercise").innerHTML = localStorage.getItem("current_user")
-        </script>
-
-        <script>
-
-            document.getElementById("totScore_i").value = localStorage.getItem("finalScore");
-
-            var totScore_store;
-            totScore_store = document.getElementById("totScore_i").value;
-            localStorage.setItem("finalScore", totScore_store);
-        /*alert(totScore_store);*/
-        </script>
-
-
+            else {
+                alert("Error Password or Username")
+                return false;
+            }
+        }
+    </script>
 
 </body>
 
