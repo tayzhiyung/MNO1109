@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 
 <head>
@@ -49,6 +52,11 @@
 </head>
 
 <body class="background_colour">
+    <?php
+        // Echo session variables that were set on previous page
+        echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
+        echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
+        ?>
     <p class='common_size'>Welcome,</p>
 
     <p class="common_size" id="user_this_exercise"> </p>
