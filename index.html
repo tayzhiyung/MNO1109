@@ -90,7 +90,7 @@
 </head>
 
 <body>
-    <form name="loginForm" method="post" action="MNO1109_main_page.html">
+    <form name="loginForm" method="post" action="/action_page.php">
                
         <table width="20%" bgcolor="0099CC" align="center">
             <h1>Sign Up/Log In to MNO1109 Online Lecture and Tutorial</h1>
@@ -122,8 +122,8 @@
 
             if (form.email.value == "a" && form.password.value == "a") {
                 localStorage.setItem("current_user", form.email.value);
+                window.open("https://tayzhiyung.github.io/MNO1109/MNO1109_main_page")
                 
-                return true;
             }
             else {
                 alert("Error Password or Username")
