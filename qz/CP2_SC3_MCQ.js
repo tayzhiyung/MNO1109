@@ -13,7 +13,7 @@ var CP2_SC3_myQuestions1 = [
 
 var CP2_SC3_myQuestions2 = [
     {
-        question: "Which of the following state is incorrect about CoG?",
+        question: "Which of the following statement is incorrect about CoG?",
         answers: {
             a: 'CoG depends on the loading carried by the ship',
             b: 'The lower the CoG, the better as the ship will be more stable',
@@ -122,7 +122,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
 
                 // color the answers green
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'green';
                 /*score_sum.push(numCorrect);*/
                 score_sum[topic_no, question_no] = numCorrect;
                 

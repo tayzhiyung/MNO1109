@@ -3,7 +3,7 @@ var CP2_SC2_myQuestions1 = [
         question: "Which of the following statement is incorrect?",
         answers: {
             a: 'The waterplane area can be obtained by using any Simpson rule',
-            b: 'the final waterplane area has to be multiplied by 2, due to its half-breadth plan',
+            b: 'The final waterplane area has to be multiplied by 2, due to its half-breadth plan',
             c: 'Area obtained from Simpson 1st Rule is more accurate than that of Simpson 2nd Rule',
             d: 'The accuracy of the waterplane area can be increase by using smaller interval'
         },
@@ -122,7 +122,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
 
                 // color the answers green
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'green';
                 /*score_sum.push(numCorrect);*/
                 score_sum[topic_no, question_no] = numCorrect;
 

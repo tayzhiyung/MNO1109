@@ -4,30 +4,27 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
-
     <style>
         img {
             display: block;
             margin-left: auto;
             margin-right: auto;
-
         }
 
         .button {
             background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 15px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            font-size: 20px;
             cursor: pointer;
         }
 
         body {
-            font-size: 20px;
+            font-size: 16px;
             font-family: sans-serif;
             color: #333;
         }
@@ -70,18 +67,29 @@
 
         .grid-container {
             display: grid;
+            grid-template-columns: auto;
+            background-color: #2196F3;
+            padding: 15px;
+            margin: 1% 30% 1% 30%;
+
+        }
+
+        .grid-container2 {
+            display: grid;
             grid-template-columns: auto auto;
             background-color: #2196F3;
-            padding: 10px;
-            margin: 10px 200px 15px 200px;
+            padding: 15px;
+
         }
 
         .grid-item {
             background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            font-size: 24px;
+            grid-template-columns: auto auto;
+            padding: 15px;
+            font-size: 20px;
             text-align: center;
+
         }
 
 
@@ -142,7 +150,6 @@
             background-color: rgba(0, 0, 0, 0.4);
             /* Black w/ opacity */
             text-align: justify;
-
         }
 
         /* Modal Content */
@@ -151,7 +158,7 @@
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 90%;
         }
 
         .elementToFadeInAndOut {
@@ -202,6 +209,23 @@
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
     </style>
 </head>
 <!--
@@ -228,7 +252,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     <!--CHAPTER 1-->
     <h2>CHAPTER 5 COMBINED LIST AND TRIM, FREE SURFACE EFFECT AND BILGING</h2>
 
-
+    <button class="button" id="start_button">Click to Reset Score</button>
     <!--===========================================================Section 1 Combined List and Trim==============================================-->
     <div class='grid-container'>
 
@@ -244,14 +268,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP5_SC1_modal_content_ID' style="display:none">
                     <span class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP5_SC1_function_notebtn(1)">Note 1 General</button>
-                            <input type="text" id="CP5_SC1_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP5_SC1_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP5_SC1_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP5_SC1_inc_noteBtn1" value="0"></input>
 
                             <div id="CP5_SC1_myNoteModal1" class="modal" style="display:none">
 
@@ -285,7 +309,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP5_SC1_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP5_SC1_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP5_SC1_inc_Btn1" value="100"></input>
 
 
                             <div id="CP5_SC1_myModal1" class="modal">
@@ -326,14 +350,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP5_SC2_modal_content_ID' style="display:none">
                     <span id="close" class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP5_SC2_function_notebtn(1)">Note 1 General</button>
-                            <input type="text" id="CP5_SC2_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP5_SC2_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP5_SC2_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP5_SC2_inc_noteBtn1" value="0"></input>
 
                             <div id="CP5_SC2_myNoteModal1" class="modal" style="display:none">
 
@@ -372,7 +396,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP5_SC2_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP5_SC2_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP5_SC2_inc_Btn1" value="0"></input>
 
 
                             <div id="CP5_SC2_myModal1" class="modal">
@@ -396,7 +420,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP5_SC2_function_notebtn(2)">Note 2 Reducing Free Surface
                                 Moment</button>
-                            <input type="text" id="CP5_SC2_inc_noteBtn2" value="0"></input>
+                            <input type="hidden" id="CP5_SC2_inc_noteBtn2" value="0"></input>
 
                             <div id="CP5_SC2_myNoteModal2" class="modal">
 
@@ -404,7 +428,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <span class="close" onclick=CP5_SC2_function_notespan(2)>&times;</span>
 
-                                    <p> <b>Reducing Free Surface Moment</b>
+                                    <p> <b>Reducing Free Surface Moment</b><br>
                                         The <span style="color:red"></span>FSE will <span style="color:blue">reduce the
                                             GM</span> of the ship.<br><br>
 
@@ -414,17 +438,17 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                             bulkheads</span>.
 
                                         <figure>
-                                            <img src="img/CP5_SC2_FIG2.png" width="30%" class="center">
+                                            <img src="img/CP5_SC2_FIG2.png" width="75%" class="center">
                                         </figure>
 
                                         The <span style="color:green">divisional bulkhead</span> is able to
                                         <span style="color:blue">reduce the virtual loss of GM</span>, which is
-                                        calculated by, <br>
+                                        calculated by, <br><br>
 
                                         <div lang="latex">
                                             GM_{virtual loss}=\frac{i}{W} \times \rho \times \frac{1}{n^2} [meters]
 
-                                        </div>
+                                        </div><
                                         where <br>
                                         <i>i</i> is the second moment of the free surface about the centerline
                                         [m<sup>4</sup>] <br>
@@ -447,7 +471,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP5_SC2_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP5_SC2_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP5_SC2_inc_Btn2" value="100"></input>
 
                             <div id="CP5_SC2_myModal2" class="modal">
 
@@ -485,14 +509,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP5_SC3_modal_content_ID' style="display:none">
                     <span id="close" class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP5_SC3_function_notebtn(1)">Note 1 General(1)</button>
-                            <input type="text" id="CP5_SC3_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP5_SC3_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP5_SC3_inc_noteBtn1" value="0"></input>
 
                             <div id="CP5_SC3_myNoteModal1" class="modal" style="display:none">
 
@@ -502,7 +526,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p><b>General(1)</b></p>
                                     <figure>
-                                        <img src="img/CP5_SC3_FIG1.png" width="30%" class="center">
+                                        <img src="img/CP5_SC3_FIG1.png" width="75%" class="center">
                                     </figure>
 
                                     If a <span style="color:blue;">compartment</span> in the ship below the <span
@@ -521,7 +545,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP5_SC3_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP5_SC3_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_Btn1" value="0"></input>
 
 
                             <div id="CP5_SC3_myModal1" class="modal">
@@ -544,7 +568,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP5_SC3_function_notebtn(2)">Note 2 General(2)</button>
-                            <input type="text" id="CP5_SC3_inc_noteBtn2" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_noteBtn2" value="0"></input>
 
                             <div id="CP5_SC3_myNoteModal2" class="modal">
 
@@ -562,16 +586,16 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
 
                                         <figure>
-                                            <img src="img/CP5_SC3_FIG2.png" width="50%" class="center">
+                                            <img src="img/CP5_SC3_FIG2.png" width="75%" class="center">
                                         </figure>
 
 
                                         The
-                                        <span style="color:blue;">increase of draft</span> is given as , <br>
+                                        <span style="color:blue;">increase of draft</span> is given as , <br><br>
 
                                         <div lang="latex">
                                             T_{increase}=\frac{V_{lost}}{WPA_{intact}}
-                                        </div> <br>
+                                        </div> <br><br>
 
                                         <div lang="latex">
                                             T_{increase}=\frac{V}{A-a}
@@ -583,7 +607,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                         <i>A</i> is the WPA before bilging <br>
                                         <i>a</i> is the area of bilge compartment <br><br>
 
-                                        <strong>Note1</strong>: that since water at the bildge area is <span
+                                        <strong>Note 1</strong>: Since water at the bilge area is <span
                                             style="color:blue;">free to
                                             move in and
                                             out</span>, thus there is <span style="color:green;">no change</span> in the
@@ -609,7 +633,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP5_SC3_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP5_SC3_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_Btn2" value="0"></input>
 
                             <div id="CP5_SC3_myModal2" class="modal">
 
@@ -630,7 +654,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP5_SC3_function_notebtn(3)">Note 3 Permeability</button>
-                            <input type="text" id="CP5_SC3_inc_noteBtn3" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_noteBtn3" value="0"></input>
 
                             <div id="CP5_SC3_myNoteModal3" class="modal">
 
@@ -652,7 +676,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                             style="color:red;">lost</span>.<br><br>
 
                                         <span style="color:blue;">Typical values</span> for permeability
-                                        mu are as follows
+                                        <i>&#924</i> are as follows
 
                                         <figure>
                                             <img src="img/CP5_SC3_FIG3.png" width="100%" class="center">
@@ -681,7 +705,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 3 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP5_SC3_function_btn(3)">Quiz 3</button>
-                            <input type="text" id="CP5_SC3_inc_Btn3" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_Btn3" value="0"></input>
 
                             <div id="CP5_SC3_myModal3" class="modal">
 
@@ -698,9 +722,9 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                                 <input type="text" name="CP5_SC3_question3_b" size="10" /> or tank after
                                                 it has been
                                                 <input type="text" name="CP5_SC3_question3_c" size="10" />.</b>
-                                            <p> Choice: compartment, cargo, storage, sealed, bilged, water, </p>
+                                            <p> <b>Choices:</b> compartment, cargo, storage, sealed, bilged, water, </p>
 
-                                            <input type="text" id="CP5_SC3_click_no3" value="0"></input>
+                                            <input type="hidden" id="CP5_SC3_click_no3" value="0"></input>
                                             <input type="button" id="CP5_SC3_submit3" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[0].CP5_SC3_question3_a.value,document.forms[0].CP5_SC3_question3_b.value,document.forms[0].CP5_SC3_question3_c.value]);
                                                         CP5_SC3_CheckAnswers3(); this.disabled=true" />
@@ -718,7 +742,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP5_SC3_function_notebtn(4)">Note 4 Broken Stowage</button>
-                            <input type="text" id="CP5_SC3_inc_noteBtn4" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_noteBtn4" value="0"></input>
 
                             <div id="CP5_SC3_myNoteModal4" class="modal">
 
@@ -726,7 +750,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <span class="close" onclick=CP5_SC3_function_notespan(4)>&times;</span>
 
-                                    <p> <b>Broken Stowage</b> </p><br>
+                                    <p> <b>Broken Stowage</b> </p>
                                     <span style="color:blue;">Broken Stowage</span> is <span style="color:red;">lost
                                         cargo space in the holds</span> of a vessel due to the
                                     <span style="color:green;">contour of
@@ -752,7 +776,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 4 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP5_SC3_function_btn(4)">Quiz 4</button>
-                            <input type="text" id="CP5_SC3_inc_Btn4" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_Btn4" value="0"></input>
 
                             <div id="CP5_SC3_myModal4" class="modal">
 
@@ -770,9 +794,9 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                                 due to the contour of the
                                                 <input type="text" name="CP5_SC3_question4_c" size="10" /> or shape of
                                                 the cargo.</b>
-                                            <p> Choice: broken stowage, hull, holds, cargo, permeability, structure </p>
+                                            <p> <b>Choices:</b> broken stowage, hull, holds, cargo, permeability, structure </p>
 
-                                            <input type="text" id="CP5_SC3_click_no4" value="0"></input>
+                                            <input type="hidden" id="CP5_SC3_click_no4" value="0"></input>
                                             <input type="button" id="CP5_SC3_submit4" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[1].CP5_SC3_question4_a.value,document.forms[1].CP5_SC3_question4_b.value,document.forms[1].CP5_SC3_question4_c.value]);
                                                         CP5_SC3_CheckAnswers4(); this.disabled = true;" />
@@ -790,7 +814,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP5_SC3_function_notebtn(5)">Note 5 Stowage Factor</button>
-                            <input type="text" id="CP5_SC3_inc_noteBtn5" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_noteBtn5" value="0"></input>
 
                             <div id="CP5_SC3_myNoteModal5" class="modal">
 
@@ -812,7 +836,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 5-->
                         <div class="grid-item">
                             <button class="button" onclick="CP5_SC3_function_btn(5)">Quiz 5</button>
-                            <input type="text" id="CP5_SC3_inc_Btn5" value="0"></input>
+                            <input type="hidden" id="CP5_SC3_inc_Btn5" value="100"></input>
 
                             <div id="CP5_SC3_myModal5" class="modal">
 
@@ -837,10 +861,10 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
 
     <!--==================================================================END================================================================-->
-    <p class="common_size"> SCORE = </p>
-    <input class="common_size" id="totScore" value="0"> </input>
+<p class="common_size"> SCORE = </p>
+<input type="text" class="common_size" id="totScore" value="0"> </input>
 
-    <script src="jz/CP5_general_script.js"></script>
+    <script src="js/CP5_general_script.js"></script>
     <script src="qz/CP5_SC1_MCQ.js"></script>
     <script src="qz/CP5_SC2_MCQ.js"></script>
     <script src="qz/CP5_SC3_MCQ.js"></script>
@@ -849,6 +873,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     <!--<script src="FIB2.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    
+    <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+    
+            }
+        </script>
     <script>
         $(document).ready(function () {
             $(".button").click(function () {

@@ -15,17 +15,16 @@
             background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 15px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            font-size: 20px;
             cursor: pointer;
         }
 
         body {
-            font-size: 20px;
+            font-size: 16px;
             font-family: sans-serif;
             color: #333;
         }
@@ -68,18 +67,29 @@
 
         .grid-container {
             display: grid;
+            grid-template-columns: auto;
+            background-color: #2196F3;
+            padding: 15px;
+            margin: 1% 30% 1% 30%;
+
+        }
+
+        .grid-container2 {
+            display: grid;
             grid-template-columns: auto auto;
             background-color: #2196F3;
-            padding: 10px;
-            margin: 10px 200px 15px 200px;
+            padding: 15px;
+
         }
 
         .grid-item {
             background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            font-size: 24px;
+            grid-template-columns: auto auto;
+            padding: 15px;
+            font-size: 20px;
             text-align: center;
+
         }
 
 
@@ -148,7 +158,7 @@
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 90%;
         }
 
         .elementToFadeInAndOut {
@@ -199,6 +209,23 @@
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
     </style>
 </head>
 <!--
@@ -225,7 +252,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     <!--CHAPTER 1-->
     <h2>CHAPTER 4 FLOTATION AND INITIAL STABILITY</h2>
 
-
+    <button class="button" id="start_button">Click to Reset Score</button>
     <!--===========================================================Section 1 Transverse Statical Stability==============================================-->
     <div class='grid-container'>
 
@@ -241,14 +268,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP4_SC1_modal_content_ID' style="display:none">
                     <span class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP4_SC1_function_notebtn(1)">Note 1 Symbols</button>
-                            <input type="text" id="CP4_SC1_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP4_SC1_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn1" value="0"></input>
 
                             <div id="CP4_SC1_myNoteModal1" class="modal" style="display:none">
 
@@ -259,7 +286,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <p> <b>Symbols</b>
 
                                         <figure>
-                                            <img src="img/CP4_SC1_FIG1.png" width="30%" class="center">
+                                            <img src="img/CP4_SC1_FIG1.png" width="75%" class="center">
                                         </figure>
                                         Referring to the figure, <span style="color:red;">KG</span> is the <span
                                             style="color:blue;">Vertical Center of Gravity (VCG)</span> of ship.
@@ -293,7 +320,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP4_SC1_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP4_SC1_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_Btn1" value="0"></input>
 
 
                             <div id="CP4_SC1_myModal1" class="modal">
@@ -317,7 +344,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP4_SC1_function_notebtn(2)">Note 2 Moment of Statical
                                 Stability</button>
-                            <input type="text" id="CP4_SC1_inc_noteBtn2" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn2" value="0"></input>
 
                             <div id="CP4_SC1_myNoteModal2" class="modal">
 
@@ -333,9 +360,9 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                             style="color:blue;">wind</span> is applied to the <span
                                             style="color:blue;">side of the ship</span>, the ship
                                         will <span style="color:green;">heel</span>. As a result, the <span
-                                            style="color:blue;">CoG</span> moves from <span style="color:red;">B to
-                                            B1</span>
-                                        , which is parallel to GG1.
+                                            style="color:blue;">CoG</span> moves from <span style="color:red;"><i>B</i> to
+                                            <i>B</i><sub>1</sub></span>
+                                        , which is parallel to <i>GG</i><sub>1</sub>.
                                         <br><br>
 
                                         <figure>
@@ -344,7 +371,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                         <strong>Remember</strong> that the <span style="color:red;">force of
                                             buoyancy</span> acts <span style="color:green;">vertically upwards</span>
-                                        throught B1
+                                        through <i>B</i><sub>1</sub>
                                         whereas
                                         the <span style="color:blue;">weight of the ship</span> acts <span
                                             style="color:red;">vertically downwards </span>through the CoG. <br><br>
@@ -385,7 +412,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC1_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP4_SC1_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_Btn2" value="0"></input>
 
                             <div id="CP4_SC1_myModal2" class="modal">
 
@@ -407,7 +434,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP4_SC1_function_notebtn(3)">Note 3 Moment of Statical
                                 Stability at a Small Angle of Heel </button>
-                            <input type="text" id="CP4_SC1_inc_noteBtn3" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn3" value="0"></input>
 
                             <div id="CP4_SC1_myNoteModal3" class="modal">
 
@@ -419,12 +446,12 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                             Stability at a Small Angle of Heel</b>
 
                                         <figure>
-                                            <img src="img/CP4_SC1_FIG2.png" width="30%" class="center">
+                                            <img src="img/CP4_SC1_FIG2.png" width="75%" class="center">
                                         </figure>
                                         At <span style="color:blue;">small angle of heel (lesser than 15deg)</span>, the
-                                        <span style="color:blue;">forces of buoyancy</span> may be
+                                        <span style="color:red;">forces of buoyancy</span> may be
                                         considered to act <span style="color:blue;">vertically upwards</span> through a
-                                        <span style="color:blue;">fixed point</span> called the <span
+                                        <span style="color:green;">fixed point</span> called the <span
                                             style="color:blue;">initial
                                             metacenter(M)</span>.<br><br>
 
@@ -436,7 +463,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                         but in <br>
 
                                         <div lang="latex">
-                                            Triangle GZM = GZ - GM sin(\theta)
+                                            Triangle_{GZM} = GZ - GM sin(\theta)
 
                                         </div> <br>
 
@@ -458,7 +485,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 3 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC1_function_btn(3)">Quiz 3</button>
-                            <input type="text" id="CP4_SC1_inc_Btn3" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_Btn3" value="0"></input>
 
                             <div id="CP4_SC1_myModal3" class="modal">
 
@@ -469,13 +496,17 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <form id='CP4_SC1_question3' action="" method="post">
                                         <div>
 
-                                            <b>The 
-                                                <input type="text" name="CP4_SC1_question3_a" size="10" /> is a fix point in which the 
-                                                <input type="text" name="CP4_SC1_question3_b" size="10" /> force acts vertically upward thought it. The moment of static stability can be calculated from the multiplicaiton of W and GZ, where GZ must always be positive for the ship to be.
+                                            <b>The
+                                                <input type="text" name="CP4_SC1_question3_a" size="10" /> is a fix
+                                                point in which the
+                                                <input type="text" name="CP4_SC1_question3_b" size="10" /> force acts
+                                                vertically upward through it. The moment of static stability can be
+                                                calculated from the multiplicaiton of W and GZ, where GZ must always be
+                                                positive for the ship to be
                                                 <input type="text" name="CP4_SC1_question3_c" size="10" />.</b>
-                                            <p> Choice: CoG, CoB, buoyancy, weight,  stable, floating, metacenter </p>
+                                            <p> <b>Choices:</b> CoG, CoB, buoyancy, weight, stable, floating, metacenter </p>
 
-                                            <input type="text" id="CP4_SC1_click_no3" value="0"></input>
+                                            <input type="hidden" id="CP4_SC1_click_no3" value="0"></input>
                                             <input type="button" id="CP4_SC1_submit3" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[0].CP4_SC1_question3_a.value,document.forms[0].CP4_SC1_question3_b.value,document.forms[0].CP4_SC1_question3_c.value]);
                                                     CP4_SC1_CheckAnswers3();this.disabled=true " />
@@ -493,7 +524,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP4_SC1_function_notebtn(4)">Note 4 List and Heel</button>
-                            <input type="text" id="CP4_SC1_inc_noteBtn4" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn4" value="0"></input>
 
                             <div id="CP4_SC1_myNoteModal4" class="modal">
 
@@ -502,7 +533,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <span class="close" onclick=CP4_SC1_function_notespan(4)>&times;</span>
 
                                     <p> <b>List and Heel</b><br>
-                                        A <span style="color:red;">recap of</span> <span
+                                        A <span style="color:red;">recap</span> of <span
                                             style="color:green;">Heel</span> and <span style="color:blue;">List</span>
                                         is
                                         given here.<br><br>
@@ -531,7 +562,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 4 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC1_function_btn(4)">Quiz 4</button>
-                            <input type="text" id="CP4_SC1_inc_Btn4" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_Btn4" value="0"></input>
 
                             <div id="CP4_SC1_myModal4" class="modal">
 
@@ -542,13 +573,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <form id='CP4_SC1_question4' action="" method="post">
                                         <div>
 
-                                            <b>Heel is the inclination of ship due to 
-                                                <input type="text" name="CP4_SC1_question4_a" size="10" /> force, whereas 
-                                                <input type="text" name="CP4_SC1_question4_b" size="10" /> is the inclination of ship due to internal force. List is a fixed
+                                            <b>Heel is the inclination of ship due to
+                                                <input type="text" name="CP4_SC1_question4_a" size="10" /> force,
+                                                whereas
+                                                <input type="text" name="CP4_SC1_question4_b" size="10" /> is the
+                                                inclination of ship due to internal force. List is a fixed
                                                 <input type="text" name="CP4_SC1_question4_c" size="10" />.</b>
-                                            <p> Choice:  angle of heel, internal, buoyancy, heel, external, list, </p>
+                                            <p> <b>Choices:</b> angle of heel, internal, buoyancy, heel, external, list, </p>
 
-                                            <input type="text" id="CP4_SC1_click_no4" value="0"></input>
+                                            <input type="hidden" id="CP4_SC1_click_no4" value="0"></input>
                                             <input type="button" id="CP4_SC1_submit4" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[1].CP4_SC1_question4_a.value,document.forms[1].CP4_SC1_question4_b.value,document.forms[1].CP4_SC1_question4_c.value]);
                                                     CP4_SC1_CheckAnswers4(); this.disabled = true;" />
@@ -566,7 +599,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP4_SC1_function_notebtn(5)">Note 5 Metacentre</button>
-                            <input type="text" id="CP4_SC1_inc_noteBtn5" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn5" value="0"></input>
 
                             <div id="CP4_SC1_myNoteModal5" class="modal">
 
@@ -576,29 +609,29 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p> <b>Metacentre</b><br>
                                         Assume that the ship is inclined at a <span style="color:blue;">small
-                                            angle &#952</span>. Under such condition,
-                                        the <span style="color:red;">wedge WOW<sub>1</sub> </span>is out of water and
-                                        the <span style="color:green;">wedge LOL<sub>1</sub></span> is immersed in the
+                                            angle <i>&#952</i></span>. Under such condition,
+                                        the <span style="color:red;">wedge <i>WOW</i><sub>1</sub> </span>is out of water and
+                                        the <span style="color:green;">wedge <i>LOL</i><sub>1</sub></span> is immersed in the
                                         water.<br><br>
 
                                         The
                                         <span style="color:blue;">Wedge of Buoyancy </span>having the <span
-                                            style="color:green;">centre of gravity at g</span> is now shifted to
-                                        <span style="color:red;">g1</span>.<br><br>
+                                            style="color:green;">centre of gravity at <i>g</i></span> is now shifted to
+                                        <span style="color:red;"><i>g</i><sub>1</sub></span>.<br><br>
 
                                         Take
-                                        note that <span style="color:blue;">G </span>always the remains the same and the
-                                        <span style="color:blue;">weight of ship W</span> acts <span
+                                        note that <span style="color:blue;"><i>G</i> </span>always the remains the same and the
+                                        <span style="color:blue;">weight of ship <i>W</i></span> acts <span
                                             style="color:green;">vertically
                                             downwards</span> through this point.
 
                                         <figure>
-                                            <img src="img/CP4_SC1_FIG5_2.png" width="604" class="center">
+                                            <img src="img/CP4_SC1_FIG5_2.png" width="75%" class="center">
                                         </figure>
 
                                         As a result, <span style="color:blue;">CoB</span> must shift from <span
-                                            style="color:red;">B to B<sub>1</sub></span>, such that <span
-                                            style="color:green;">BB<sub>1</sub> is parallel to gg1</span>,<br><br>
+                                            style="color:red;"><i>B</i> to <i>B</i><sub>1</sub></span>, such that <span
+                                            style="color:green;"><i>BB</i><sub>1</sub> is parallel to <i>gg</i><sub>1</sub></span>,<br><br>
 
                                         <div lang="latex">
                                             BB_{1}=\frac{V \times gg_1}{V}
@@ -625,7 +658,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 5-->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC1_function_btn(5)">Quiz 5</button>
-                            <input type="text" id="CP4_SC1_inc_Btn5" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_Btn5" value="0"></input>
 
                             <div id="CP4_SC1_myModal5" class="modal">
 
@@ -647,7 +680,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP4_SC1_function_notebtn(6)">Note 6 Effect of Suspended
                                 Weight</button>
-                            <input type="text" id="CP4_SC1_inc_noteBtn6" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn6" value="0"></input>
 
                             <div id="CP4_SC1_myNoteModal6" class="modal">
 
@@ -657,14 +690,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p> <b>Effect of Suspended Weight</b>
                                         <figure>
-                                            <img src="img/CP4_SC1_FIG6.png" width="60%" class="center">
+                                            <img src="img/CP4_SC1_FIG6.png" width="75%" class="center">
                                         </figure>
                                         Consider the CoG of a <span style="color:red;">weight suspended</span> from the
                                         <span style="color:blue;">head of a derrick</span>.<br><br>
 
                                         The <span style="color:green;">force of
                                             gravity</span> always act <span style="color:blue;">vertically
-                                            downwards</span> via g1,
+                                            downwards</span> via <i>g</i><sub>1</sub>,
                                         i.e. the point of
                                         suspension.<br><br>
 
@@ -681,7 +714,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 6 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC1_function_btn(6)">Quiz 6</button>
-                            <input type="text" id="CP4_SC1_inc_Btn6" value="0"></input>
+                            <input type="hidden" id="CP4_SC1_inc_Btn6" value="100"></input>
 
                             <div id="CP4_SC1_myModal6" class="modal">
 
@@ -692,13 +725,16 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <form id='CP4_SC1_question6' action="" method="post">
                                         <div>
 
-                                            <b> In considering the effect of suspended weight, the force of 
-                                                <input type="text" name="CP4_SC1_question6_a" size="10" /> GRAVITY always acts vertically 
-                                                <input type="text" name="CP4_SC1_question6_b" size="10" /> DOWNWARD via the point of suspension. Therfore, the 
-                                                <input type="text" name="CP4_SC1_question6_c" size="10" /> CoG is the point of suspension.</b>
-                                            <p> Choice: downward, CoB, upward, CoG, M, gravity, buoyancy </p>
+                                            <b> In considering the effect of suspended weight, the force of
+                                                <input type="text" name="CP4_SC1_question6_a" size="10" />
+                                                always acts vertically
+                                                <input type="text" name="CP4_SC1_question6_b" size="10" /> via
+                                                the point of suspension. Therfore, the
+                                                <input type="text" name="CP4_SC1_question6_c" size="10" /> is the
+                                                point of suspension.</b>
+                                            <p> <b>Choices:</b> downward, CoB, upward, CoG, M, gravity, buoyancy </p>
 
-                                            <input type="text" id="CP4_SC1_click_no6" value="0"></input>
+                                            <input type="hidden" id="CP4_SC1_click_no6" value="0"></input>
                                             <input type="button" id="CP4_SC1_submit6" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[2].CP4_SC1_question6_a.value,document.forms[2].CP4_SC1_question6_b.value,document.forms[2].CP4_SC1_question6_c.value]);
                                                 CP4_SC1_CheckAnswers6(); this.disabled = true;" />
@@ -734,15 +770,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP4_SC2_modal_content_ID' style="display:none">
                     <span id="close" class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP4_SC2_function_notebtn(1)">Note 1 Stable
                                 Equilibrium</button>
-                            <input type="text" id="CP4_SC2_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP4_SC2_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn1" value="0"></input>
 
                             <div id="CP4_SC2_myNoteModal1" class="modal" style="display:none">
 
@@ -752,7 +788,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p> <b>Stable Equilibrium</b>
                                         <figure>
-                                            <img src="img/CP4_SC2_FIG1.png" width="30%" class="center">
+                                            <img src="img/CP4_SC2_FIG1.png" width="75%" class="center">
                                         </figure>
                                         When a ship is in <span style="color:blue;">stable equilibrium</span>, she tends
                                         to return to the <span style="color:green;">initial
@@ -778,7 +814,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP4_SC2_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP4_SC2_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_Btn1" value="0"></input>
 
 
                             <div id="CP4_SC2_myModal1" class="modal">
@@ -802,7 +838,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP4_SC2_function_notebtn(2)">Note 2 Unstable
                                 Equilibrium</button>
-                            <input type="text" id="CP4_SC2_inc_noteBtn2" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn2" value="0"></input>
 
                             <div id="CP4_SC2_myNoteModal2" class="modal">
 
@@ -812,7 +848,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p> <b>Unstable Equilibrium</b>
                                         <figure>
-                                            <img src="img/CP4_SC2_FIG2.png" width="50%" class="center">
+                                            <img src="img/CP4_SC2_FIG2.png" width="75%" class="center">
                                         </figure>
 
                                         For <span style="color:blue;">GM lesser than 0</span>, the ship is said to be in
@@ -831,7 +867,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC2_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP4_SC2_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_Btn2" value="0"></input>
 
                             <div id="CP4_SC2_myModal2" class="modal">
 
@@ -853,7 +889,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP4_SC2_function_notebtn(3)">Note 3 Neutral
                                 Equilibrium</button>
-                            <input type="text" id="CP4_SC2_inc_noteBtn3" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn3" value="0"></input>
 
                             <div id="CP4_SC2_myNoteModal3" class="modal">
 
@@ -863,7 +899,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p> <b>Neutral Equilibrium</b>
                                         <figure>
-                                            <img src="img/CP4_SC2_FIG3.png" width="604" class="center">
+                                            <img src="img/CP4_SC2_FIG3.png" width="75%" class="center">
                                         </figure>
 
                                         If <span style="color:blue;">GM = 0</span>, the ship is in <span
@@ -886,7 +922,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 3 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC2_function_btn(3)">Quiz 3</button>
-                            <input type="text" id="CP4_SC2_inc_Btn3" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_Btn3" value="0"></input>
 
                             <div id="CP4_SC2_myModal3" class="modal">
 
@@ -897,13 +933,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <form id='CP4_SC2_question3' action="" method="post">
                                         <div>
 
-                                            <b>For 
-                                                <input type="text" name="CP4_SC2_question3_a" size="10" /> equilibrium, the GM=0. If the ship is inclined to a 
-                                                <input type="text" name="CP4_SC2_question3_b" size="10" /> angle, the ship will remain at that angle of heel until acted by an 
+                                            <b>For
+                                                <input type="text" name="CP4_SC2_question3_a" size="10" /> equilibrium,
+                                                the GM=0. If the ship is inclined to a
+                                                <input type="text" name="CP4_SC2_question3_b" size="10" /> angle, the
+                                                ship will remain at that angle of heel until acted by an
                                                 <input type="text" name="CP4_SC2_question3_c" size="10" /> force.</b>
-                                            <p> Choice: internal, small, large, unstable, neutral, external </p>
+                                            <p> <b>Choices:</b> internal, small, large, unstable, neutral, external </p>
 
-                                            <input type="text" id="CP4_SC2_click_no3" value="0"></input>
+                                            <input type="hidden" id="CP4_SC2_click_no3" value="0"></input>
                                             <input type="button" id="CP4_SC2_submit3" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[3].CP4_SC2_question3_a.value,document.forms[3].CP4_SC2_question3_b.value,document.forms[3].CP4_SC2_question3_c.value]);
                                                     CP4_SC2_CheckAnswers3(); this.disabled=true" />
@@ -922,7 +960,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP4_SC2_function_notebtn(4)">Note 4 Stiff and Tender
                                 Ship</button>
-                            <input type="text" id="CP4_SC2_inc_noteBtn4" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn4" value="0"></input>
 
                             <div id="CP4_SC2_myNoteModal4" class="modal">
 
@@ -943,7 +981,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                             position</span>).<br><br>
 
                                         <figure>
-                                            <img src="img/CP4_SC2_FIG4.png" width="50%" class="center">
+                                            <img src="img/CP4_SC2_FIG4.png" width="75%" class="center">
                                         </figure>
 
                                         The ship is said to be <span style="color:red;">stiff </span>when the GM is
@@ -960,7 +998,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 4 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC2_function_btn(4)">Quiz 4</button>
-                            <input type="text" id="CP4_SC2_inc_Btn4" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_Btn4" value="0"></input>
 
                             <div id="CP4_SC2_myModal4" class="modal">
 
@@ -971,13 +1009,16 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <form id='CP4_SC2_question4' action="" method="post">
                                         <div>
 
-                                            <b>The value of GM related to the 
-                                                <input type="text" name="CP4_SC2_question4_a" size="10" /> of the ship. The ship is said to be 
-                                                <input type="text" name="CP4_SC2_question4_b" size="10" /> when the time period is short and 
-                                                <input type="text" name="CP4_SC2_question4_c" size="10" /> when the time period is long.</b>
-                                            <p> Choice: tender, rotation, mass, time period, weight, stiff </p>
+                                            <b>The value of GM is related to the
+                                                <input type="text" name="CP4_SC2_question4_a" size="10" /> of the ship.
+                                                The ship is said to be
+                                                <input type="text" name="CP4_SC2_question4_b" size="10" /> when the time
+                                                period is short and
+                                                <input type="text" name="CP4_SC2_question4_c" size="10" /> when the time
+                                                period is long.</b>
+                                            <p> <b>Choices:</b> tender, rotation, mass, time period, weight, stiff </p>
 
-                                            <input type="text" id="CP4_SC2_click_no4" value="0"></input>
+                                            <input type="hidden" id="CP4_SC2_click_no4" value="0"></input>
                                             <input type="button" id="CP4_SC2_submit4" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[4].CP4_SC2_question4_a.value,document.forms[4].CP4_SC2_question4_b.value,document.forms[4].CP4_SC2_question4_c.value]);
                                                     CP4_SC2_CheckAnswers4(); this.disabled = true;" />
@@ -995,7 +1036,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP4_SC2_function_notebtn(5)">Note 5 Stiff Ship</button>
-                            <input type="text" id="CP4_SC2_inc_noteBtn5" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn5" value="0"></input>
 
                             <div id="CP4_SC2_myNoteModal5" class="modal">
 
@@ -1025,7 +1066,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 5-->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC2_function_btn(5)">Quiz 5</button>
-                            <input type="text" id="CP4_SC2_inc_Btn5" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_Btn5" value="0"></input>
 
                             <div id="CP4_SC2_myModal5" class="modal">
 
@@ -1046,7 +1087,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP4_SC2_function_notebtn(6)">Note 6 Tender Ship</button>
-                            <input type="text" id="CP4_SC2_inc_noteBtn6" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn6" value="0"></input>
 
                             <div id="CP4_SC2_myNoteModal6" class="modal">
 
@@ -1082,7 +1123,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 6 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC2_function_btn(6)">Quiz 6</button>
-                            <input type="text" id="CP4_SC2_inc_Btn6" value="0"></input>
+                            <input type="hidden" id="CP4_SC2_inc_Btn6" value="100"></input>
 
                             <div id="CP4_SC2_myModal6" class="modal">
 
@@ -1093,13 +1134,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <form id='CP4_SC2_question6' action="" method="post">
                                         <div>
 
-                                            <b> For a 
-                                                <input type="text" name="CP4_SC2_question6_a" size="10" /> TENDER ship, the ship has a long 
-                                                <input type="text" name="CP4_SC2_question6_b" size="10" /> TIME PERIOD and will return to its initial position slowly. GM for this case is very 
-                                                <input type="text" name="CP4_SC2_question6_c" size="10" /> SMALL.</b>
-                                            <p> Choice: time period, small, large, stiff, tender, inclination </p>
+                                            <b> For a
+                                                <input type="text" name="CP4_SC2_question6_a" size="10" /> ship,
+                                                the ship has a long
+                                                <input type="text" name="CP4_SC2_question6_b" size="10" />
+                                                and will return to its initial position slowly. GM for this case is very
+                                                <input type="text" name="CP4_SC2_question6_c" size="10" />.</b>
+                                            <p> <b>Choices:</b> time period, small, large, stiff, tender, inclination </p>
 
-                                            <input type="text" id="CP4_SC2_click_no6" value="0"></input>
+                                            <input type="hidden" id="CP4_SC2_click_no6" value="0"></input>
                                             <input type="button" id="CP4_SC2_submit6" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[5].CP4_SC2_question6_a.value,document.forms[5].CP4_SC2_question6_b.value,document.forms[5].CP4_SC2_question6_c.value]);
                                                 CP4_SC2_CheckAnswers6(); this.disabled = true;" />
@@ -1134,14 +1177,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP4_SC3_modal_content_ID' style="display:none">
                     <span id="close" class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP4_SC3_function_notebtn(1)">Note 1 General</button>
-                            <input type="text" id="CP4_SC3_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP4_SC3_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP4_SC3_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP4_SC3_inc_noteBtn1" value="0"></input>
 
                             <div id="CP4_SC3_myNoteModal1" class="modal" style="display:none">
 
@@ -1155,7 +1198,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                         these
                                         methods lead to <span style="color:blue;">increase the GM value</span>, by
                                         either <span style="color:red;">lowering</span> the <span
-                                            style="color:green;">CoG </span>or/and <span style="color:blue;">CoB</span>
+                                            style="color:green;">CoG </span>or/and increasing the <span style="color:blue;">CoB</span>
                                         and
                                         <span style="color:blue;">increasing the Metacentric height</span>
                                         M.<br><br><br><br>
@@ -1172,7 +1215,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP4_SC3_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP4_SC3_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP4_SC3_inc_Btn1" value="0"></input>
 
 
                             <div id="CP4_SC3_myModal1" class="modal">
@@ -1196,7 +1239,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP4_SC3_function_notebtn(2)">Note 2 Enhancing
                                 Stability</button>
-                            <input type="text" id="CP4_SC3_inc_noteBtn2" value="0"></input>
+                            <input type="hidden" id="CP4_SC3_inc_noteBtn2" value="0"></input>
 
                             <div id="CP4_SC3_myNoteModal2" class="modal">
 
@@ -1206,8 +1249,9 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p> <b>Enhancing Stability</b><br>
                                         Some of the ways to <span style="color:red;">increase stability</span> is by
-                                        <span style="color:green;">increasing the beam</span> and <span style="color:blue;">increasing
-                                        freeboard</span>.<br><br><br><br>
+                                        <span style="color:green;">increasing the beam</span> and <span
+                                            style="color:blue;">increasing
+                                            freeboard</span>.<br><br><br><br>
 
                                     </p>
 
@@ -1219,7 +1263,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP4_SC3_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP4_SC3_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP4_SC3_inc_Btn2" value="100"></input>
 
                             <div id="CP4_SC3_myModal2" class="modal">
 
@@ -1243,8 +1287,8 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     </div>
 
     <!--==================================================================END================================================================-->
-    <p class="common_size"> SCORE = </p>
-    <input class="common_size" id="totScore" value="0"> </input>
+<p class="common_size"> SCORE = </p>
+<input type="text" class="common_size" id="totScore" value="0"> </input>
 
     <script src="js/CP4_general_script.js"></script>
     <script src="qz/CP4_SC1_MCQ.js"></script>
@@ -1259,6 +1303,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     <!--<script src="FIB2.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+    
+            }
+        </script>
+    
     <script>
         $(document).ready(function () {
             $(".button").click(function () {

@@ -1,6 +1,6 @@
 var CP4_SC1_myQuestions1 = [
     {
-        question: "What is the KM for a rectangular barge with length 100m, Breadth 20m, depth 25m and Draft 15m ?",
+        question: "What is the KM for a rectangular barge with length 100m, breadth 20m, depth 25m and draft 15m ?",
         answers: {
             a: '8.0m',
             b: '9.7m',
@@ -13,7 +13,7 @@ var CP4_SC1_myQuestions1 = [
 
 var CP4_SC1_myQuestions2 = [
     {
-        question: "What is the Moment of Static Stablity for A rectangular barge floating in freshwater with a length 100m, width 20m and draft 15m, and GZ = 1.5m ? ",
+        question: "What is the Moment of Static Stablity for a rectangular barge floating in freshwater with a length 100m, width 20m and draft 15m, and GZ = 1.5m ? ",
         answers: {
             a: '25000 tonne.m',
             b: '35000 tonne.m',
@@ -140,7 +140,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
 
                 // color the answers green
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'green';
                 /*score_sum.push(numCorrect);*/
                 score_sum[topic_no, question_no] = numCorrect;
                 /*alert(score_sum)*/

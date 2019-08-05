@@ -1,6 +1,6 @@
 var CP4_SC3_myQuestions1 = [
     {
-        question: "What the methods to increase the stability of the ship?",
+        question: "Which of the following does not increase the stability of the ship?",
         answers: {
             a: 'Lower CoG', 
             b: 'Increase CoB',
@@ -13,7 +13,7 @@ var CP4_SC3_myQuestions1 = [
 
 var CP4_SC3_myQuestions2 = [
     {
-        question: "what are the ways to increase the stability of the ship?",
+        question: "Which of the following does not increase the stability of the ship?",
         answers: {
             a: 'Increase freeboard',
             b: 'Increase beam',
@@ -122,7 +122,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
 
                 // color the answers green
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'green';
                 /*score_sum.push(numCorrect);*/
                 score_sum[topic_no, question_no] = numCorrect;
                 

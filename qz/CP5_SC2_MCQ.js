@@ -3,7 +3,7 @@ var CP5_SC2_myQuestions1 = [
         question: "Which of the following statement is incorrect?",
         answers: {
             a: 'Any ship carrying liquid will have free surface effect',
-            b: 'The free surface effect is higher is partially loaded tank than fully loaded tank',
+            b: 'The free surface effect is higher in partially loaded tank than fully loaded tank',
             c: 'Free surface effect does not affect the GM of the ship',
             d: 'One way to reduce free surface effect is to fully load the tank'
         },
@@ -122,7 +122,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
 
                 // color the answers green
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'green';
                 /*score_sum.push(numCorrect);*/
                 score_sum[topic_no, question_no] = numCorrect;
 

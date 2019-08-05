@@ -13,7 +13,7 @@ var CP3_SC1_myQuestions1 = [
 
 var CP3_SC1_myQuestions2 = [
     {
-        question: "Which of the following will not influence the list of a ship?",
+        question: "Which of the following will not influence the list of a symmetrical ship?",
         answers: {
             a: 'Center of gravity',
             b: 'Center of buoyancy',
@@ -120,7 +120,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
 
                 // color the answers green
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'green';
                 /*score_sum.push(numCorrect);*/
                 score_sum[topic_no, question_no] = numCorrect;
                 /*alert(score_sum)*/

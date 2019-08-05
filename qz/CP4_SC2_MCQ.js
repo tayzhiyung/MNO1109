@@ -15,8 +15,8 @@ var CP4_SC2_myQuestions2 = [
     {
         question: "Which of this following statement is incorrect?",
         answers: {
-            a: 'when there is a positive GM, there is a righting moment to upright the ship to its initial position',
-            b: 'when GM = 0, an inclined ship will not sink nor will she return to its initial position',
+            a: 'When there is a positive GM, there is a righting moment to upright the ship to its initial position',
+            b: 'When GM = 0, an inclined ship will not sink nor will she return to its initial position',
             c: 'For a ship with negative GM, one way to increase the GM is by increasing the CoG in ship ',
             d: 'For a stable ship, the inclined ship will return to its initial position until the force of buoyancy and weight are in the same vertical line'
         },
@@ -145,7 +145,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
 
                 // color the answers green
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'green';
                 /*score_sum.push(numCorrect);*/
                 score_sum[topic_no, question_no] = numCorrect;
 

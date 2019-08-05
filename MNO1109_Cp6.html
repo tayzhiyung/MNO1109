@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
     <style>
-        div.latex {
-            font-size: 44px;
-        }
-
         img {
             display: block;
             margin-left: auto;
@@ -19,17 +15,16 @@
             background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 15px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            font-size: 20px;
             cursor: pointer;
         }
 
         body {
-            font-size: 20px;
+            font-size: 16px;
             font-family: sans-serif;
             color: #333;
         }
@@ -72,18 +67,29 @@
 
         .grid-container {
             display: grid;
+            grid-template-columns: auto;
+            background-color: #2196F3;
+            padding: 15px;
+            margin: 1% 30% 1% 30%;
+
+        }
+
+        .grid-container2 {
+            display: grid;
             grid-template-columns: auto auto;
             background-color: #2196F3;
-            padding: 10px;
-            margin: 10px 200px 15px 200px;
+            padding: 15px;
+
         }
 
         .grid-item {
             background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(0, 0, 0, 0.8);
-            padding: 10px;
-            font-size: 24px;
+            grid-template-columns: auto auto;
+            padding: 15px;
+            font-size: 20px;
             text-align: center;
+
         }
 
 
@@ -152,8 +158,7 @@
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
-            overflow: auto;
+            width: 90%;
         }
 
         .elementToFadeInAndOut {
@@ -204,6 +209,23 @@
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
     </style>
 </head>
 <!--
@@ -231,7 +253,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     <!--CHAPTER 1-->
     <h2>CHAPTER 6 LARGE ANGLE STABILITY</h2>
 
-
+    <button class="button" id="start_button">Click to Reset Score</button>
     <!--===========================================================Section 1 DYNAMIC STABILITY==============================================-->
     <div class='grid-container'>
 
@@ -247,14 +269,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP6_SC1_modal_content_ID' style="display:none">
                     <span class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP6_SC1_function_notebtn(1)">Note 1 Moment</button>
-                            <input type="text" id="CP6_SC1_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP6_SC1_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP6_SC1_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP6_SC1_inc_noteBtn1" value="0"></input>
 
                             <div id="CP6_SC1_myNoteModal1" class="modal" style="display:none">
 
@@ -279,7 +301,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                         In such case, the CoB has
                                         <span style="color:blue">moved further out</span> to the <span
-                                            style="color:blue">low side,</span> and the vertical through B1, no longer
+                                            style="color:blue">low side,</span> and the vertical through B<sub>1</sub>, no longer
                                         passes
                                         through M.<br><br>
 
@@ -287,7 +309,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                             style="color:blue">perpendicular distance</span>
                                         between the <span style="color:blue">vertical line of forces</span> through G
                                         and B1, and therefore the moment
-                                        of statical stability is equal to <i>GM sin(&theta)</i>.<br><br>
+                                        of statical stability is equal to <i>GM sin(&#952)</i>.<br><br>
 
                                         However, GZ is <span style="color:blue">no longer equal</span>
                                         to <span style="color:red"><i>GM sin(&#952)</i></span>. Up to the angle at which
@@ -314,7 +336,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP6_SC1_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP6_SC1_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP6_SC1_inc_Btn1" value="0"></input>
 
 
                             <div id="CP6_SC1_myModal1" class="modal">
@@ -338,7 +360,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP6_SC1_function_notebtn(2)">Note 2 GZ Cross Curves of
                                 Stability</button>
-                            <input type="text" id="CP6_SC1_inc_noteBtn2" value="0"></input>
+                            <input type="hidden" id="CP6_SC1_inc_noteBtn2" value="0"></input>
 
                             <div id="CP6_SC1_myNoteModal2" class="modal">
 
@@ -348,7 +370,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p> <b>GZ Cross Curves of Stability</b></p>
                                     <figure>
-                                        <img src="img/CP6_SC1_FIG2.png" width="904" class="center">
+                                        <img src="img/CP6_SC1_FIG2.png" width="100%" class="center">
                                     </figure>
 
                                     <span style="color:red">GZ cross curves of stability</span> are <span
@@ -360,7 +382,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     by
                                     inspection.<br><br>
 
-                                    If the <span style="color:blue">actual 𝐾𝐺 </span>of the ship differs from
+                                    If the <span style="color:blue">actual KG </span>of the ship differs from
                                     this, a <span style="color:red">correction</span> must be
                                     applied to the righting levers taken from the curves.<br><br><br><br>
 
@@ -373,7 +395,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP6_SC1_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP6_SC1_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP6_SC1_inc_Btn2" value="0"></input>
 
                             <div id="CP6_SC1_myModal2" class="modal">
 
@@ -395,7 +417,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP6_SC1_function_notebtn(3)">Note 3 KN Cross Curves of
                                 Stability</button>
-                            <input type="text" id="CP6_SC1_inc_noteBtn3" value="0"></input>
+                            <input type="hidden" id="CP6_SC1_inc_noteBtn3" value="0"></input>
 
                             <div id="CP6_SC1_myNoteModal3" class="modal">
 
@@ -414,7 +436,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                         curves</span>. <br>
 
                                     <figure class="image_position">
-                                        <img src="img/CP6_SC1_FIG3.png" width="604">
+                                        <img src="img/CP6_SC1_FIG3.png" width="75%">
                                     </figure>
 
                                     <span style="color:red">KN Curves</span> are used as it is <span
@@ -437,7 +459,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 3 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP6_SC1_function_btn(3)">Quiz 3</button>
-                            <input type="text" id="CP6_SC1_inc_Btn3" value="0"></input>
+                            <input type="hidden" id="CP6_SC1_inc_Btn3" value="100"></input>
 
                             <div id="CP6_SC1_myModal3" class="modal">
 
@@ -448,11 +470,16 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <form id='CP6_SC1_question3' action="" method="post">
                                         <div>
 
-                                            <b>The stability cross curves are constructred by plotting the 
-                                                <input type="text" name="CP6_SC1_question3_a" size="10" /> on the vertical axis and the 
-                                                <input type="text" name="CP6_SC1_question3_b" size="10" /> on the horizontal axis. 
-                                                <input type="text" name="CP6_SC1_question3_c" size="10" /> are used as it is independent of CoG, so a correction to the final GZ is not needed.</b>
-                                            <p> Choice: heel, righting lever, GZ curves, KN curves, volume, displacement </p>
+                                            <b>The stability cross curves are constructred by plotting the
+                                                <input type="text" name="CP6_SC1_question3_a" size="10" /> on the
+                                                vertical axis and the
+                                                <input type="text" name="CP6_SC1_question3_b" size="10" /> on the
+                                                horizontal axis.
+                                                <input type="text" name="CP6_SC1_question3_c" size="10" /> are used as
+                                                it is independent of CoG, so a correction to the final GZ is not
+                                                needed.</b>
+                                            <p> <b>Choices:</b> heel, righting lever, GZ curves, KN curves, volume, displacement
+                                            </p>
 
                                             <input type="text" id="CP6_SC1_click_no3" value="0"></input>
                                             <input type="button" id="CP6_SC1_submit3" name="check" value="Submit"
@@ -478,7 +505,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
     <!--==================================================================END================================================================-->
     <p class="common_size"> SCORE = </p>
-    <input class="common_size" id="totScore" value="0"> </input>
+    <input type="text" class="common_size" id="totScore" value="0"> </input>
 
     <script src="js/CP6_general_script.js"></script>
     <script src="qz/CP6_SC1_MCQ.js"></script>
@@ -487,6 +514,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     <!--<script src="FIB2.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+    
+            }
+        </script>
+    
     <script>
         $(document).ready(function () {
             $(".button").click(function () {

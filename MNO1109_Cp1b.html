@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        .question {
+            font-weight: 600;
+        }
+
+        .answers {
+            margin-bottom: 20px;
+        }
+
+        #submit {
+            font-family: sans-serif;
+            font-size: 20px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #submit:hover {
+            background-color: #3a8;
+        }
+
+        .quiz_box {
+            width: 200px;
+            height: 50px;
+            border: 2px solid black;
+            background-color: lightblue;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            background-color: #2196F3;
+            padding: 15px;
+            margin: 1% 30% 1% 30%;
+
+        }
+
+        .grid-container2 {
+            display: grid;
+            grid-template-columns: auto auto;
+            background-color: #2196F3;
+            padding: 15px;
+
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            grid-template-columns: auto auto;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+
+        }
+
+
+        button:hover {
+            background: #00898E;
+        }
+
+        button:visited {
+            background: purple
+        }
+
+
+        .button-clicked {
+            background: red;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            text-align: justify;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+        }
+
+        .elementToFadeInAndOut {
+            -webkit-animation: fadein 4s linear forwards;
+            animation: fadein 4s linear forwards;
+            opacity: 0;
+        }
+
+        @-webkit-keyframes fadein {
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .common_size {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .background_colour {
+            font-size: 16px;
+            background-color: rgb(222, 247, 222);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<!--
+                          TITLE
+                            |
+        ---------------------------------------------------------
+        |                       |                               |
+    CHAPTER 1 (BASIC)       CHAPTER 2                        CHAPTER 3                       
+        |                       |                               |
+    -------------        ----------------            -----------------------    
+    |     |     |        |      |       |            |           |          |
+SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
+          |
+    --------------------------... -----------
+    |     |        |      |        |       |
+   NOTE1 MCQ1    NOTE2   MCQ2 ... NOTE3   FIB1      
+
+   CP1b-S1-MCQ1
+   CP1b-S1-MCQ2
+   CP1b-S1-FIB1
+-->
+
+<body class="background_colour">
+    <!--CHAPTER 1-->
+    <h2>CHAPTER 1b HYDROSTATIC QUANTITIES, TPC AND DISPLACEMENT CURVES, LOADLINES</h2>
+
+    <button class="button" id="start_button">Click to Reset Score</button>
+    <!--===========================================================Section 1b Basic Hydrostatic Quantities====================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP1b_SC1_myBtn">Basic Hydrostatic Quantities</button>
+
+            <!-- The Modal -->
+            <div id="CP1b_SC1_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP1b_SC1_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP1b_SC1_function_notebtn(1)">Note 1 Mass Density</button>
+                            <input type="hidden" id="CP1b_SC1_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP1b_SC1_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP1b_SC1_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_notespan(1)>&times;</span>
+
+                                    <p> <b>Mass Density</b> <br>
+
+
+                                        <span style="color:red">Mass density </span> <i>&#961</i> is defined as the
+                                        <span style="color:blue">amount of mass <i>M</i></span> contained
+                                        per <span style="color:blue">unit volume <i>V</i></span>.<br>
+
+                                        <div lang="latex">
+                                            \rho=\frac{M}{V}
+                                        </div> <br>
+
+                                        <span style="color:blue">Unit</span> for mass density is kg/m3
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC1_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP1b_SC1_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP1b_SC1_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_span(1)>&times;</span>
+
+                                    <div id="CP1b_SC1_quiz1"></div>
+                                    <button id="CP1b_SC1_submit1">Submit</button>
+                                    <div id="CP1b_SC1_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC1_function_notebtn(2)">Note 2 Specific
+                                Gravity</button>
+                            <input type="hidden" id="CP1b_SC1_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP1b_SC1_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Specific Gravity</b> <br>
+                                        <span style="color:blue">Specific gravity <i>SG</i></span> is the <span
+                                            style="color:blue">ratio</span> of <span style="color:blue">mass
+                                            density <i>&#961</i></span> to a <span style="color:blue">reference mass
+                                            density <i>&#961</i><sub>0</sub></span>,
+                                        usually taken as the <span style="color:blue">mass density of water</span>, i.e.
+                                        1000kg/m3.<br>
+                                        <div lang="latex">
+                                            SG=\frac{\rho}{\rho_0}
+                                        </div> <br><br>
+
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1b_SC1_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP1b_SC1_inc_Btn2" value="0"></input>
+
+                            <div id="CP1b_SC1_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_span(2)>&times;</span>
+
+                                    <div id="CP1b_SC1_quiz2"></div>
+                                    <button id="CP1b_SC1_submit2">Submit</button>
+                                    <div id="CP1b_SC1_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC1_function_notebtn(3)">Note 3 Mass</button>
+                            <input type="hidden" id="CP1b_SC1_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP1b_SC1_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_notespan(3)>&times;</span>
+
+                                    <p> <b>Mass</b> <br>
+                                        The mass of an object is:<br>
+
+                                        i. A fundamental property of the object<br>
+
+                                        ii. A numerical
+                                        measure of its inertia<br>
+
+                                        iii. A fundamental measure of the amount of matter in the
+                                        object. <br><br>
+
+                                        The <span style="color:blue">SI unit</span> for mass is kg and can be derived by
+                                        taking <br>
+
+                                        <div lang="latex">
+                                            M=V \times \rho
+                                        </div> <br>
+
+                                        The mass of an object <span style="color:blue">will not change</span>.
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1b_SC1_function_btn(3)">Quiz 3</button>
+                            <input type="hidden" id="CP1b_SC1_inc_Btn3" value="0"></input>
+
+                            <div id="CP1b_SC1_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_span(3)>&times;</span>
+
+                                    <form id='CP1b_SC1_question3' action="" method="post">
+                                        <div>
+
+                                            <b>
+                                                <input type="text" name="CP1b_SC1_question3_a" size="10" /> is the
+                                                fundamental property of an object. The SI unit for mass is
+                                                <input type="text" name="CP1b_SC1_question3_b" size="10" />. If your mass
+                                                is 60 kilogram, your mass will be
+                                                <input type="text" name="CP1b_SC1_question3_c" size="10" />kilogram if
+                                                you are in the moon. (Note that the moon has a gravitational
+                                                acceleration that is 6 times smaller than the Earth). </b>
+                                            <p> <b>Choices:</b> mass, force, 60, 10, Newton, kilogram </p>
+
+                                            <input type="hidden" id="CP1b_SC1_click_no3" value="0"></input>
+                                            <input type="button" id="CP1b_SC1_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[0].CP1b_SC1_question3_a.value,document.forms[0].CP1b_SC1_question3_b.value,document.forms[0].CP1b_SC1_question3_c.value]);
+                                                            CP1b_SC1_CheckAnswers3(); this.disabled=true" />
+                                            <div id="CP1b_SC1_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+
+
+                        <!--start note 4-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC1_function_notebtn(4)">Note 4 Travelling Ship in
+                                Water of Different Mass Density</button>
+                            <input type="hidden" id="CP1b_SC1_inc_noteBtn4" value="0"></input>
+
+                            <div id="CP1b_SC1_myNoteModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_notespan(4)>&times;</span>
+
+                                    <p> <b>Travelling Ship in
+                                            Water of Different Mass Density</b> <br>
+                                        When a ship <span style="color:blue">travels</span> from <span
+                                            style="color:blue">waters of different mass density</span>, its <span
+                                            style="color:blue">displacement
+                                            volume</span>, and hence its <span style="color:blue">draft</span> will
+                                        change.
+                                        <br><br>
+
+                                        <span style="color:red">Remember </span>that mass is always <span
+                                            style="color:blue">fix</span> so,<br><br>
+                                        <div lang="latex">
+                                            M_{new}=M_{old}
+                                        </div> <br>
+                                        and therefore<br><br>
+
+                                        <div lang="latex">
+                                            (\rho \times V)_{new}=(\rho \times V)_{old}
+                                        </div> <br>
+
+                                        by further simplify the above equation, we have <br><br>
+
+                                        <div lang="latex">
+                                            T_{new}=\frac{\rho_{old}}{\rho_{new}}\times T_{old}
+                                        </div> <br>
+
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 4-->
+
+                        <!--start FIB 4 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1b_SC1_function_btn(4)">Quiz 4</button>
+                            <input type="hidden" id="CP1b_SC1_inc_Btn4" value="0"></input>
+
+                            <div id="CP1b_SC1_myModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_span(4)>&times;</span>
+
+                                    <form id='CP1b_SC1_question4' action="" method="post">
+                                        <div>
+
+
+                                            <b>When a ships travels from seawater to freshwater, the ship will have to
+                                                displace
+                                                <input type="text" name="CP1b_SC1_question4_a" size="10" /> water based
+                                                on the
+                                                <input type="text" name="CP1b_SC1_question4_b" size="10" />. As a
+                                                results, the draft of the ship will
+                                                <input type="text" name="CP1b_SC1_question4_c" size="10" />. </b>
+                                            <p> <b>Choices:</b> more, Newton's law, rise, less, drop, Principle of Archimedes
+                                            </p>
+
+                                            <input type="hidden" id="CP1b_SC1_click_no4" value="0"></input>
+                                            <input type="button" id="CP1b_SC1_submit4" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[1].CP1b_SC1_question4_a.value,document.forms[1].CP1b_SC1_question4_b.value,document.forms[1].CP1b_SC1_question4_c.value]);
+                                                            CP1b_SC1_CheckAnswers4(); this.disabled = true;" />
+                                            <div id="CP1b_SC1_results4"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 4-->
+
+
+                        <!--start note 5-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC1_function_notebtn(5)">Note 5 Constant Draft</button>
+                            <input type="hidden" id="CP1b_SC1_inc_noteBtn5" value="0"></input>
+
+                            <div id="CP1b_SC1_myNoteModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_notespan(5)>&times;</span>
+
+                                    <p> <b>Constant Draft</b><br>
+                                        Sometimes, there is a need to <span style="color:blue">ballast</span> the ship
+                                        because the <span style="color:blue">draft</span> of the ship has
+                                        to <span style="color:blue">remain unchanged</span> when it travels from <span
+                                            style="color:blue">waters
+                                            of different mass density</span>.
+                                        <br><br>
+
+                                        The
+                                        new displacement of the ship can be calculated from <br>
+                                        <div lang="latex">
+                                            \nabla_{new}=\frac{\rho_{new}}{\rho_{old}} \times \nabla_{old}
+                                        </div> <br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 5-->
+
+                        <!--start MCQ 5-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1b_SC1_function_btn(5)">Quiz 5</button>
+                            <input type="hidden" id="CP1b_SC1_inc_Btn5" value="100"></input>
+
+                            <div id="CP1b_SC1_myModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC1_function_span(5)>&times;</span>
+
+                                    <div id="CP1b_SC1_quiz5"></div>
+                                    <button id="CP1b_SC1_submit5">Submit</button>
+                                    <div id="CP1b_SC1_results5"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 5-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+    <!--===========================================================Section 2 TPC and Displacement Curve====================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP1b_SC2_myBtn">TPC and Displacement Curve</button>
+
+            <!-- The Modal -->
+            <div id="CP1b_SC2_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP1b_SC2_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP1b_SC2_function_notebtn(1)">Note 1 TPC</button>
+                            <input type="hidden" id="CP1b_SC2_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP1b_SC2_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP1b_SC2_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC2_function_notespan(1)>&times;</span>
+
+                                    <p> <b>TPC</b><br>
+                                        <span style="color:red">TPC</span> is known as the <span
+                                            style="color:blue">tonnes per 1cm immersion</span>. <br><br>
+
+                                        It is the measurement of the <span style="color:blue">mass</span>
+                                        that must be <span style="color:green">loaded or discharged </span>to <span
+                                            style="color:blue">change the
+                                            ship's mean draft</span> by
+                                        1cm.<br><br>
+
+                                        Unit
+                                        of TPC is given as tonnes/cm. <br><br>
+
+                                        The TPC is given as <br>
+                                        <div lang="latex">
+                                            TPC_{salt-water}=\frac{WPA}{100} \times \rho_{salt-water}
+                                        </div> <br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC2_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP1b_SC2_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP1b_SC2_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC2_function_span(1)>&times;</span>
+
+                                    <div id="CP1b_SC2_quiz1"></div>
+                                    <button id="CP1b_SC2_submit1">Submit</button>
+                                    <div id="CP1b_SC2_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC2_function_notebtn(2)">Note 2 Displacement
+                                Curve</button>
+                            <input type="hidden" id="CP1b_SC2_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP1b_SC2_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC2_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Displacement Curve</b> <br>
+                                        In ship design, a <span style="color:red">displacement curve</span> is used to
+                                        record the <span style="color:blue">displacement</span> of the
+                                        ship for <span style="color:green">a series of draft</span>. <br><br>
+
+                                        Such curve is used to <span style="color:blue">find the displacement</span> of
+                                        the
+                                        ship for any particular draft. <br><br>
+
+                                        The displacement curve consists of a <span style="color:blue">draft scale
+                                            plotted on the vertical axis</span> and the <span
+                                            style="color:red">displacement scale plotted on the
+                                            horizontal axis.</span>
+
+                                        <figure>
+                                            <img src="img/CP1b_SC2_FIG2.png" width="504">
+                                        </figure>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1b_SC2_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP1b_SC2_inc_Btn2" value="100"></input>
+
+                            <div id="CP1b_SC2_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC2_function_span(2)>&times;</span>
+
+                                    <div id="CP1b_SC2_quiz2"></div>
+                                    <button id="CP1b_SC2_submit2">Submit</button>
+                                    <div id="CP1b_SC2_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+    <!--===========================================================Section 3 Loadline====================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP1b_SC3_myBtn">Loadline</button>
+
+            <!-- The Modal -->
+            <div id="CP1b_SC3_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP1b_SC3_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP1b_SC3_function_notebtn(1)">Note 1 General</button>
+                            <input type="hidden" id="CP1b_SC3_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP1b_SC3_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP1b_SC3_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC3_function_notespan(1)>&times;</span>
+
+                                    <p> <b>General</b></p>
+                                    <span style="color:blue">Loadline</span> provides a <span style="color:green">simple
+                                        visual check</span> that a laden ship has <span style="color:red">sufficient
+                                        reserved
+                                        buoyancy</span> for its intended service. <br><br>
+
+                                    <figure>
+                                        <img src="img/CP1b_SC3_FIG1.png" width="504">
+                                    </figure>
+
+                                    It was introduced by <span style="color:blue">Samuel Plimsol</span> to <span
+                                        style="color:blue">limit the
+                                        draft</span> to which a ship could be loaded.
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC3_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP1b_SC3_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP1b_SC3_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC3_function_span(1)>&times;</span>
+
+                                    <div id="CP1b_SC3_quiz1"></div>
+                                    <button id="CP1b_SC3_submit1">Submit</button>
+                                    <div id="CP1b_SC3_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC3_function_notebtn(2)">Note 2 Loadline</button>
+                            <input type="hidden" id="CP1b_SC3_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP1b_SC3_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC3_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Loadline</b><br>
+                                        There are usually <span style="color:red">six horizontal lines</span>
+                                        represented in the loadline, i.e. TF, F,
+                                        T, S, W, WNA (See figure). <br>
+
+                                        Each represents the <span style="color:blue">maximum draft</span> the ship is
+                                        allowed
+                                        to float at <span style="color:green">different water conditions.</span>
+
+                                        <figure>
+                                            <img src="img/CP1b_SC3_FIG2.jpg" width="504">
+                                        </figure>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1b_SC3_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP1b_SC3_inc_Btn2" value="0"></input>
+
+                            <div id="CP1b_SC3_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC3_function_span(2)>&times;</span>
+
+                                    <div id="CP1b_SC3_quiz2"></div>
+                                    <button id="CP1b_SC3_submit2">Submit</button>
+                                    <div id="CP1b_SC3_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP1b_SC3_function_notebtn(3)">Note 3 Fresh Water
+                                Allowance</button>
+                            <input type="hidden" id="CP1b_SC3_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP1b_SC3_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC3_function_notespan(3)>&times;</span>
+
+                                    <p> <b>Fresh Water Allowance</b><br>
+
+                                        The <span style="color:red">Fresh Water Allowance (FWA)</span> is used to find
+                                        the <span style="color:blue">change in draft</span> of a
+                                        ship-shaped vessls due to the <span style="color:green">change of water mass
+                                            density</span>. <br><br>
+
+                                        The FWA is given as<br>
+
+                                        <div lang="latex">
+                                            FWA=\frac{\Delta}{4 \times TPC}
+                                        </div>
+
+                                        <figure>
+                                            <img src="img/CP1b_SC3_FIG3.png" width="75%">
+                                        </figure>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP1b_SC3_function_btn(3)">Quiz 3</button>
+                            <input type="hidden" id="CP1b_SC3_inc_Btn3" value="100"></input>
+
+                            <div id="CP1b_SC3_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP1b_SC3_function_span(3)>&times;</span>
+
+                                    <form id='CP1b_SC3_question3' action="" method="post">
+                                        <div>
+                                                
+                                            <b>The FWA is used to find change in 
+                                                <input type="text" name="CP1b_SC3_question3_a" size="10" /> of a 
+                                                <input type="text" name="CP1b_SC3_question3_b" size="10" /> due to the change in water
+                                                <input type="text" name="CP1b_SC3_question3_c" size="10" />.</b>
+                                            <p> <b>Choices:</b> mass, draft, mass density, volume, ship-shaped vessels, floating body </p>
+
+                                            <input type="hidden" id="CP1b_SC3_click_no3" value="0"></input>
+                                            <input type="button" id="CP1b_SC3_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[2].CP1b_SC3_question3_a.value,document.forms[2].CP1b_SC3_question3_b.value,document.forms[2].CP1b_SC3_question3_c.value]);
+                                                        CP1b_SC3_CheckAnswers3(); this.disabled=true" />
+                                            <div id="CP1b_SC3_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+    <!--==================================================================END================================================================-->
+    <p class="common_size"> SCORE = </p>
+    <input type="text" class="common_size" id="totScore" value="0"> </input>
+
+    <script src="js/CP1b_general_script.js"></script>
+    <script src="qz/CP1b_SC1_MCQ.js"></script>
+    <script src="qz/CP1b_SC1_FIB.js"></script>
+    <script src="qz/CP1b_SC2_MCQ.js"></script>
+    <script src="qz/CP1b_SC2_FIB.js"></script>
+    <script src="qz/CP1b_SC3_MCQ.js"></script>
+    <script src="qz/CP1b_SC3_FIB.js"></script>
+    <!--<script src="FIB2.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+    
+            }
+        </script>
+    
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $(this).css('background', 'pink');
+
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP1b_SC1_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP1b_SC2_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP1b_SC3_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        var totScore_store = localStorage.getItem("finalScore");
+        /*alert(totScore_store)*/
+        document.getElementById("totScore").value = localStorage.getItem("finalScore");
+    </script>
+
+
+
+</body>
+
+</html>

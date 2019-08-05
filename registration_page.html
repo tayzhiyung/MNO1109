@@ -91,13 +91,13 @@
 <body>
     <form name="loginForm" method="post"
         action="file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_main_page.html">
-        
+
         <table width="20%" bgcolor="0099CC" align="center">
             <h1>Sign Up/Log In to MNO1109 Online Lecture and Tutorial</h1>
 
             <tr>
                 <td>Username:</td>
-                <td><input type="text" size=25 name="email" value="email" onFocus="this.value=''"
+                <td><input type="text" size=25 name="email" value="username" onFocus="this.value=''"
                         onblur="field_blur(this, 'email');" class="email" /></td>
 
 
@@ -120,7 +120,13 @@
     <script language="javascript">
         function check(form) {
 
-            if (form.email.value == "a" && form.password.value == "a") {
+            if (
+                (form.email.value == "a" && form.password.value == "a") ||
+                (form.email.value == "1800543" && form.password.value == "1800543") ||
+                (form.email.value == "1801585" && form.password.value == "1801585") ||
+                (form.email.value == "1801145" && form.password.value == "1801145") ||
+                (form.email.value == "1800662" && form.password.value == "1800662")
+                ) {
                 localStorage.setItem("current_user", form.email.value);
                 return true;
             }

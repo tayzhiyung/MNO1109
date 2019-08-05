@@ -5,7 +5,7 @@ var CP2_SC1_myQuestions1 = [
             a: 'It is used to find area under an irregular curve',
             b: 'It can be used to find the volume and area of ship',
             c: 'It can be used to find the centre of flotation and centre of buoyancy of ship',
-            d: 'The curve considered in the approximate integration does not need to be continuos'
+            d: 'The curve considered in the approximate integration does not need to be continuous'
         },
         correctAnswer: 'd'
     }
@@ -28,7 +28,7 @@ var CP2_SC1_myQuestions2 = [
 var CP2_SC1_myQuestions3 = [
     
      {
-        question: "If the waterplane area of a ship at four different drafts A1 = 200m&#178, A2 = 300m&#178, A3 =360m&#178, A4 = 400m&#178 and draft are taken at 3m interval, what is the displace volume of the ship?",
+        question: "If the waterplane area of a ship at four different drafts A1 = 200m&#178, A2 = 300m&#178, A3 =360m&#178, A4 = 400m&#178 and draft are taken at 3m interval, what is the displaced volume of the ship?",
         answers: {
             a: '1417m&#179',
             b: '967m&#179',

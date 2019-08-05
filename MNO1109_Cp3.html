@@ -4,7 +4,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
-
     <style>
         img {
             display: block;
@@ -16,17 +15,16 @@
             background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 15px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            font-size: 20px;
             cursor: pointer;
         }
 
         body {
-            font-size: 20px;
+            font-size: 16px;
             font-family: sans-serif;
             color: #333;
         }
@@ -69,18 +67,29 @@
 
         .grid-container {
             display: grid;
+            grid-template-columns: auto;
+            background-color: #2196F3;
+            padding: 15px;
+            margin: 1% 30% 1% 30%;
+
+        }
+
+        .grid-container2 {
+            display: grid;
             grid-template-columns: auto auto;
             background-color: #2196F3;
-            padding: 10px;
-            margin: 10px 200px 15px 200px;
+            padding: 15px;
+
         }
 
         .grid-item {
             background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            font-size: 24px;
+            grid-template-columns: auto auto;
+            padding: 15px;
+            font-size: 20px;
             text-align: center;
+
         }
 
 
@@ -149,7 +158,7 @@
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 90%;
         }
 
         .elementToFadeInAndOut {
@@ -200,6 +209,23 @@
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
     </style>
 </head>
 <!--
@@ -226,7 +252,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     <!--CHAPTER 1-->
     <h2>CHAPTER 3 LIST AND TRIM</h2>
 
-
+    <button class="button" id="start_button">Click to Reset Score</button>
     <!--===========================================================Section 1 List==============================================-->
     <div class='grid-container'>
 
@@ -242,14 +268,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP3_SC1_modal_content_ID' style="display:none">
                     <span class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP3_SC1_function_notebtn(1)">Note 1 What is List?</button>
-                            <input type="text" id="CP3_SC1_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP3_SC1_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP3_SC1_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP3_SC1_inc_noteBtn1" value="0"></input>
 
                             <div id="CP3_SC1_myNoteModal1" class="modal" style="display:none">
 
@@ -260,7 +286,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <p> <b>What is List?</b><br>
                                         When there is an <span style="color:red;">uneven distribution of weight</span>
                                         in the <span style="color:blue;">transverse direction</span>, the
-                                        ship <span style="color:green;">lists (rotate)</span>. <br><br>
+                                        ship <span style="color:green;">lists at an angle</span>. <br><br>
 
                                         Sometimes, from <span style="color:red;">collision or bad weather</span>, one
                                         side of the
@@ -271,8 +297,8 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                         The <span style="color:green;">ship listing (heeling) </span>will continue until
                                         it attains
-                                        <span style="color:blue;">equilibrium</span>, i.e. the <span
-                                            style="color:red;">CoB and the CoG</span> are in the <span
+                                        <span style="color:blue;">equilibrium</span>, i.e. <span
+                                            style="color:red;"> the CoB and the CoG</span> are in the <span
                                             style="color:blue;">same vertical line</span>.
                                         <br><br><br><br>
 
@@ -288,7 +314,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP3_SC1_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP3_SC1_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP3_SC1_inc_Btn1" value="0"></input>
 
 
                             <div id="CP3_SC1_myModal1" class="modal">
@@ -311,7 +337,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP3_SC1_function_notebtn(2)">Note 2 Moment</button>
-                            <input type="text" id="CP3_SC1_inc_noteBtn2" value="0"></input>
+                            <input type="hidden" id="CP3_SC1_inc_noteBtn2" value="0"></input>
 
                             <div id="CP3_SC1_myNoteModal2" class="modal">
 
@@ -322,21 +348,21 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <p> <b>Moment</b><br>
                                         When the <span style="color:red;">weight already on board </span>the ship is
                                         <span style="color:blue;">shiftted transversely</span> (from left to
-                                        right), the <span style="color:blue;">centre of gravity G</span> will move to
+                                        right), the <span style="color:blue;">centre of gravity <i>G</i></span> will move to
                                         <span style="color:green;"><i>G'</i></span> in the <span
                                             style="color:blue;">same
                                             direction parallel</span>
                                         to the <span style="color:blue;">path of the shifted weight</span>.
                                         <figure>
-                                            <img src="img/CP3_SC1_FIG2.png" width="50%" class="center">
+                                            <img src="img/CP3_SC1_FIG2.png" width="100%" class="center">
                                         </figure>
 
                                         This will produced a <span style="color:blue;">listing moment <i>W x
-                                                GG<sub>1</sub></i></span>,
+                                                GG</i><sub>1</sub></span>,
                                         where <span style="color:green;"><i>W</i></span> is the <span
                                             style="color:blue;">displacement</span> of the ship. The ship will <span
                                             style="color:blue;">list</span>
-                                        until <span style="color:green;"><i>G<sub>1</sub></i> </span>and the <span
+                                        until <span style="color:green;"><i>G</i><sub>1</sub> </span>and the <span
                                             style="color:blue;">CoB</span>
                                         are in the <span style="color:red;">same vertical line</span>.<br><br>
 
@@ -357,7 +383,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP3_SC1_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP3_SC1_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP3_SC1_inc_Btn2" value="0"></input>
 
                             <div id="CP3_SC1_myModal2" class="modal">
 
@@ -378,7 +404,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP3_SC1_function_notebtn(3)">Note 3 Final List</button>
-                            <input type="text" id="CP3_SC1_inc_noteBtn3" value="0"></input>
+                            <input type="hidden" id="CP3_SC1_inc_noteBtn3" value="0"></input>
 
                             <div id="CP3_SC1_myNoteModal3" class="modal">
 
@@ -392,11 +418,11 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                         When the ship
                                         is in <span style="color:green;">equilibrium</span>, <span
-                                            style="color:blue;">G1</span>
+                                            style="color:blue;"><i>G</i><sub>1</sub></span>
                                         and
-                                        <span style="color:blue;">B</span> will lie <span
+                                        <span style="color:blue;"><i>B</i></span> will lie <span
                                             style="color:red;">vertically</span> under <span
-                                            style="color:green;">M</span>
+                                            style="color:green;"><i>M</i></span>
                                         so long as the <span style="color:blue;">angle of
                                             list is small</span>.
 
@@ -406,8 +432,8 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                         </figure>
 
                                         Therefore it forms a <span style="color:blue;">triangle
-                                            GG<sub>1</sub>M</span> (which is right-angled of G),
-                                        and if <span style="color:green;">M and G</span> are known,
+                                            <i>GG</i><sub>1</sub><i>M</i></span> (which is right-angled of G),
+                                        and if <span style="color:green;"><i>M</i> and <i>G</i></span> are known,
                                         the <span style="color:red;">final list</span> can be
                                         found.<br><br><br><br>
 
@@ -422,7 +448,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 3 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP3_SC1_function_btn(3)">Quiz 3</button>
-                            <input type="text" id="CP3_SC1_inc_Btn3" value="0"></input>
+                            <input type="hidden" id="CP3_SC1_inc_Btn3" value="0"></input>
 
                             <div id="CP3_SC1_myModal3" class="modal">
 
@@ -434,12 +460,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                         <div>
 
                                             <b>The final list of a ship can be obtained using
-                                                <input type="text" name="CP3_SC1_question3_a" size="10" />. When the ship is in equilibrium, the 
-                                                <input type="text" name="CP3_SC1_question3_b" size="10" /> force and 
-                                                <input type="text" name="CP3_SC1_question3_c" size="10" /> must balance each other.</b>
-                                            <p> Choice: trigonometry, estimation, friction, buoyancy, mass, weight </p>
+                                                <input type="text" name="CP3_SC1_question3_a" size="10" />. When the
+                                                ship is in equilibrium, the
+                                                <input type="text" name="CP3_SC1_question3_b" size="10" /> force and
+                                                <input type="text" name="CP3_SC1_question3_c" size="10" /> must balance
+                                                each other.</b>
+                                            <p> <b>Choices:</b> trigonometry, estimation, friction, buoyancy, mass, weight </p>
 
-                                            <input type="text" id="CP3_SC1_click_no3" value="0"></input>
+                                            <input type="hidden" id="CP3_SC1_click_no3" value="0"></input>
                                             <input type="button" id="CP3_SC1_submit3" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[0].CP3_SC1_question3_a.value,document.forms[0].CP3_SC1_question3_b.value,document.forms[0].CP3_SC1_question3_c.value]);
                                                     CP3_SC1_CheckAnswers3();this.disabled=true " />
@@ -457,7 +485,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP3_SC1_function_notebtn(4)">Note 4 Heel</button>
-                            <input type="text" id="CP3_SC1_inc_noteBtn4" value="0"></input>
+                            <input type="hidden" id="CP3_SC1_inc_noteBtn4" value="0"></input>
 
                             <div id="CP3_SC1_myNoteModal4" class="modal">
 
@@ -467,7 +495,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <p> <b>Heel</b><br>
                                         <span style="color:blue;">List</span> is not to be confused with <span
-                                            style="color:blue;">heel</span>. <span style="color:green;">Trim</span> is
+                                            style="color:blue;">heel</span>. <span style="color:green;">Trim </span> is
                                         the<span style="color:red;">rotation </span> of the ship due to
                                         <span style="color:green;">external loading </span>such as wind. <br><br>
 
@@ -491,7 +519,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 4 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP3_SC1_function_btn(4)">Quiz 4</button>
-                            <input type="text" id="CP3_SC1_inc_Btn4" value="0"></input>
+                            <input type="hidden" id="CP3_SC1_inc_Btn4" value="100"></input>
 
                             <div id="CP3_SC1_myModal4" class="modal">
 
@@ -503,12 +531,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                         <div>
 
                                             <b>
-                                                <input type="text" name="CP3_SC1_question4_a" size="10" /> is the rotation of ship due to external loading whereas 
-                                                <input type="text" name="CP3_SC1_question4_b" size="10" /> is rotation due to internal loading. 
-                                                <input type="text" name="CP3_SC1_question4_c" size="10" /> is temporary.</b>
-                                            <p> Choice: heel, list, trim, rotation, inclination </p>
+                                                <input type="text" name="CP3_SC1_question4_a" size="10" /> is the
+                                                rotation of ship due to external loading whereas
+                                                <input type="text" name="CP3_SC1_question4_b" size="10" /> is rotation
+                                                due to internal loading.
+                                                <input type="text" name="CP3_SC1_question4_c" size="10" /> is
+                                                temporary.</b>
+                                            <p> <b>Choices:</b> heel, list, trim, rotation, inclination </p>
 
-                                            <input type="text" id="CP3_SC1_click_no4" value="0"></input>
+                                            <input type="hidden" id="CP3_SC1_click_no4" value="0"></input>
                                             <input type="button" id="CP3_SC1_submit4" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[1].CP3_SC1_question4_a.value,document.forms[1].CP3_SC1_question4_b.value,document.forms[1].CP3_SC1_question4_c.value]);
                                                     CP3_SC1_CheckAnswers4(); this.disabled = true;" />
@@ -534,7 +565,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
         <div class='grid-item'>
             <!--SECTION 1-->
             <!-- Trigger/Open The Modal -->
-            <button class="button" id="CP3_SC2_myBtn">Final KG and BML</button>
+            <button class="button" id="CP3_SC2_myBtn">Final KG and BM<sub>L</sub></button>
 
             <!-- The Modal -->
             <div id="CP3_SC2_myModal" class="modal">
@@ -543,14 +574,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP3_SC2_modal_content_ID' style="display:none">
                     <span id="close" class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP3_SC2_function_notebtn(1)">Note 1 KG</button>
-                            <input type="text" id="CP3_SC2_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP3_SC2_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP3_SC2_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP3_SC2_inc_noteBtn1" value="0"></input>
 
                             <div id="CP3_SC2_myNoteModal1" class="modal" style="display:none">
 
@@ -570,7 +601,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                             style="color:green;">symmetrical</span> ship.
 
                                         <figure>
-                                            <img src="img/CP3_SC2_FIG1.png" width="604" class="center">
+                                            <img src="img/CP3_SC2_FIG1.png" width="75%" class="center">
                                         </figure>
 
                                         The <span style="color:red;">CoG </span>for the <span style="color:green;">x-
@@ -597,7 +628,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP3_SC2_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP3_SC2_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP3_SC2_inc_Btn1" value="0"></input>
 
 
                             <div id="CP3_SC2_myModal1" class="modal">
@@ -619,8 +650,8 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start note 2-->
                         <div class="grid-item">
 
-                            <button class="button" onclick=" CP3_SC2_function_notebtn(2)">Note 2 BML</button>
-                            <input type="text" id="CP3_SC2_inc_noteBtn2" value="0"></input>
+                            <button class="button" onclick=" CP3_SC2_function_notebtn(2)">Note 2 BM<sub>L</sub></button>
+                            <input type="hidden" id="CP3_SC2_inc_noteBtn2" value="0"></input>
 
                             <div id="CP3_SC2_myNoteModal2" class="modal">
 
@@ -628,12 +659,12 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <span class="close" onclick=CP3_SC2_function_notespan(2)>&times;</span>
 
-                                    <p> <b>BML</b><br>
-                                        <span style="color:red;">BML</span> is the <span style="color:blue;">height of
+                                    <p> <b><i>BM<sub>L</sub></i></sub></b><br>
+                                        <span style="color:red;"><i>BM<sub>L</sub></i></sub></span> is the <span style="color:blue;">height of
                                             the longitudinal metacentre </span>above the
                                         <span style="color:blue;">CoB</span>. <br><br>
 
-                                        <span style="color:red;">BML</span> is given as, <br>
+                                        <span style="color:red;"><i>BM<sub>L</sub></i></sub></span> is given as, <br>
 
 
                                         <div lang="latex">
@@ -662,7 +693,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP3_SC2_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP3_SC2_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP3_SC2_inc_Btn2" value="0"></input>
 
                             <div id="CP3_SC2_myModal2" class="modal">
 
@@ -683,8 +714,8 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP3_SC2_function_notebtn(3)">Note 3 Further Notes on
-                                BML</button>
-                            <input type="text" id="CP3_SC2_inc_noteBtn3" value="0"></input>
+                                BM<sub>L</sub></button>
+                            <input type="hidden" id="CP3_SC2_inc_noteBtn3" value="0"></input>
 
                             <div id="CP3_SC2_myNoteModal3" class="modal">
 
@@ -692,13 +723,13 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                                     <span class="close" onclick=CP3_SC2_function_notespan(3)>&times;</span>
 
-                                    <p> <b>Further Notes on BML</b><br>
+                                    <p> <b>Further Notes on <i>BM<sub>L</sub></i></b><br>
                                         The <span style="color:red;">distance BG </span>is <span
                                             style="color:blue;">small</span> when compared with <span
-                                            style="color:green;">BM<sub>L</sub> or GM<sub>L</sub></span> and, for this
+                                            style="color:green;"><i>BM<sub>L</sub></i> or <i>GM<sub>L</sub></i></span> and, for this
                                         reason, <span style="color:blue;">BM<sub>L</sub></span>
                                         may, without appreciable error, be substituted for <span
-                                            style="color:red;">GM<sub>L</sub></span> in the formula for
+                                            style="color:red;"><i>GM<sub>L</sub></i></span> in the formula for
                                         finding <span style="color:red;">MCT 1 cm</span>.<br><br><br><br>
 
                                     </p>
@@ -711,7 +742,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 3 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP3_SC2_function_btn(3)">Quiz 3</button>
-                            <input type="text" id="CP3_SC2_inc_Btn3" value="0"></input>
+                            <input type="hidden" id="CP3_SC2_inc_Btn3" value="100"></input>
 
                             <div id="CP3_SC2_myModal3" class="modal">
 
@@ -723,12 +754,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                         <div>
 
                                             <b>
-                                                <input type="text" name="CP3_SC2_question3_a" size="10" /> can be taken as GML for the 
-                                                <input type="text" name="CP3_SC2_question3_b" size="10" /> direction due to the small distance between CoB and
+                                                <input type="text" name="CP3_SC2_question3_a" size="10" /> can be taken
+                                                as GML for the
+                                                <input type="text" name="CP3_SC2_question3_b" size="10" /> direction due
+                                                to the small distance between CoB and
                                                 <input type="text" name="CP3_SC2_question3_c" size="10" />.</b>
-                                            <p> Choice: longitudinal, BML, BMT, CoG, transverse, CoB </p>
+                                            <p> <b>Choices:</b> longitudinal, BML, BMT, CoG, transverse, CoB </p>
 
-                                            <input type="text" id="CP3_SC2_click_no3" value="0"></input>
+                                            <input type="hidden" id="CP3_SC2_click_no3" value="0"></input>
                                             <input type="button" id="CP3_SC2_submit3" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[2].CP3_SC2_question3_a.value,document.forms[2].CP3_SC2_question3_b.value,document.forms[2].CP3_SC2_question3_c.value]);
                                                     CP3_SC2_CheckAnswers3(); this.disabled=true" />
@@ -762,14 +795,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                 <div class="modal-content" id='CP3_SC3_modal_content_ID' style="display:none">
                     <span id="close" class="close">&times;</span>
 
-                    <div class="grid-container">
+                    <div class="grid-container2">
                         <!--START HERE!-->
                         <!--start note 1-->
                         <div class="grid-item" id="grid_item_no">
 
                             <button class="button" onclick=" CP3_SC3_function_notebtn(1)">Note 1 What is Trim?</button>
-                            <input type="text" id="CP3_SC3_inc_Btn0" value="100"></input>
-                            <input type="text" id="CP3_SC3_inc_noteBtn1" value="0"></input>
+                            <input type="hidden" id="CP3_SC3_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP3_SC3_inc_noteBtn1" value="0"></input>
 
                             <div id="CP3_SC3_myNoteModal1" class="modal" style="display:none">
 
@@ -785,7 +818,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
 
                                         <figure>
-                                            <img src="img/CP3_SC3_FIG1.png" width="604" class="center">
+                                            <img src="img/CP3_SC3_FIG1.jpg" width="75%" class="center">
                                         </figure>
                                         <br><br><br><br>
                                     </p>
@@ -800,7 +833,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP3_SC3_function_btn(1)">Quiz 1</button>
-                            <input type="text" id="CP3_SC3_inc_Btn1" value="0"></input>
+                            <input type="hidden" id="CP3_SC3_inc_Btn1" value="0"></input>
 
 
                             <div id="CP3_SC3_myModal1" class="modal">
@@ -824,7 +857,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
                             <button class="button" onclick=" CP3_SC3_function_notebtn(2)">Note 2 Sign Convention for
                                 Trim</button>
-                            <input type="text" id="CP3_SC3_inc_noteBtn2" value="0"></input>
+                            <input type="hidden" id="CP3_SC3_inc_noteBtn2" value="0"></input>
 
                             <div id="CP3_SC3_myNoteModal2" class="modal">
 
@@ -856,7 +889,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start MCQ 2-->
                         <div class="grid-item">
                             <button class="button" onclick="CP3_SC3_function_btn(2)">Quiz 2</button>
-                            <input type="text" id="CP3_SC3_inc_Btn2" value="0"></input>
+                            <input type="hidden" id="CP3_SC3_inc_Btn2" value="0"></input>
 
                             <div id="CP3_SC3_myModal2" class="modal">
 
@@ -877,7 +910,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <div class="grid-item">
 
                             <button class="button" onclick=" CP3_SC3_function_notebtn(3)">Note 3 Trim</button>
-                            <input type="text" id="CP3_SC3_inc_noteBtn3" value="0"></input>
+                            <input type="hidden" id="CP3_SC3_inc_noteBtn3" value="0"></input>
 
                             <div id="CP3_SC3_myNoteModal3" class="modal">
 
@@ -903,7 +936,7 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                         <!--start FIB 3 -->
                         <div class="grid-item">
                             <button class="button" onclick="CP3_SC3_function_btn(3)">Quiz 3</button>
-                            <input type="text" id="CP3_SC3_inc_Btn3" value="0"></input>
+                            <input type="hidden" id="CP3_SC3_inc_Btn3" value="100"></input>
 
                             <div id="CP3_SC3_myModal3" class="modal">
 
@@ -914,12 +947,14 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
                                     <form id='CP3_SC3_question3' action="" method="post">
                                         <div>
                                             <b>
-                                                <input type="text" name="CP3_SC3_question3_a" size="10" /> may also be considered as the 
-                                                <input type="text" name="CP3_SC3_question3_b" size="10" /> equivalent of list and known as the longitudinal
+                                                <input type="text" name="CP3_SC3_question3_a" size="10" /> may also be
+                                                considered as the
+                                                <input type="text" name="CP3_SC3_question3_b" size="10" /> equivalent of
+                                                list and known as the longitudinal
                                                 <input type="text" name="CP3_SC3_question3_c" size="10" /> .</b>
-                                            <p> Choice: longitudinal, trim, stability, list, transverse, moment </p>
+                                            <p> <b>Choices:</b> longitudinal, trim, stability, list, transverse, moment </p>
 
-                                            <input type="text" id="CP3_SC3_click_no3" value="0"></input>
+                                            <input type="hidden" id="CP3_SC3_click_no3" value="0"></input>
                                             <input type="button" id="CP3_SC3_submit3" name="check" value="Submit"
                                                 onclick="setAnswer(0,[document.forms[3].CP3_SC3_question3_a.value,document.forms[3].CP3_SC3_question3_b.value,document.forms[3].CP3_SC3_question3_c.value]);
                                                         CP3_SC3_CheckAnswers3(); this.disabled=true" />
@@ -940,8 +975,8 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
 
 
     <!--==================================================================END================================================================-->
-    <p class="common_size"> SCORE = </p>
-    <input class="common_size" id="totScore" value="0"> </input>
+<p class="common_size"> SCORE = </p>
+<input type="text" class="common_size" id="totScore" value="0"> </input>
 
     <script src="js/CP3_general_script.js"></script>
     <script src="qz/CP3_SC1_MCQ.js"></script>
@@ -954,6 +989,15 @@ SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
     <!--<script src="FIB2.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    
+    <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+    
+            }
+        </script>
     <script>
         $(document).ready(function () {
             $(".button").click(function () {

@@ -2,10 +2,10 @@ var CP5_SC3_myQuestions1 = [
     {
         question: "Which of the following statement is incorrect?",
         answers: {
-            a: 'When a ship is bilge, there is no change in CoG',
-            b: 'When a ship is bilge, the displacement of the ship will change', 
-            c: 'When a ship is bilge, there is a loss of buoyancy', 
-            d: 'When a ship compartment carry fully loaded coal is bilge, there is no loss of buoyancy'
+            a: 'When a ship is bilged, there is no change in CoG',
+            b: 'When a ship is bilged, the displacement of the ship will change', 
+            c: 'When a ship is bilged, there is a loss of buoyancy', 
+            d: 'When a ship compartment carry fully loaded coal is bilged, there is no loss of buoyancy'
         },
         correctAnswer: 'b'
     }
@@ -13,12 +13,12 @@ var CP5_SC3_myQuestions1 = [
 
 var CP5_SC3_myQuestions2 = [
     {
-        question: "When a ship is bilge, the draft of the ship increase. Which of the following statement is incorrect regarding the increase of draft? ",
+        question: "When a ship is bilged, the draft of the ship increases. Which of the following statement is incorrect regarding the increase of draft? ",
         answers: {
             a: 'The more lost of buoyancy, the greater the increase in draft',  
-            b: 'A ship with larger waterplane area has a smaller increase in draft when the ship is bilge', 
-            c: 'the greater the waterplane area of the bilged compartment, the lower the increase in draft', 
-            d: 'the draft will increase until the displacement of the ship is equal to the buoyancy force' 
+            b: 'A ship with larger waterplane area has a smaller increase in draft when the ship is bilged', 
+            c: 'The greater the waterplane area of the bilged compartment, the lower the increase in draft', 
+            d: 'The draft will increase until the displacement of the ship is equal to the buoyancy force' 
         },
         correctAnswer: 'c'
     },
@@ -143,7 +143,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
 
                 // color the answers green
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'green';
                 /*score_sum.push(numCorrect);*/
                 score_sum[topic_no, question_no] = numCorrect;
                 
