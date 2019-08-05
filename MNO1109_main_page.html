@@ -1,0 +1,271 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+            margin: 1% 1% 1% 1%;
+
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .button {
+            background-color: rgb(2, 163, 163);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .common_size {
+            font-size: 24px;
+            font-weight: bold;
+            color: black
+        }
+
+        .background_colour {
+            font-size: 16px;
+            background-color: rgb(222, 247, 222);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        .heading_padding {
+            background-color: rgb(240, 241, 160); 
+            color: black;
+            padding:1%;
+            border: 2px solid grey;
+            text-align: center;
+            
+        }
+    </style>
+
+</head>
+
+<body class="background_colour">
+
+
+    <h1 class="heading_padding">MNO1109 NAVAL ARCHITECTURE 1A</h1>
+    <p class="common_size" id="user_this_exercise"> </p>
+    <h3>Welcome to the online lecture and tutorials for MNO1109 Naval Architecture 1A. Please complete the lecture
+        and tutorial before the class lectures every week. Upon completion of the excercise, you will be better
+        equipped with the
+        learning outcome to be achieved from the lectures every week.
+        </h2>
+        <button class="button" id="start_button">Click to Reset Score</button>
+        <div class='grid-container'>
+
+            <div class='grid-item'>
+                <!--SECTION 1-->
+                <!-- Trigger/Open The Modal -->
+                <button class="button" onclick="check_date_CP1a()">
+                    Chapter 1(a) Linesplan, Form Coefficient, Displacement and Tonnage</button>
+
+            </div>
+
+            <div class='grid-item'>
+                <!--SECTION 1-->
+                <!-- Trigger/Open The Modal -->
+                <button class="button" onclick="check_date_CP1b()">
+                    Chapter 1(b) Hydrodstatic Quantities, TPC and Displacement Curve, Loadline</button>
+
+            </div>
+
+            <div class='grid-item'>
+                <!--SECTION 1-->
+                <!-- Trigger/Open The Modal -->
+                <button class="button" onclick="check_date_CP2()">
+                    Chapter 2 Approximate Integration</button>
+
+            </div>
+
+            <div class='grid-item'>
+                <!--SECTION 1-->
+                <!-- Trigger/Open The Modal -->
+                <button class="button" onclick="check_date_CP3()">
+                    Chapter 3 List and trim</button>
+
+            </div>
+
+            <div class='grid-item'>
+                <!--SECTION 1-->
+                <!-- Trigger/Open The Modal -->
+                <button class="button" onclick="check_date_CP4()">
+                    Chapter 4 Flotation and Initial Stability</button>
+
+            </div>
+
+            <div class='grid-item'>
+                <!--SECTION 1-->
+                <!-- Trigger/Open The Modal -->
+                <button class="button" onclick="check_date_CP5()">
+                    Chapter 5 Combined List and Trim, Free Surface, Bilging</button>
+
+            </div>
+
+            <div class='grid-item'>
+                <!--SECTION 1-->
+                <!-- Trigger/Open The Modal -->
+                <button class="button" onclick="check_date_CP6()">
+                    Chapter 6 Large Angle Stability</button>
+
+            </div>
+
+        </div>
+
+        <p class="common_size"> SCORE = </p>
+        <input type="text" class="common_size" id="totScore_i" value="0"> </input>
+        <!--================================================================================================================================================================-->
+        <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore_i").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+
+            }
+        </script>
+        <script>document.getElementById("user_this_exercise").innerHTML = "Username: " + localStorage.getItem("current_user")
+        </script>
+
+        <script>
+
+            document.getElementById("totScore_i").value = localStorage.getItem("finalScore");
+
+            var totScore_store;
+            totScore_store = document.getElementById("totScore_i").value;
+            localStorage.setItem("finalScore", totScore_store);
+        /*alert(totScore_store);*/
+        </script>
+
+        <script>
+            function check_date_CP1a() {
+                var date_CP1a = '2019-07-29';
+                var date_today = new Date();
+                date_CP1a = new Date(date_CP1a);
+                
+                if (date_today >= date_CP1a) {
+                    window.location.href = 'https://tayzhiyung.github.io/MNO1109/MNO1109_Cp1a.html'
+                }
+                else if (date_today < date_CP1a) {
+                    alert('This chapter will only be open on ' + date_CP1a)
+                }
+
+            }
+        </script>
+
+        <script>
+            function check_date_CP1b() {
+                var date_CP1b = '2019-07-29';
+                var date_today = new Date();
+                date_CP1b = new Date(date_CP1b);
+
+                if (date_today >= date_CP1b) {
+                    window.location.href = 'https://tayzhiyung.github.io/MNO1109/MNO1109_Cp1b.html'
+                }
+                else if (date_today < date_CP1b) {
+                    alert('This chapter will only be open on ' + date_CP1b)
+                }
+
+            }
+        </script>
+
+        <script>
+            function check_date_CP2() {
+                var date_CP2 = '2019-07-29';
+                var date_today = new Date();
+                date_CP2 = new Date(date_CP2);
+
+                if (date_today >= date_CP2) {
+                    window.location.href = 'https://tayzhiyung.github.io/MNO1109/MNO1109_Cp2.html'
+                }
+                else if (date_today < date_CP2) {
+                    alert('This chapter will only be open on ' + date_CP2)
+                }
+
+            }
+        </script>
+
+        <script>
+            function check_date_CP3() {
+                var date_CP3 = '2019-07-29';
+                var date_today = new Date();
+                date_CP3 = new Date(date_CP3);
+
+                if (date_today >= date_CP3) {
+                    window.location.href = 'https://tayzhiyung.github.io/MNO1109/MNO1109_Cp3.html'
+                }
+                else if (date_today < date_CP3) {
+                    alert('This chapter will only be open on ' + date_CP3)
+                }
+
+            }
+        </script>
+
+        <script>
+            function check_date_CP4() {
+                var date_CP4 = '2019-07-29';
+                var date_today = new Date();
+                date_CP4 = new Date(date_CP4);
+
+                if (date_today >= date_CP4) {
+                    window.location.href = 'https://tayzhiyung.github.io/MNO1109/MNO1109_Cp4.html'
+                }
+                else if (date_today < date_CP4) {
+                    alert('This chapter will only be open on ' + date_CP4)
+                }
+
+            }
+        </script>
+
+        <script>
+            function check_date_CP5() {
+                var date_CP5 = '2019-07-29';
+                var date_today = new Date();
+                date_CP5 = new Date(date_CP5);
+
+                if (date_today >= date_CP5) {
+                    window.location.href = 'https://tayzhiyung.github.io/MNO1109/MNO1109_Cp5.html'
+                }
+                else if (date_today < date_CP5) {
+                    alert('This chapter will only be open on ' + date_CP5)
+                }
+
+            }
+        </script>
+
+        <script>
+            function check_date_CP6() {
+                var date_CP6 = '2019-07-29';
+                var date_today = new Date();
+                date_CP6 = new Date(date_CP6);
+
+                if (date_today >= date_CP6) {
+                    window.location.href = 'https://tayzhiyung.github.io/MNO1109/MNO1109_Cp6.html'
+                }
+                else if (date_today < date_CP6) {
+                    alert('This chapter will only be open on ' + date_CP6)
+                }
+
+            }
+        </script>
+
+
+</body>
+
+</html>

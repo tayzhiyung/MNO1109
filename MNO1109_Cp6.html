@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/latexit.js"></script>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        .question {
+            font-weight: 600;
+        }
+
+        .answers {
+            margin-bottom: 20px;
+        }
+
+        #submit {
+            font-family: sans-serif;
+            font-size: 20px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #submit:hover {
+            background-color: #3a8;
+        }
+
+        .quiz_box {
+            width: 200px;
+            height: 50px;
+            border: 2px solid black;
+            background-color: lightblue;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            background-color: #2196F3;
+            padding: 15px;
+            margin: 1% 1% 1% 1%;
+
+        }
+
+        .grid-container2 {
+            display: grid;
+            grid-template-columns: auto auto;
+            background-color: #2196F3;
+            padding: 15px;
+
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            grid-template-columns: auto auto;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+
+        }
+
+
+        button:hover {
+            background: #00898E;
+        }
+
+        button:visited {
+            background: purple
+        }
+
+
+        .button-clicked {
+            background: red;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            text-align: justify;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+        }
+
+        .elementToFadeInAndOut {
+            -webkit-animation: fadein 4s linear forwards;
+            animation: fadein 4s linear forwards;
+            opacity: 0;
+        }
+
+        @-webkit-keyframes fadein {
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .common_size {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .background_colour {
+            font-size: 16px;
+            background-color: rgb(222, 247, 222);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<!--
+                          TITLE
+                            |
+        ---------------------------------------------------------
+        |                       |                               |
+    CHAPTER 1 (BASIC)       CHAPTER 2                        CHAPTER 3                       
+        |                       |                               |
+    -------------        ----------------            -----------------------    
+    |     |     |        |      |       |            |           |          |
+SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
+          |
+    --------------------------... -----------
+    |     |        |      |        |       |
+   NOTE1 MCQ1    NOTE2   MCQ2 ... NOTE3   FIB1      
+
+   CP1-S1-MCQ1
+   CP1-S1-MCQ2
+   CP1-S1-FIB1
+-->
+
+<body class="background_colour">
+
+    <!--CHAPTER 1-->
+    <h2>CHAPTER 6 LARGE ANGLE STABILITY</h2>
+
+    <button class="button" id="start_button">Click to Reset Score</button>
+    <!--===========================================================Section 1 DYNAMIC STABILITY==============================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP6_SC1_myBtn">Dynamic Stability</button>
+
+            <!-- The Modal -->
+            <div id="CP6_SC1_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP6_SC1_modal_content_ID' style="display:none">
+                    <span class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP6_SC1_function_notebtn(1)">Note 1 Moment</button>
+                            <input type="hidden" id="CP6_SC1_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP6_SC1_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP6_SC1_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP6_SC1_function_notespan(1)>&times;</span>
+
+                                    <p> <b>Moment</b> <br>
+                                        The <span style="color:red">statical stability</span> of a ship is different
+                                        when it is inclined at a <span style="color:blue">large
+                                            angle</span>.<br><br>
+
+                                        At a <span style="color:green">large angle of heel</span>, the <span
+                                            style="color:blue">force of buoyancy</span> is no longer <span
+                                            style="color:blue">acting
+                                            vertically upwards</span> through the <span style="color:blue">initial
+                                            metacenter (M)</span>.<br>
+
+                                        <figure>
+                                            <img src="img/CP6_SC1_FIG1.png" width="404">
+                                        </figure>
+
+                                        In such case, the CoB has
+                                        <span style="color:blue">moved further out</span> to the <span
+                                            style="color:blue">low side,</span> and the vertical through B<sub>1</sub>, no longer
+                                        passes
+                                        through M.<br><br>
+
+                                        Remember that the <span style="color:red">righting lever GZ</span> is the <span
+                                            style="color:blue">perpendicular distance</span>
+                                        between the <span style="color:blue">vertical line of forces</span> through G
+                                        and B1, and therefore the moment
+                                        of statical stability is equal to <i>GM sin(&#952)</i>.<br><br>
+
+                                        However, GZ is <span style="color:blue">no longer equal</span>
+                                        to <span style="color:red"><i>GM sin(&#952)</i></span>. Up to the angle at which
+                                        the deck edge is immersed, it
+                                        may be
+                                        found by using a formula known as the <span style="color:blue">wall
+                                            sided-formula</span>, i.e. <br><br>
+
+                                        <div lang="latex">
+                                            GZ=(GM+\frac{1}{2} BM tan^2 \theta) sin(\theta)
+
+                                        </div>
+                                        <br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP6_SC1_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP6_SC1_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP6_SC1_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP6_SC1_function_span(1)>&times;</span>
+
+                                    <div id="CP6_SC1_quiz1"></div>
+                                    <button id="CP6_SC1_submit1">Submit</button>
+                                    <div id="CP6_SC1_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP6_SC1_function_notebtn(2)">Note 2 GZ Cross Curves of
+                                Stability</button>
+                            <input type="hidden" id="CP6_SC1_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP6_SC1_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP6_SC1_function_notespan(2)>&times;</span>
+
+                                    <p> <b>GZ Cross Curves of Stability</b></p>
+                                    <figure>
+                                        <img src="img/CP6_SC1_FIG2.png" width="100%" class="center">
+                                    </figure>
+
+                                    <span style="color:red">GZ cross curves of stability</span> are <span
+                                        style="color:blue">set of curve</span>s from which the <span
+                                        style="color:blue">righting lever about
+                                        an assumed CoG</span> for any <span style="color:blue">angle of heel</span> at
+                                    any
+                                    particular <span style="color:blue">displacement</span> maybe found
+                                    by
+                                    inspection.<br><br>
+
+                                    If the <span style="color:blue">actual KG </span>of the ship differs from
+                                    this, a <span style="color:red">correction</span> must be
+                                    applied to the righting levers taken from the curves.<br><br><br><br>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP6_SC1_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP6_SC1_inc_Btn2" value="0"></input>
+
+                            <div id="CP6_SC1_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP6_SC1_function_span(2)>&times;</span>
+
+                                    <div id="CP6_SC1_quiz2"></div>
+                                    <button id="CP6_SC1_submit2">Submit</button>
+                                    <div id="CP6_SC1_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP6_SC1_function_notebtn(3)">Note 3 KN Cross Curves of
+                                Stability</button>
+                            <input type="hidden" id="CP6_SC1_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP6_SC1_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP6_SC1_function_notespan(3)>&times;</span>
+
+                                    <p> <b>KN Cross Curves of Stability</b></p>
+
+                                    The <span style="color:red">stabilty cross curves</span> for ship are constructed
+                                    by plotting the <span style="color:blue">righting lever</span>
+                                    for an <span style="color:blue">assumed height of the CoG</span> above the <span
+                                        style="color:blue">keel</span>.<br><br>
+
+                                    The curves are referred to as <span style="color:red">KN
+                                        curves</span>. <br>
+
+                                    <figure class="image_position">
+                                        <img src="img/CP6_SC1_FIG3.png" width="75%">
+                                    </figure>
+
+                                    <span style="color:red">KN Curves</span> are used as it is <span
+                                        style="color:blue">independent of the CoG</span>.<br><br>
+
+                                    The <span style="color:blue">GZ</span> obtained from <span style="color:red">KN
+                                        curve </span>is given as, <br><br>
+
+                                    <div lang="latex">
+                                        GZ = KN - KG sin(\theta)
+
+                                    </div>
+                                    <br><br><br><br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP6_SC1_function_btn(3)">Quiz 3</button>
+                            <input type="hidden" id="CP6_SC1_inc_Btn3" value="100"></input>
+
+                            <div id="CP6_SC1_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP6_SC1_function_span(3)>&times;</span>
+
+                                    <form id='CP6_SC1_question3' action="" method="post">
+                                        <div>
+
+                                            <b>The stability cross curves are constructred by plotting the
+                                                <input type="text" name="CP6_SC1_question3_a" size="10" /> on the
+                                                vertical axis and the
+                                                <input type="text" name="CP6_SC1_question3_b" size="10" /> on the
+                                                horizontal axis.
+                                                <input type="text" name="CP6_SC1_question3_c" size="10" /> are used as
+                                                it is independent of CoG, so a correction to the final GZ is not
+                                                needed.</b>
+                                            <p> <b>Choices:</b> heel, righting lever, GZ curves, KN curves, volume, displacement
+                                            </p>
+
+                                            <input type="text" id="CP6_SC1_click_no3" value="0"></input>
+                                            <input type="button" id="CP6_SC1_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[0].CP6_SC1_question3_a.value,document.forms[0].CP6_SC1_question3_b.value,document.forms[0].CP6_SC1_question3_c.value]);
+                                                    CP6_SC1_CheckAnswers3();this.disabled=true " />
+                                            <div id="CP6_SC1_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+
+
+    <!--==================================================================END================================================================-->
+    <p class="common_size"> SCORE = </p>
+    <input type="text" class="common_size" id="totScore" value="0"> </input>
+
+    <script src="js/CP6_general_script.js"></script>
+    <script src="qz/CP6_SC1_MCQ.js"></script>
+    <script src="qz/CP6_SC1_FIB.js"></script>
+
+    <!--<script src="FIB2.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+    
+            }
+        </script>
+    
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $(this).css('background', 'pink');
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP6_SC1_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+
+    <script>
+        var totScore_store = localStorage.getItem("finalScore");
+        /*alert(totScore_store)*/
+        document.getElementById("totScore").value = localStorage.getItem("finalScore");
+    </script>
+
+
+
+</body>
+
+</html>

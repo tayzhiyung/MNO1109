@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/latexit.js"></script>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        .question {
+            font-weight: 600;
+        }
+
+        .answers {
+            margin-bottom: 20px;
+        }
+
+        #submit {
+            font-family: sans-serif;
+            font-size: 20px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #submit:hover {
+            background-color: #3a8;
+        }
+
+        .quiz_box {
+            width: 200px;
+            height: 50px;
+            border: 2px solid black;
+            background-color: lightblue;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            background-color: #2196F3;
+            padding: 15px;
+            margin: 1% 1% 1% 1%;
+
+        }
+
+        .grid-container2 {
+            display: grid;
+            grid-template-columns: auto auto;
+            background-color: #2196F3;
+            padding: 15px;
+
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            grid-template-columns: auto auto;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+
+        }
+
+
+        button:hover {
+            background: #00898E;
+        }
+
+        button:visited {
+            background: purple
+        }
+
+
+        .button-clicked {
+            background: red;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            text-align: justify;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+        }
+
+        .elementToFadeInAndOut {
+            -webkit-animation: fadein 4s linear forwards;
+            animation: fadein 4s linear forwards;
+            opacity: 0;
+        }
+
+        @-webkit-keyframes fadein {
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .common_size {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .background_colour {
+            font-size: 16px;
+            background-color: rgb(222, 247, 222);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<!--
+                          TITLE
+                            |
+        ---------------------------------------------------------
+        |                       |                               |
+    CHAPTER 1 (BASIC)       CHAPTER 2                        CHAPTER 3                       
+        |                       |                               |
+    -------------        ----------------            -----------------------    
+    |     |     |        |      |       |            |           |          |
+SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
+          |
+    --------------------------... -----------
+    |     |        |      |        |       |
+   NOTE1 MCQ1    NOTE2   MCQ2 ... NOTE3   FIB1      
+
+   CP1-S1-MCQ1
+   CP1-S1-MCQ2
+   CP1-S1-FIB1
+-->
+
+<body class="background_colour">
+    <!--CHAPTER 1-->
+    <h2>CHAPTER 4 FLOTATION AND INITIAL STABILITY</h2>
+
+    <button class="button" id="start_button">Click to Reset Score</button>
+    <!--===========================================================Section 1 Transverse Statical Stability==============================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP4_SC1_myBtn">Transverse Statical Stability</button>
+
+            <!-- The Modal -->
+            <div id="CP4_SC1_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP4_SC1_modal_content_ID' style="display:none">
+                    <span class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP4_SC1_function_notebtn(1)">Note 1 Symbols</button>
+                            <input type="hidden" id="CP4_SC1_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP4_SC1_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_notespan(1)>&times;</span>
+
+                                    <p> <b>Symbols</b>
+
+                                        <figure>
+                                            <img src="img/CP4_SC1_FIG1.png" width="75%" class="center">
+                                        </figure>
+                                        Referring to the figure, <span style="color:red;">KG</span> is the <span
+                                            style="color:blue;">Vertical Center of Gravity (VCG)</span> of ship.
+                                        <br><br>
+
+                                        <span style="color:green;">KB</span>
+                                        is the <span style="color:blue;">Vertical Centre of Buoyancy (VCB)</span> of the
+                                        ship. <br><br>
+
+                                        For the ship to float at
+                                        <span style="color:blue;">rest in still water</span>, a vessel <span
+                                            style="color:red;">must displacement her own weight</span> of water, and
+                                        the
+                                        <span style="color:blue;">CoG </span>must be the <span style="color:green;">same
+                                            vertical line </span>as the <span style="color:blue;"></span>CoB. <br><br>
+
+                                        The <span style="color:blue;">metacentric height KM</span>, is <br><br>
+                                        given as, <br>
+
+                                        KM = KB + BM = KG + GM. <br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC1_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP4_SC1_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP4_SC1_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_span(1)>&times;</span>
+
+                                    <div id="CP4_SC1_quiz1"></div>
+                                    <button id="CP4_SC1_submit1">Submit</button>
+                                    <div id="CP4_SC1_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC1_function_notebtn(2)">Note 2 Moment of Statical
+                                Stability</button>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP4_SC1_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Moment of Statical
+                                            Stability</b> <br>
+
+
+                                        When an <span style="color:red;">external force</span> such as <span
+                                            style="color:blue;">wind</span> is applied to the <span
+                                            style="color:blue;">side of the ship</span>, the ship
+                                        will <span style="color:green;">heel</span>. As a result, the <span
+                                            style="color:blue;">CoG</span> moves from <span style="color:red;"><i>B</i> to
+                                            <i>B</i><sub>1</sub></span>
+                                        , which is parallel to <i>GG</i><sub>1</sub>.
+                                        <br><br>
+
+                                        <figure>
+                                            <img src="img/CP4_SC1_FIG2.png" width="30%" class="center">
+                                        </figure>
+
+                                        <strong>Remember</strong> that the <span style="color:red;">force of
+                                            buoyancy</span> acts <span style="color:green;">vertically upwards</span>
+                                        through <i>B</i><sub>1</sub>
+                                        whereas
+                                        the <span style="color:blue;">weight of the ship</span> acts <span
+                                            style="color:red;">vertically downwards </span>through the CoG. <br><br>
+
+                                        If you draw a
+                                        <span style="color:blue;">perpendicular distance</span> between <span
+                                            style="color:green;">G</span> to the <span style="color:blue;">vertical
+                                            line</span> through <span style="color:blue;">B1</span>, you will
+                                        obtain the <span style="color:red;">intersection point Z</span>. <br><br>
+
+                                        The <span style="color:red;">distance GZ </span>is call the <span
+                                            style="color:blue;">rightling lever</span>,
+                                        and it represents the <span style="color:green;">perpendicular distance</span>
+                                        between the <span style="color:blue;">lines of actions</span> of
+                                        forces (Weight and Buoyancy). <br><br>
+
+                                        By taking the <span style="color:red;">moments about the CoG</span>, the <span
+                                            style="color:blue;">moment of
+                                            statical stability</span> is equal to the <span style="color:blue;">product
+                                            of
+                                            the righting lever and the
+                                            displacement</span>, i.e <br><br>
+
+                                        <div lang="latex">
+                                            Moment of Statical Stability = W \times GZ
+
+                                        </div>
+
+                                        <br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC1_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP4_SC1_inc_Btn2" value="0"></input>
+
+                            <div id="CP4_SC1_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_span(2)>&times;</span>
+
+                                    <div id="CP4_SC1_quiz2"></div>
+                                    <button id="CP4_SC1_submit2">Submit</button>
+                                    <div id="CP4_SC1_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC1_function_notebtn(3)">Note 3 Moment of Statical
+                                Stability at a Small Angle of Heel </button>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP4_SC1_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_notespan(3)>&times;</span>
+
+                                    <p> <b>Moment of Statical
+                                            Stability at a Small Angle of Heel</b>
+
+                                        <figure>
+                                            <img src="img/CP4_SC1_FIG2.png" width="75%" class="center">
+                                        </figure>
+                                        At <span style="color:blue;">small angle of heel (lesser than 15deg)</span>, the
+                                        <span style="color:red;">forces of buoyancy</span> may be
+                                        considered to act <span style="color:blue;">vertically upwards</span> through a
+                                        <span style="color:green;">fixed point</span> called the <span
+                                            style="color:blue;">initial
+                                            metacenter(M)</span>.<br><br>
+
+                                        <div lang="latex">
+                                            Moment of Statical Stability = W \times GZ
+
+                                        </div><br>
+
+                                        but in <br>
+
+                                        <div lang="latex">
+                                            Triangle_{GZM} = GZ - GM sin(\theta)
+
+                                        </div> <br>
+
+                                        Therefore, <br><br>
+
+                                        <div lang="latex">
+                                            Moment of Statical Stability = W \times GM sin(\theta)
+
+                                        </div>
+                                        <br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC1_function_btn(3)">Quiz 3</button>
+                            <input type="hidden" id="CP4_SC1_inc_Btn3" value="0"></input>
+
+                            <div id="CP4_SC1_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_span(3)>&times;</span>
+
+                                    <form id='CP4_SC1_question3' action="" method="post">
+                                        <div>
+
+                                            <b>The
+                                                <input type="text" name="CP4_SC1_question3_a" size="10" /> is a fix
+                                                point in which the
+                                                <input type="text" name="CP4_SC1_question3_b" size="10" /> force acts
+                                                vertically upward through it. The moment of static stability can be
+                                                calculated from the multiplicaiton of W and GZ, where GZ must always be
+                                                positive for the ship to be
+                                                <input type="text" name="CP4_SC1_question3_c" size="10" />.</b>
+                                            <p> <b>Choices:</b> CoG, CoB, buoyancy, weight, stable, floating, metacenter </p>
+
+                                            <input type="hidden" id="CP4_SC1_click_no3" value="0"></input>
+                                            <input type="button" id="CP4_SC1_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[0].CP4_SC1_question3_a.value,document.forms[0].CP4_SC1_question3_b.value,document.forms[0].CP4_SC1_question3_c.value]);
+                                                    CP4_SC1_CheckAnswers3();this.disabled=true " />
+                                            <div id="CP4_SC1_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+
+
+                        <!--start note 4-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC1_function_notebtn(4)">Note 4 List and Heel</button>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn4" value="0"></input>
+
+                            <div id="CP4_SC1_myNoteModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_notespan(4)>&times;</span>
+
+                                    <p> <b>List and Heel</b><br>
+                                        A <span style="color:red;">recap</span> of <span
+                                            style="color:green;">Heel</span> and <span style="color:blue;">List</span>
+                                        is
+                                        given here.<br><br>
+                                        <figure>
+                                            <img src="img/CP4_SC1_FIG4.png" width="70%" class="center">
+                                        </figure>
+
+                                        <strong>Heel</strong>: A ship is said to be heeled when
+                                        she is <span style="color:blue;">inclined by an external force</span>, for e.g.
+                                        when ship is inclined by action
+                                        of waves or winds.<br><br>
+
+                                        <strong>List</strong>: A ship is said to be listed when she is <span
+                                            style="color:green;">inclined by
+                                            forces within the ship</span>, for. e.g. when ship is inclied by shifting a
+                                        weight
+                                        transversely within the ship. This is a fixed angle of heel.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 4-->
+
+                        <!--start FIB 4 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC1_function_btn(4)">Quiz 4</button>
+                            <input type="hidden" id="CP4_SC1_inc_Btn4" value="0"></input>
+
+                            <div id="CP4_SC1_myModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_span(4)>&times;</span>
+
+                                    <form id='CP4_SC1_question4' action="" method="post">
+                                        <div>
+
+                                            <b>Heel is the inclination of ship due to
+                                                <input type="text" name="CP4_SC1_question4_a" size="10" /> force,
+                                                whereas
+                                                <input type="text" name="CP4_SC1_question4_b" size="10" /> is the
+                                                inclination of ship due to internal force. List is a fixed
+                                                <input type="text" name="CP4_SC1_question4_c" size="10" />.</b>
+                                            <p> <b>Choices:</b> angle of heel, internal, buoyancy, heel, external, list, </p>
+
+                                            <input type="hidden" id="CP4_SC1_click_no4" value="0"></input>
+                                            <input type="button" id="CP4_SC1_submit4" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[1].CP4_SC1_question4_a.value,document.forms[1].CP4_SC1_question4_b.value,document.forms[1].CP4_SC1_question4_c.value]);
+                                                    CP4_SC1_CheckAnswers4(); this.disabled = true;" />
+                                            <div id="CP4_SC1_results4"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 4-->
+
+
+                        <!--start note 5-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC1_function_notebtn(5)">Note 5 Metacentre</button>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn5" value="0"></input>
+
+                            <div id="CP4_SC1_myNoteModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_notespan(5)>&times;</span>
+
+                                    <p> <b>Metacentre</b><br>
+                                        Assume that the ship is inclined at a <span style="color:blue;">small
+                                            angle <i>&#952</i></span>. Under such condition,
+                                        the <span style="color:red;">wedge <i>WOW</i><sub>1</sub> </span>is out of water and
+                                        the <span style="color:green;">wedge <i>LOL</i><sub>1</sub></span> is immersed in the
+                                        water.<br><br>
+
+                                        The
+                                        <span style="color:blue;">Wedge of Buoyancy </span>having the <span
+                                            style="color:green;">centre of gravity at <i>g</i></span> is now shifted to
+                                        <span style="color:red;"><i>g</i><sub>1</sub></span>.<br><br>
+
+                                        Take
+                                        note that <span style="color:blue;"><i>G</i> </span>always the remains the same and the
+                                        <span style="color:blue;">weight of ship <i>W</i></span> acts <span
+                                            style="color:green;">vertically
+                                            downwards</span> through this point.
+
+                                        <figure>
+                                            <img src="img/CP4_SC1_FIG5_2.png" width="75%" class="center">
+                                        </figure>
+
+                                        As a result, <span style="color:blue;">CoB</span> must shift from <span
+                                            style="color:red;"><i>B</i> to <i>B</i><sub>1</sub></span>, such that <span
+                                            style="color:green;"><i>BB</i><sub>1</sub> is parallel to <i>gg</i><sub>1</sub></span>,<br><br>
+
+                                        <div lang="latex">
+                                            BB_{1}=\frac{V \times gg_1}{V}
+
+                                        </div> <br>
+
+                                        The verticals through the CoB at <span style="color:blue;">two
+                                            consecutive angles</span> of
+                                        heel intersect at a point called the <span
+                                            style="color:red;">metacenter</span>.<br><br>
+
+                                        For <span style="color:blue;">angle of heel theta</span> lesser
+                                        than 15 deg, the <span style="color:blue;">vertical through CoB</span> cut the
+                                        centerline at a fixed point called
+                                        the <span style="color:green;">initial metacenter</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 5-->
+
+                        <!--start MCQ 5-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC1_function_btn(5)">Quiz 5</button>
+                            <input type="hidden" id="CP4_SC1_inc_Btn5" value="0"></input>
+
+                            <div id="CP4_SC1_myModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_span(5)>&times;</span>
+
+                                    <div id="CP4_SC1_quiz5"></div>
+                                    <button id="CP4_SC1_submit5">Submit</button>
+                                    <div id="CP4_SC1_results5"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 5-->
+
+                        <!--start note 6-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC1_function_notebtn(6)">Note 6 Effect of Suspended
+                                Weight</button>
+                            <input type="hidden" id="CP4_SC1_inc_noteBtn6" value="0"></input>
+
+                            <div id="CP4_SC1_myNoteModal6" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_notespan(6)>&times;</span>
+
+                                    <p> <b>Effect of Suspended Weight</b>
+                                        <figure>
+                                            <img src="img/CP4_SC1_FIG6.png" width="75%" class="center">
+                                        </figure>
+                                        Consider the CoG of a <span style="color:red;">weight suspended</span> from the
+                                        <span style="color:blue;">head of a derrick</span>.<br><br>
+
+                                        The <span style="color:green;">force of
+                                            gravity</span> always act <span style="color:blue;">vertically
+                                            downwards</span> via <i>g</i><sub>1</sub>,
+                                        i.e. the point of
+                                        suspension.<br><br>
+
+                                        Thus, the CoG of a <span style="color:red;">suspended weight</span> is
+                                        considered to be at the <span style="color:blue;">point of
+                                            suspension</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 6-->
+                        <!--start FIB 6 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC1_function_btn(6)">Quiz 6</button>
+                            <input type="hidden" id="CP4_SC1_inc_Btn6" value="100"></input>
+
+                            <div id="CP4_SC1_myModal6" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC1_function_span(6)>&times;</span>
+
+                                    <form id='CP4_SC1_question6' action="" method="post">
+                                        <div>
+
+                                            <b> In considering the effect of suspended weight, the force of
+                                                <input type="text" name="CP4_SC1_question6_a" size="10" />
+                                                always acts vertically
+                                                <input type="text" name="CP4_SC1_question6_b" size="10" /> via
+                                                the point of suspension. Therfore, the
+                                                <input type="text" name="CP4_SC1_question6_c" size="10" /> is the
+                                                point of suspension.</b>
+                                            <p> <b>Choices:</b> downward, CoB, upward, CoG, M, gravity, buoyancy </p>
+
+                                            <input type="hidden" id="CP4_SC1_click_no6" value="0"></input>
+                                            <input type="button" id="CP4_SC1_submit6" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[2].CP4_SC1_question6_a.value,document.forms[2].CP4_SC1_question6_b.value,document.forms[2].CP4_SC1_question6_c.value]);
+                                                CP4_SC1_CheckAnswers6(); this.disabled = true;" />
+                                            <div id="CP4_SC1_results6"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 6-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+
+    <!--==========================================================Section 2 Equilibrium=========================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP4_SC2_myBtn">Equilibrium</button>
+
+            <!-- The Modal -->
+            <div id="CP4_SC2_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP4_SC2_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP4_SC2_function_notebtn(1)">Note 1 Stable
+                                Equilibrium</button>
+                            <input type="hidden" id="CP4_SC2_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP4_SC2_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_notespan(1)>&times;</span>
+
+                                    <p> <b>Stable Equilibrium</b>
+                                        <figure>
+                                            <img src="img/CP4_SC2_FIG1.png" width="75%" class="center">
+                                        </figure>
+                                        When a ship is in <span style="color:blue;">stable equilibrium</span>, she tends
+                                        to return to the <span style="color:green;">initial
+                                            position</span> when if it inclined.<br><br>
+
+                                        The <span style="color:blue;">equilibrium (stability) </span>of the ship can be
+                                        defined by its <span style="color:red;">GM value</span>.<br><br>
+
+                                        For <span style="color:green;">Stable equilibrium</span>, the <span
+                                            style="color:blue;">GM value</span> has to be
+                                        <span style="color:blue;">greater
+                                            than 0</span>, i.e. GM>0.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC2_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP4_SC2_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP4_SC2_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_span(1)>&times;</span>
+
+                                    <div id="CP4_SC2_quiz1"></div>
+                                    <button id="CP4_SC2_submit1">Submit</button>
+                                    <div id="CP4_SC2_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC2_function_notebtn(2)">Note 2 Unstable
+                                Equilibrium</button>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP4_SC2_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Unstable Equilibrium</b>
+                                        <figure>
+                                            <img src="img/CP4_SC2_FIG2.png" width="75%" class="center">
+                                        </figure>
+
+                                        For <span style="color:blue;">GM lesser than 0</span>, the ship is said to be in
+                                        <span style="color:green;">unstable equilibrium</span>.<br><br>
+
+                                        Under such
+                                        condition, the ship will <span style="color:red;">sink</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC2_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP4_SC2_inc_Btn2" value="0"></input>
+
+                            <div id="CP4_SC2_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_span(2)>&times;</span>
+
+                                    <div id="CP4_SC2_quiz2"></div>
+                                    <button id="CP4_SC2_submit2">Submit</button>
+                                    <div id="CP4_SC2_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC2_function_notebtn(3)">Note 3 Neutral
+                                Equilibrium</button>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP4_SC2_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_notespan(3)>&times;</span>
+
+                                    <p> <b>Neutral Equilibrium</b>
+                                        <figure>
+                                            <img src="img/CP4_SC2_FIG3.png" width="75%" class="center">
+                                        </figure>
+
+                                        If <span style="color:blue;">GM = 0</span>, the ship is in <span
+                                            style="color:green;">neutral equilibrium</span>. In neutral equilibrium,
+                                        <span style="color:red;">GM=KM</span>.<br><br>
+
+                                        If
+                                        the ship is inclied to a <span style="color:blue;">small angle</span>, the ship
+                                        will <span style="color:blue;">remain at that angle of heel</span>
+                                        until acted by an <span style="color:red;">external
+                                            force</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC2_function_btn(3)">Quiz 3</button>
+                            <input type="hidden" id="CP4_SC2_inc_Btn3" value="0"></input>
+
+                            <div id="CP4_SC2_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_span(3)>&times;</span>
+
+                                    <form id='CP4_SC2_question3' action="" method="post">
+                                        <div>
+
+                                            <b>For
+                                                <input type="text" name="CP4_SC2_question3_a" size="10" /> equilibrium,
+                                                the GM=0. If the ship is inclined to a
+                                                <input type="text" name="CP4_SC2_question3_b" size="10" /> angle, the
+                                                ship will remain at that angle of heel until acted by an
+                                                <input type="text" name="CP4_SC2_question3_c" size="10" /> force.</b>
+                                            <p> <b>Choices:</b> internal, small, large, unstable, neutral, external </p>
+
+                                            <input type="hidden" id="CP4_SC2_click_no3" value="0"></input>
+                                            <input type="button" id="CP4_SC2_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[3].CP4_SC2_question3_a.value,document.forms[3].CP4_SC2_question3_b.value,document.forms[3].CP4_SC2_question3_c.value]);
+                                                    CP4_SC2_CheckAnswers3(); this.disabled=true" />
+                                            <div id="CP4_SC2_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+
+
+                        <!--start note 4-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC2_function_notebtn(4)">Note 4 Stiff and Tender
+                                Ship</button>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn4" value="0"></input>
+
+                            <div id="CP4_SC2_myNoteModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_notespan(4)>&times;</span>
+
+                                    <p> <b>Stiff and Tender Ship</b><br>
+
+                                        <span style="color:blue;">Position GM value</span> is required for the ship to
+                                        be in <span style="color:green;">stable equilibrium</span>.<br><br>
+
+                                        The
+                                        value of the <span style="color:blue;">GM </span>is related to the <span
+                                            style="color:green;">time period </span>of the ship (time period is the
+                                        time taken by ship to <span style="color:red;">roll from one side to the
+                                            other and back again to initial
+                                            position</span>).<br><br>
+
+                                        <figure>
+                                            <img src="img/CP4_SC2_FIG4.png" width="75%" class="center">
+                                        </figure>
+
+                                        The ship is said to be <span style="color:red;">stiff </span>when the GM is
+                                        very large and <span style="color:green;">tender</span>
+                                        when the GM is very small.<br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 4-->
+
+                        <!--start FIB 4 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC2_function_btn(4)">Quiz 4</button>
+                            <input type="hidden" id="CP4_SC2_inc_Btn4" value="0"></input>
+
+                            <div id="CP4_SC2_myModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_span(4)>&times;</span>
+
+                                    <form id='CP4_SC2_question4' action="" method="post">
+                                        <div>
+
+                                            <b>The value of GM is related to the
+                                                <input type="text" name="CP4_SC2_question4_a" size="10" /> of the ship.
+                                                The ship is said to be
+                                                <input type="text" name="CP4_SC2_question4_b" size="10" /> when the time
+                                                period is short and
+                                                <input type="text" name="CP4_SC2_question4_c" size="10" /> when the time
+                                                period is long.</b>
+                                            <p> <b>Choices:</b> tender, rotation, mass, time period, weight, stiff </p>
+
+                                            <input type="hidden" id="CP4_SC2_click_no4" value="0"></input>
+                                            <input type="button" id="CP4_SC2_submit4" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[4].CP4_SC2_question4_a.value,document.forms[4].CP4_SC2_question4_b.value,document.forms[4].CP4_SC2_question4_c.value]);
+                                                    CP4_SC2_CheckAnswers4(); this.disabled = true;" />
+                                            <div id="CP4_SC2_results4"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 4-->
+
+
+                        <!--start note 5-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC2_function_notebtn(5)">Note 5 Stiff Ship</button>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn5" value="0"></input>
+
+                            <div id="CP4_SC2_myNoteModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_notespan(5)>&times;</span>
+
+                                    <p> <b>Stiff Ship</b><br>
+                                        The <span style="color:blue;">time period</span> is <span style="color:red;">too
+                                            short</span> for a <span style="color:green;">stiff ship</span>, i.e. the
+                                        inclined
+                                        ship will tend
+                                        to <span style="color:blue;">return quickly</span> to its initial
+                                        position.<br><br>
+
+                                        <span style="color:red;">GM </span>for this case is <span
+                                            style="color:blue;">very large</span>, for
+                                        e.g. 2m to 3m.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 5-->
+
+                        <!--start MCQ 5-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC2_function_btn(5)">Quiz 5</button>
+                            <input type="hidden" id="CP4_SC2_inc_Btn5" value="0"></input>
+
+                            <div id="CP4_SC2_myModal5" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_span(5)>&times;</span>
+
+                                    <div id="CP4_SC2_quiz5"></div>
+                                    <button id="CP4_SC2_submit5">Submit</button>
+                                    <div id="CP4_SC2_results5"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 5-->
+
+                        <!--start note 6-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC2_function_notebtn(6)">Note 6 Tender Ship</button>
+                            <input type="hidden" id="CP4_SC2_inc_noteBtn6" value="0"></input>
+
+                            <div id="CP4_SC2_myNoteModal6" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_notespan(6)>&times;</span>
+
+                                    <p> <b>Tender Ship</b><br>
+                                        the <span style="color:blue;">time period</span> for a <span
+                                            style="color:green;">tender ship</span> is <span
+                                            style="color:blue;">long</span>, and the ship will <span
+                                            style="color:red;">not tend
+                                            to return
+                                            quickly</span> to initial position.<br><br>
+
+                                        Time period is around 25s to 35s. GM for this case
+                                        is <span style="color:red;">very small</span>, for e.g. 0.16 to 0.20m.<br><br>
+
+                                        The <span style="color:green;">GM</span> for various ship is given in the Table
+                                        below:<br>
+
+                                        <figure>
+                                            <img src="img/CP4_SC2_FIG6.png" width="100%" class="center">
+                                        </figure>
+
+                                        <br><br><br><br>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 6-->
+                        <!--start FIB 6 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC2_function_btn(6)">Quiz 6</button>
+                            <input type="hidden" id="CP4_SC2_inc_Btn6" value="100"></input>
+
+                            <div id="CP4_SC2_myModal6" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC2_function_span(6)>&times;</span>
+
+                                    <form id='CP4_SC2_question6' action="" method="post">
+                                        <div>
+
+                                            <b> For a
+                                                <input type="text" name="CP4_SC2_question6_a" size="10" /> ship,
+                                                the ship has a long
+                                                <input type="text" name="CP4_SC2_question6_b" size="10" />
+                                                and will return to its initial position slowly. GM for this case is very
+                                                <input type="text" name="CP4_SC2_question6_c" size="10" />.</b>
+                                            <p> <b>Choices:</b> time period, small, large, stiff, tender, inclination </p>
+
+                                            <input type="hidden" id="CP4_SC2_click_no6" value="0"></input>
+                                            <input type="button" id="CP4_SC2_submit6" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[5].CP4_SC2_question6_a.value,document.forms[5].CP4_SC2_question6_b.value,document.forms[5].CP4_SC2_question6_c.value]);
+                                                CP4_SC2_CheckAnswers6(); this.disabled = true;" />
+                                            <div id="CP4_SC2_results6"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 6-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+    <!--===========================================================Section 3 Increasing Stability====================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP4_SC3_myBtn">Increasing Stability</button>
+
+            <!-- The Modal -->
+            <div id="CP4_SC3_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP4_SC3_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP4_SC3_function_notebtn(1)">Note 1 General</button>
+                            <input type="hidden" id="CP4_SC3_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP4_SC3_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP4_SC3_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC3_function_notespan(1)>&times;</span>
+
+                                    <p> <b>General</b><br>
+                                        There are <span style="color:blue;">several ways</span> to <span
+                                            style="color:green;">increase the stability</span> of the ship, and all
+                                        these
+                                        methods lead to <span style="color:blue;">increase the GM value</span>, by
+                                        either <span style="color:red;">lowering</span> the <span
+                                            style="color:green;">CoG </span>or/and increasing the <span style="color:blue;">CoB</span>
+                                        and
+                                        <span style="color:blue;">increasing the Metacentric height</span>
+                                        M.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC3_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP4_SC3_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP4_SC3_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC3_function_span(1)>&times;</span>
+
+                                    <div id="CP4_SC3_quiz1"></div>
+                                    <button id="CP4_SC3_submit1">Submit</button>
+                                    <div id="CP4_SC3_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP4_SC3_function_notebtn(2)">Note 2 Enhancing
+                                Stability</button>
+                            <input type="hidden" id="CP4_SC3_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP4_SC3_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC3_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Enhancing Stability</b><br>
+                                        Some of the ways to <span style="color:red;">increase stability</span> is by
+                                        <span style="color:green;">increasing the beam</span> and <span
+                                            style="color:blue;">increasing
+                                            freeboard</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP4_SC3_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP4_SC3_inc_Btn2" value="100"></input>
+
+                            <div id="CP4_SC3_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP4_SC3_function_span(2)>&times;</span>
+
+                                    <div id="CP4_SC3_quiz2"></div>
+                                    <button id="CP4_SC3_submit2">Submit</button>
+                                    <div id="CP4_SC3_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+    <!--==================================================================END================================================================-->
+<p class="common_size"> SCORE = </p>
+<input type="text" class="common_size" id="totScore" value="0"> </input>
+
+    <script src="js/CP4_general_script.js"></script>
+    <script src="qz/CP4_SC1_MCQ.js"></script>
+    <script src="qz/CP4_SC1_FIB.js"></script>
+    <script src="qz/CP4_SC2_MCQ.js"></script>
+    <script src="qz/CP4_SC2_FIB.js"></script>
+    <script src="qz/CP4_SC3_MCQ.js"></script>
+    <script src="qz/CP4_SC3_FIB.js"></script>
+    <script src="qz/CP4_SC4_MCQ.js"></script>
+    <script src="qz/CP4_SC4_FIB.js"></script>
+
+    <!--<script src="FIB2.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+    
+            }
+        </script>
+    
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $(this).css('background', 'pink');
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP4_SC1_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP4_SC2_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP4_SC3_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP4_SC4_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+
+
+    <script>
+        var totScore_store = localStorage.getItem("finalScore");
+        /*alert(totScore_store)*/
+        document.getElementById("totScore").value = localStorage.getItem("finalScore");
+    </script>
+
+
+
+</body>
+
+</html>

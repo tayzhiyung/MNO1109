@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/latexit.js"></script>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        .question {
+            font-weight: 600;
+        }
+
+        .answers {
+            margin-bottom: 20px;
+        }
+
+        #submit {
+            font-family: sans-serif;
+            font-size: 20px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #submit:hover {
+            background-color: #3a8;
+        }
+
+        .quiz_box {
+            width: 200px;
+            height: 50px;
+            border: 2px solid black;
+            background-color: lightblue;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            background-color: #2196F3;
+            padding: 15px;
+            margin: 1% 1% 1% 1%;
+
+        }
+
+        .grid-container2 {
+            display: grid;
+            grid-template-columns: auto auto;
+            background-color: #2196F3;
+            padding: 15px;
+
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            grid-template-columns: auto auto;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+
+        }
+
+
+        button:hover {
+            background: #00898E;
+        }
+
+        button:visited {
+            background: purple
+        }
+
+
+        .button-clicked {
+            background: red;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            text-align: justify;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+        }
+
+        .elementToFadeInAndOut {
+            -webkit-animation: fadein 4s linear forwards;
+            animation: fadein 4s linear forwards;
+            opacity: 0;
+        }
+
+        @-webkit-keyframes fadein {
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .common_size {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .background_colour {
+            font-size: 16px;
+            background-color: rgb(222, 247, 222);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<!--
+                          TITLE
+                            |
+        ---------------------------------------------------------
+        |                       |                               |
+    CHAPTER 1 (BASIC)       CHAPTER 2                        CHAPTER 3                       
+        |                       |                               |
+    -------------        ----------------            -----------------------    
+    |     |     |        |      |       |            |           |          |
+SECT1   SECT2  SECT3   SECT1   SECT2  SECT3         SECT1      SECT2      SECT3
+          |
+    --------------------------... -----------
+    |     |        |      |        |       |
+   NOTE1 MCQ1    NOTE2   MCQ2 ... NOTE3   FIB1      
+
+   CP1-S1-MCQ1
+   CP1-S1-MCQ2
+   CP1-S1-FIB1
+-->
+
+<body class="background_colour">
+    <!--CHAPTER 2-->
+    <h2>CHAPTER 2 APPROXIMATE INTEGRATION</h2>
+
+    <button class="button" id="start_button">Click to Reset Score</button>
+    <!--===========================================================Section 1 Simpson's Rule==============================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP2_SC1_myBtn">Simpson's Rule</button>
+
+            <!-- The Modal -->
+            <div id="CP2_SC1_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP2_SC1_modal_content_ID' style="display:none">
+                    <span class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP2_SC1_function_notebtn(1)">Note 1 General</button>
+                            <input type="hidden" id="CP2_SC1_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP2_SC1_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP2_SC1_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC1_function_notespan(1)>&times;</span>
+
+                                    <p> <b>General</b> <br>
+
+                                        In ship's design, due to its <span style="color:red;"> irregular shape</span>,
+                                        the use
+                                        of <span style="color:blue;"> approximate integration
+                                            or numerical integration </span> is needed to find certain <span
+                                            style="color:green;"> properties</span> of the
+                                        ship. <br><br>
+
+                                        The
+                                        most common approximate integration is the <span style="color:blue;"> Simpson's
+                                            rule</span>, and it is
+                                        usually
+                                        used to find the <span style="color:red;"> area, volume, centre
+                                            of floatation, centre of buoyancy
+                                            and
+                                            second moment of inertia of the ship</span>.
+
+                                        <figure>
+                                            <img src="img/CP2_SC1_FIG1.png" width="50%" class="center">
+                                        </figure>
+
+                                        It is to be noted that <span style="color:green;"> Simpson's
+                                            rule</span> only
+                                        gives an <span style="color:red;"> approximate value</span> to
+                                        these properties and hence it is important
+                                        to
+                                        <span style="color:blue;"> choose the integration
+                                            interval wisely</span>. <br><br>
+
+                                        There are <span style="color:red;"> three types</span>
+                                        of Simpson's rule,
+                                        i.e. <span style="color:green;"> Simpson's
+                                            1st Rule, Simpson's 2nd Rule and
+                                            Simpson's 3rd
+                                            Rule</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC1_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP2_SC1_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP2_SC1_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC1_function_span(1)>&times;</span>
+
+                                    <div id="CP2_SC1_quiz1"></div>
+                                    <button id="CP2_SC1_submit1">Submit</button>
+                                    <div id="CP2_SC1_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC1_function_notebtn(2)">Note 2 Simpson's 1st
+                                Rule</button>
+                            <input type="hidden" id="CP2_SC1_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP2_SC1_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC1_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Simpson's 1st Rule</b>
+
+
+                                        <figure>
+                                            <img src="img/CP2_SC1_FIG2.png" width="50%" class="center">
+                                        </figure>
+                                        In the <span style="color:red;"> Simpson's 1st Rule</span>, the curve is
+                                        assumed to be <span style="color:green;"> parabolic of the second
+                                            order</span> and must be <span style="color:blue;"> continuous</span>.
+                                        <br><br>
+
+                                        In the example to find the <span style="color:blue;"> area under the
+                                            curve</span> as
+                                        shown in Fig. below, the area can be found by : <br><br>
+
+                                        <div lang="latex">
+                                            A=\frac{h}{3} \times (y_1 + 4y_2 + y_3)
+
+                                        </div> <br>
+
+                                        In
+                                        Simpson's 1st rule, the <span style="color:green;"> coefficient is 1/3</span>
+                                        and
+                                        the <span style="color:green;"> multipliers are
+                                            1,4,1</span>.<br><br><br><br>
+
+
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP2_SC1_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP2_SC1_inc_Btn2" value="0"></input>
+
+                            <div id="CP2_SC1_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC1_function_span(2)>&times;</span>
+
+                                    <div id="CP2_SC1_quiz2"></div>
+                                    <button id="CP2_SC1_submit2">Submit</button>
+                                    <div id="CP2_SC1_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC1_function_notebtn(3)">Note 3 Simpson's 2nd
+                                Rule</button>
+                            <input type="hidden" id="CP2_SC1_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP2_SC1_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC1_function_notespan(3)>&times;</span>
+
+                                    <p> <b>Simpson's 2nd Rule</b>
+
+
+                                        <figure>
+                                            <img src="img/CP2_SC1_FIG3.png" width="604" class="center">
+                                        </figure>
+                                        In the <span style="color:red;"> Simpson's 2nd Rule</span>, the curve is
+                                        assumed to be a of the <span style="color:blue;"> third order</span>.
+                                        <br><br>
+
+                                        In
+                                        the example to find the <span style="color:green;"> area under the curve</span>
+                                        as shown in Fig. below, the area
+                                        can be found by : <br><br>
+
+                                        <div lang="latex">
+                                            A = \frac{3h}{8} \times (y_1 + 3y_2 +3y_3 + y_4)
+
+                                        </div><br>
+
+                                        In Simpson's 2nd rule, the
+                                        <span style="color:red;"> coefficient</span> is <span style="color:blue;">
+                                            3/8</span> and the <span style="color:red;"> multipliers</span> are <span
+                                            style="color:blue;"> 1,3,3,1</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start MCQ 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP2_SC1_function_btn(3)">Quiz 3</button>
+                            <input type="hidden" id="CP2_SC1_inc_Btn3" value="0"></input>
+
+                            <div id="CP2_SC1_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC1_function_span(3)>&times;</span>
+
+                                    <div id="CP2_SC1_quiz3"></div>
+                                    <button id="CP2_SC1_submit3">Submit</button>
+                                    <div id="CP2_SC1_results3"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 3-->
+
+
+                        <!--start note 4-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC1_function_notebtn(4)">Note 4 Simpson's 3rd
+                                Rule</button>
+                            <input type="hidden" id="CP2_SC1_inc_noteBtn4" value="0"></input>
+
+                            <div id="CP2_SC1_myNoteModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC1_function_notespan(4)>&times;</span>
+
+                                    <p> <b>Simpson's 3rd Rule</b>
+
+
+                                        <figure>
+                                            <img src="img/CP2_SC1_FIG4.png" width="604" class="center">
+                                        </figure>
+                                        <span style="color:red;"> Simpson's 3rd Rule</span> is used to find area of an
+                                        <span style="color:blue;"> irregular shape</span> often found at the
+                                        <span style="color:green;"> aft and forward</span> of the ship, such as the
+                                        bulbous bow. <br><br>
+
+                                        In the example to find the
+                                        <span style="color:blue;"> area under the curve</span> as shown in Fig.
+                                        below, the area can be found by :<br><br>
+
+
+                                        <div lang="latex">
+                                            Area = \frac{h}{12} \times (5y_1 + 8y_2 -y_3)
+
+                                        </div> <br>
+
+
+                                        In <span style="color:red;"> Simpson's 3rd rule</span>, the <span
+                                            style="color:green;"> coefficient</span> is <span style="color:blue;">
+                                            1/12</span> and the
+                                        <span style="color:green;"> multipliers</span> are <span style="color:blue;">
+                                            5,8,-1</span>.
+                                        <br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 4-->
+
+                        <!--start FIB 4 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP2_SC1_function_btn(4)">Quiz 4</button>
+                            <input type="hidden" id="CP2_SC1_inc_Btn4" value="100"></input>
+
+                            <div id="CP2_SC1_myModal4" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC1_function_span(4)>&times;</span>
+
+                                    <form id='CP2_SC1_question4' action="" method="post">
+                                        <div>
+
+                                            <b>Simpson's
+                                                <input type="text" name="CP2_SC1_question4_a" size="10" /> is used to
+                                                find area of an irregular shape often bounded at the
+                                                <input type="text" name="CP2_SC1_question4_b" size="10" /> and forward
+                                                of the ship. The coefficient for the integration is taken as
+                                                <input type="text" name="CP2_SC1_question4_c" size="10" /> and the
+                                                multipliers are 5,8,-1.</b>
+                                            <p> <b>Choices:</b> 1st Rule, 2nd Rule, 3rd Rule, 1/3, 3/8, 1/12, aft, forward </p>
+
+                                            <input type="hidden" id="CP2_SC1_click_no4" value="0"></input>
+                                            <input type="button" id="CP2_SC1_submit4" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[0].CP2_SC1_question4_a.value,document.forms[0].CP2_SC1_question4_b.value,document.forms[0].CP2_SC1_question4_c.value]);
+                                                    CP2_SC1_CheckAnswers4(); this.disabled = true;" />
+                                            <div id="CP2_SC1_results4"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 4-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+
+    <!--==========================================================Section 2 Areas and Volume =========================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP2_SC2_myBtn">Areas and Volume</button>
+
+            <!-- The Modal -->
+            <div id="CP2_SC2_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP2_SC2_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP2_SC2_function_notebtn(1)">Note 1 Waterplane
+                                Area</button>
+                            <input type="hidden" id="CP2_SC2_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP2_SC2_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP2_SC2_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC2_function_notespan(1)>&times;</span>
+
+                                    <p> <b>Waterplane Area</b><br>
+                                        The <span style="color:red;"> waterplane area</span> is defined as the <span
+                                            style="color:blue;"> surface area confined within the ship</span> at
+                                        its <span style="color:green;"> free surface</span>. <br><br>
+
+                                        The <span style="color:blue;"> waterplane area</span> can be obtained by
+                                        using <span style="color:red;"> Simpson's rule</span> by
+                                        treating each <span style="color:blue;"> half-ordinate</span> as
+                                        <span style="color:green;"> y-variable</span> in the <span style="color:blue;">
+                                            Simpson's
+                                            rule</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC2_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP2_SC2_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP2_SC2_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC2_function_span(1)>&times;</span>
+
+                                    <div id="CP2_SC2_quiz1"></div>
+                                    <button id="CP2_SC2_submit1">Submit</button>
+                                    <div id="CP2_SC2_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC2_function_notebtn(2)">Note 2 Cross Sectional
+                                Area</button>
+                            <input type="hidden" id="CP2_SC2_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP2_SC2_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC2_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Cross Sectional Area</b><br>
+                                        The <span style="color:red;"> cross sectional area</span> is defined as the
+                                        <span style="color:blue;"> transverse surface area</span> confined
+                                        within the ship at <span style="color:green;"> each station</span>. <br><br>
+
+                                        The <span style="color:blue;"> cross sectional area</span> is important to
+                                        obtain
+                                        the <span style="color:red;"> underwater volume</span> of the
+                                        ship.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP2_SC2_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP2_SC2_inc_Btn2" value="0"></input>
+
+                            <div id="CP2_SC2_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC2_function_span(2)>&times;</span>
+
+                                    <div id="CP2_SC2_quiz2"></div>
+                                    <button id="CP2_SC2_submit2">Submit</button>
+                                    <div id="CP2_SC2_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC2_function_notebtn(3)">Note 3 Underwater
+                                Volume</button>
+                            <input type="hidden" id="CP2_SC2_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP2_SC2_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC2_function_notespan(3)>&times;</span>
+
+                                    <p> <b>Underwater Volume</b><br>
+                                        The <span style="color:red;"> underwater volume</span> of the ship is the <span
+                                            style="color:blue;"> volume of the ship being displaced</span> when
+                                        floating in <span style="color:green;"> equilibrium</span>. <br><br>
+
+                                        The <span style="color:blue;"> underwater volume</span> of the ship can be
+                                        obtained by
+                                        using <span style="color:green;"> Simpson's rule</span> by treating the
+                                        <span style="color:blue;"> waterplane area or the cross sectional area</span>
+                                        as the <span style="color:green;"> y-variable</span> in the <span
+                                            style="color:red;"> Simpson's rule</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP2_SC2_function_btn(3)">Quiz 3</button>
+                            <input type="hidden" id="CP2_SC2_inc_Btn3" value="100"></input>
+
+                            <div id="CP2_SC2_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC2_function_span(3)>&times;</span>
+
+                                    <form id='CP2_SC2_question3' action="" method="post">
+                                        <div>
+                                            <b>The
+                                                <input type="text" name="CP2_SC2_question3_a" size="10" /> of a ship can
+                                                be obtained by Simpson's rule by treating the
+                                                <input type="text" name="CP2_SC2_question3_b" size="10" /> area or
+                                                cross-sectional
+                                                <input type="text" name="CP2_SC2_question3_c" size="10" /> as the
+                                                y-variable in the Simpson's rule.</b>
+                                            <p> <b>Choices:</b> underwater volume, cross-section, displacement, waterplane, area,
+                                                volume </p>
+
+                                            <input type="hidden" id="CP2_SC2_click_no3" value="0"></input>
+                                            <input type="button" id="CP2_SC2_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[1].CP2_SC2_question3_a.value,document.forms[1].CP2_SC2_question3_b.value,document.forms[1].CP2_SC2_question3_c.value]);
+                                                    CP2_SC2_CheckAnswers3(); this.disabled=true" />
+                                            <div id="CP2_SC2_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+    <!--===========================================================Section 3 Centroid====================================-->
+    <div class='grid-container'>
+
+        <div class='grid-item'>
+            <!--SECTION 1-->
+            <!-- Trigger/Open The Modal -->
+            <button class="button" id="CP2_SC3_myBtn">Centroid</button>
+
+            <!-- The Modal -->
+            <div id="CP2_SC3_myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" id='CP2_SC3_modal_content_ID' style="display:none">
+                    <span id="close" class="close">&times;</span>
+
+                    <div class="grid-container2">
+                        <!--START HERE!-->
+                        <!--start note 1-->
+                        <div class="grid-item" id="grid_item_no">
+
+                            <button class="button" onclick=" CP2_SC3_function_notebtn(1)">Note 1 Center of
+                                Flotation</button>
+                            <input type="hidden" id="CP2_SC3_inc_Btn0" value="100"></input>
+                            <input type="hidden" id="CP2_SC3_inc_noteBtn1" value="0"></input>
+
+                            <div id="CP2_SC3_myNoteModal1" class="modal" style="display:none">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC3_function_notespan(1)>&times;</span>
+
+                                    <p> <b>Center of Flotation</b>
+
+                                        <figure>
+                                            <img src="img/CP2_SC3_FIG1.png" width="604" class="center">
+                                        </figure>
+                                        The <span style="color:red;"> centre of flotation </span> is defined as the
+                                        <span style="color:blue;"> centre of the waterplane area</span> and can
+                                        be obtained from the <span style="color:green;"> first moment of the
+                                            waterplane area</span>. <br><br>
+
+                                        This can also be done
+                                        by using <span style="color:red;"> Simpson's rule</span>. The CoF can be
+                                        described in the x and y-axis. <br><br>
+
+                                        The <span style="color:blue;"> y-component of the CoF</span> is usually
+                                        located at the <span style="color:green;"> centreline</span> of a <span
+                                            style="color:red;">
+                                            symmetrical ship</span>.
+                                            The <span style="color:blue;"> x-component of the CoF</span> is always
+                                            referred to the
+                                            <span style="color:green;"> midship</span>. <br><br>
+
+                                            If it is located
+                                            to the right of the <span style="color:green;"> midship (more towards the
+                                                bow)</span>, it
+                                            is stated as <span style="color:red;"> 'forward
+                                                midship'</span>; if it is located to the <span style="color:green;">
+                                                left
+                                                (toward the
+                                                stern)</span>, it is stated as <span style="color:red;"> 'aft
+                                                midship'</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end note 1-->
+
+                        <!--start MCQ 1-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC3_function_btn(1)">Quiz 1</button>
+                            <input type="hidden" id="CP2_SC3_inc_Btn1" value="0"></input>
+
+
+                            <div id="CP2_SC3_myModal1" class="modal">
+
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC3_function_span(1)>&times;</span>
+
+                                    <div id="CP2_SC3_quiz1"></div>
+                                    <button id="CP2_SC3_submit1">Submit</button>
+                                    <div id="CP2_SC3_results1"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 1-->
+
+                        <!--start note 2-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC3_function_notebtn(2)">Note 2 Center of
+                                Gravity</button>
+                            <input type="hidden" id="CP2_SC3_inc_noteBtn2" value="0"></input>
+
+                            <div id="CP2_SC3_myNoteModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC3_function_notespan(2)>&times;</span>
+
+                                    <p> <b>Center of Gravity</b><br>
+                                        <span style="color:red;"> Center of Gravity</span> is obtained from the <span
+                                            style="color:blue;"> local CoG</span> of the object onboard the
+                                        ship.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 2-->
+
+                        <!--start MCQ 2-->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP2_SC3_function_btn(2)">Quiz 2</button>
+                            <input type="hidden" id="CP2_SC3_inc_Btn2" value="0"></input>
+
+                            <div id="CP2_SC3_myModal2" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC3_function_span(2)>&times;</span>
+
+                                    <div id="CP2_SC3_quiz2"></div>
+                                    <button id="CP2_SC3_submit2">Submit</button>
+                                    <div id="CP2_SC3_results2"> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end MCQ 2-->
+
+                        <!--start note 3-->
+                        <div class="grid-item">
+
+                            <button class="button" onclick=" CP2_SC3_function_notebtn(3)">Note 3 Center of
+                                Buoyancy</button>
+                            <input type="hidden" id="CP2_SC3_inc_noteBtn3" value="0"></input>
+
+                            <div id="CP2_SC3_myNoteModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC3_function_notespan(3)>&times;</span>
+
+                                    <p> <b>Center of Gravity</b><br>
+                                        The <span style="color:red;"> centre of buoyancy</span> is the <span
+                                            style="color:green;"> centre of the underwater volume</span>. Similar to
+                                        CoF,
+                                        this can be obtained by <span style="color:red;"> Simpson's rule</span> using
+                                        the <span style="color:blue;"> first moment of area</span>. <br><br>
+
+                                        The CoF
+                                        has <span style="color:blue;"> x-, y-, and z-components</span>, where the <span
+                                            style="color:green;"> y-component</span> is always located at the
+                                        <span style="color:red;"> centreline of a symmetrical ship</span>. <br><br>
+
+                                        The <span style="color:blue;"> x- and z-components</span> have to be obtained
+                                        separately using the <span style="color:green;"> Simpon's
+                                            rule</span>.<br><br><br><br>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end note 3-->
+
+                        <!--start FIB 3 -->
+                        <div class="grid-item">
+                            <button class="button" onclick="CP2_SC3_function_btn(3)">Quiz 3</button>
+                            <input type="hidden" id="CP2_SC3_inc_Btn3" value="100"></input>
+
+                            <div id="CP2_SC3_myModal3" class="modal">
+
+                                <div class="modal-content">
+
+                                    <span class="close" onclick=CP2_SC3_function_span(3)>&times;</span>
+
+                                    <form id='CP2_SC3_question3' action="" method="post">
+                                        <div>
+
+                                            <b>The CoB is the center of
+                                                <input type="text" name="CP2_SC3_question3_a" size="10" />. CoB can be
+                                                obtained by
+                                                <input type="text" name="CP2_SC3_question3_b" size="10" /> and has
+                                                <input type="text" name="CP2_SC3_question3_c" size="10" />
+                                                components.</b>
+                                            <p> <b>Choices:</b> underwater volume, displacement, area, simpson rule, two, three
+                                            </p>
+
+                                            <input type="hidden" id="CP2_SC3_click_no3" value="0"></input>
+                                            <input type="button" id="CP2_SC3_submit3" name="check" value="Submit"
+                                                onclick="setAnswer(0,[document.forms[2].CP2_SC3_question3_a.value,document.forms[2].CP2_SC3_question3_b.value,document.forms[2].CP2_SC3_question3_c.value]);
+                                                        CP2_SC3_CheckAnswers3(); this.disabled=true" />
+                                            <div id="CP2_SC3_results3"> </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--end FIB 3-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </div>
+
+    <!--==================================================================END================================================================-->
+<p class="common_size"> SCORE = </p>
+<input type="text" class="common_size" id="totScore" value="0"> </input>
+
+    <script src="js/CP2_general_script.js"></script>
+    <script src="qz/CP2_SC1_MCQ.js"></script>
+    <script src="qz/CP2_SC1_FIB.js"></script>
+    <script src="qz/CP2_SC2_MCQ.js"></script>
+    <script src="qz/CP2_SC2_FIB.js"></script>
+    <script src="qz/CP2_SC3_MCQ.js"></script>
+    <script src="qz/CP2_SC3_FIB.js"></script>
+    <!--<script src="FIB2.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    
+    <script>
+            var myBtn_i = document.getElementById("start_button");
+            myBtn_i.onclick = function () {
+                document.getElementById("totScore").value = 0;
+                localStorage.setItem("finalScore", document.getElementById("totScore_i").value)
+    
+            }
+        </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $(this).css('background', 'pink');
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP2_SC1_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP2_SC2_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".button").click(function () {
+                $("#CP2_SC3_modal_content_ID").fadeIn(500);
+            });
+        });
+    </script>
+
+    <script>
+        var totScore_store = localStorage.getItem("finalScore");
+        /*alert(totScore_store)*/
+        document.getElementById("totScore").value = localStorage.getItem("finalScore");
+    </script>
+
+
+
+</body>
+
+</html>
