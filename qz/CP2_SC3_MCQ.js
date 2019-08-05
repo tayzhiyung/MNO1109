@@ -3,9 +3,9 @@ var CP2_SC3_myQuestions1 = [
         question: "Which of the following statement is incorrect about CoF?",
         answers: {
             a: 'The CoF depends on the loads carried by the ship',
-            b: 'The COF depends on the centre of waterplane area',
+            b: 'The CoF depends on the centre of waterplane area',
             c: 'The CoF is stated as forward midship if it is located forward of the midship',
-            d: 'The COF is at the centrerline for a symmetrical ship'
+            d: 'The CoF is at the centrerline for a symmetrical ship'
         },
         correctAnswer: 'a'
     }
