@@ -197,7 +197,7 @@ function CP1b_SC3_function_notebtn(i) {
     var Inc_Btn = 'CP1b_SC3_inc_Btn' + (i - 1);
 
     if (i == 1) {
-        document.getElementById(Inc_Btn).value = document.getElementById("CP1b_SC2_inc_Btn6").value;
+        document.getElementById(Inc_Btn).value = document.getElementById("CP1b_SC2_inc_Btn2").value;
     }
     var xx = document.getElementById(Inc_Btn).value;
 
