@@ -4,7 +4,6 @@
     <title>Login Page</title>
     <style>
         body {
-            
             font-family: 'Open Sans', sans-serif;
             background: #5df0f5;
             margin: 0 auto 0 auto;
@@ -12,15 +11,18 @@
             text-align: center;
             margin: 20px 0px 20px 0px;
         }
+
         p {
             font-size: 12px;
             text-decoration: none;
             color: #ffffff;
         }
+
         h1 {
             font-size: 1.5em;
             color: #525252;
         }
+
         .email {
             background: #ecf0f1;
             border: #ccc 1px solid;
@@ -32,6 +34,7 @@
             font-size: 1em;
             border-radius: 4px;
         }
+
         .password {
             border-radius: 4px;
             background: #ecf0f1;
@@ -40,6 +43,7 @@
             width: 250px;
             font-size: 1em;
         }
+
         .btn {
             background: #2ecc71;
             width: 125px;
@@ -48,6 +52,7 @@
             color: white;
             border-radius: 4px;
             border: #27ae60 1px solid;
+
             margin-top: 20px;
             margin-bottom: 20px;
             float: left;
@@ -55,9 +60,11 @@
             font-weight: 800;
             font-size: 0.8em;
         }
+
         .btn:hover {
             background: #2CC06B;
         }
+
         #btn2 {
             float: left;
             background: #3498db;
@@ -67,12 +74,14 @@
             color: white;
             border-radius: 4px;
             border: #2980b9 1px solid;
+
             margin-top: 20px;
             margin-bottom: 20px;
             margin-left: 10px;
             font-weight: 800;
             font-size: 0.8em;
         }
+
         #btn2:hover {
             background: rgb(125, 233, 157);
         }
@@ -80,14 +89,15 @@
 </head>
 
 <body>
-    <form name="loginForm">
-               
+    <form name="loginForm" method="post"
+        action="file:///D:/SIT%20Modules/Marine%20Programme/SIT/Modules/MNO1109%20Naval%20Architecture%201A/Common/html/hello%20world/MNO1109/MNO1109_main_page.html">
+
         <table width="20%" bgcolor="0099CC" align="center">
             <h1>Sign Up/Log In to MNO1109 Online Lecture and Tutorial</h1>
 
             <tr>
                 <td>Username:</td>
-                <td><input type="text" size=25 name="email" value="email" onFocus="this.value=''"
+                <td><input type="text" size=25 name="email" value="Matriculation No." onFocus="this.value=''"
                         onblur="field_blur(this, 'email');" class="email" /></td>
 
 
@@ -109,16 +119,85 @@
     </form>
     <script language="javascript">
         function check(form) {
+
             if (
                 (form.email.value == "a" && form.password.value == "a") ||
-                (form.email.value == "1800543" && form.password.value == "1800543") ||
-                (form.email.value == "1801585" && form.password.value == "1801585") ||
-                (form.email.value == "1801145" && form.password.value == "1801145") ||
-                (form.email.value == "1800662" && form.password.value == "1800662")
-                )  {
+                (form.email.value == "1901614" && form.password.value == "1901614") ||
+                (form.email.value == "1901676" && form.password.value == "1901676") ||
+                (form.email.value == "1901629" && form.password.value == "1901629") ||
+                (form.email.value == "1901622" && form.password.value == "1901622") ||
+                (form.email.value == "1901657" && form.password.value == "1901657") ||
+                (form.email.value == "1901686" && form.password.value == "1901686") ||
+                (form.email.value == "1901655" && form.password.value == "1901655") ||
+                (form.email.value == "1901667" && form.password.value == "1901667") ||
+                (form.email.value == "1901636" && form.password.value == "1901636") ||
+                (form.email.value == "1901621" && form.password.value == "1901621") ||
+                (form.email.value == "1901649" && form.password.value == "1901649") ||
+                (form.email.value == "1901624" && form.password.value == "1901624") ||
+                (form.email.value == "1901681" && form.password.value == "1901681") ||
+                (form.email.value == "1901658" && form.password.value == "1901658") ||
+                (form.email.value == "1901632" && form.password.value == "1901632") ||
+                (form.email.value == "1901633" && form.password.value == "1901633") ||
+                (form.email.value == "1901613" && form.password.value == "1901613") ||
+                (form.email.value == "1902773" && form.password.value == "1902773") ||
+                (form.email.value == "1901631" && form.password.value == "1901631") ||
+                (form.email.value == "1901619" && form.password.value == "1901619") ||
+                (form.email.value == "1901673" && form.password.value == "1901673") ||
+                (form.email.value == "1901623" && form.password.value == "1901623") ||
+                (form.email.value == "1901647" && form.password.value == "1901647") ||
+                (form.email.value == "1901666" && form.password.value == "1901666") ||
+                (form.email.value == "1902765" && form.password.value == "1902765") ||
+                (form.email.value == "1901654" && form.password.value == "1901654") ||
+                (form.email.value == "1901678" && form.password.value == "1901678") ||
+                (form.email.value == "1901663" && form.password.value == "1901663") ||
+                (form.email.value == "1901630" && form.password.value == "1901630") ||
+                (form.email.value == "1901684" && form.password.value == "1901684") ||
+                (form.email.value == "1901610" && form.password.value == "1901610") ||
+                (form.email.value == "1902593" && form.password.value == "1902593") ||
+                (form.email.value == "1901653" && form.password.value == "1901653") ||
+                (form.email.value == "1901685" && form.password.value == "1901685") ||
+                (form.email.value == "1901650" && form.password.value == "1901650") ||
+                (form.email.value == "1901503" && form.password.value == "1901503") ||
+                (form.email.value == "1901677" && form.password.value == "1901677") ||
+                (form.email.value == "1901646" && form.password.value == "1901646") ||
+                (form.email.value == "1901644" && form.password.value == "1901644") ||
+                (form.email.value == "1901612" && form.password.value == "1901612") ||
+                (form.email.value == "1901634" && form.password.value == "1901634") ||
+                (form.email.value == "1901641" && form.password.value == "1901641") ||
+                (form.email.value == "1901669" && form.password.value == "1901669") ||
+                (form.email.value == "1901670" && form.password.value == "1901670") ||
+                (form.email.value == "1901672" && form.password.value == "1901672") ||
+                (form.email.value == "1901661" && form.password.value == "1901661") ||
+                (form.email.value == "1901639" && form.password.value == "1901639") ||
+                (form.email.value == "1901679" && form.password.value == "1901679") ||
+                (form.email.value == "1901611" && form.password.value == "1901611") ||
+                (form.email.value == "1901640" && form.password.value == "1901640") ||
+                (form.email.value == "1901626" && form.password.value == "1901626") ||
+                (form.email.value == "1901617" && form.password.value == "1901617") ||
+                (form.email.value == "1901687" && form.password.value == "1901687") ||
+                (form.email.value == "1901675" && form.password.value == "1901675") ||
+                (form.email.value == "1901652" && form.password.value == "1901652") ||
+                (form.email.value == "1901645" && form.password.value == "1901645") ||
+                (form.email.value == "1901620" && form.password.value == "1901620") ||
+                (form.email.value == "1901616" && form.password.value == "1901616") ||
+                (form.email.value == "1901660" && form.password.value == "1901660") ||
+                (form.email.value == "1901627" && form.password.value == "1901627") ||
+                (form.email.value == "1901651" && form.password.value == "1901651") ||
+                (form.email.value == "1901628" && form.password.value == "1901628") ||
+                (form.email.value == "1901682" && form.password.value == "1901682") ||
+                (form.email.value == "1901664" && form.password.value == "1901664") ||
+                (form.email.value == "1901683" && form.password.value == "1901683") ||
+                (form.email.value == "1901656" && form.password.value == "1901656") ||
+                (form.email.value == "1901615" && form.password.value == "1901615") ||
+                (form.email.value == "1901665" && form.password.value == "1901665") ||
+                (form.email.value == "1901662" && form.password.value == "1901662") ||
+                (form.email.value == "1901674" && form.password.value == "1901674") ||
+                (form.email.value == "1901638" && form.password.value == "1901638") ||
+                (form.email.value == "1901648" && form.password.value == "1901648")
+
+            ) {
                 localStorage.setItem("current_user", form.email.value);
-                window.open("MNO1109_main_page")
-                
+                return true;
             }
             else {
                 alert("Error Password or Username")
