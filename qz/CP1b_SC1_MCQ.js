@@ -34,7 +34,7 @@ var CP1b_SC1_myQuestions5 = [
             c: '15,375 tonnes',
             d: '15,759 tonnes'
         },
-        correctAnswer: 'a'
+        correctAnswer: 'b'
     },
 
 ];
