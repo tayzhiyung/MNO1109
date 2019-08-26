@@ -1,4 +1,4 @@
-var CP1a_SC3_myQuestions1 = [
+var CP1b_SC3_myQuestions1 = [
 
     {
         question: "Which of the following statement is incorrect about loadline?",
@@ -6,13 +6,13 @@ var CP1a_SC3_myQuestions1 = [
             a: 'It is introduced by Samuel Plimsol',
             b: 'It is used as a visual check for reserved buoyancy',
             c: 'It has to be classified by classfication society',
-            a: 'The water level must be above the loadline for the ship to be safe'
+            d: 'The water level must be above the loadline for the ship to be safe'
         },
         correctAnswer: 'd'
     }
 ];
 
-var CP1a_SC3_myQuestions2 = [
+var CP1b_SC3_myQuestions2 = [
     {
         question: "Which of the following statement is incorrect?",
         answers: {
@@ -26,26 +26,26 @@ var CP1a_SC3_myQuestions2 = [
 
 ];
 
-var CP1a_SC3_quizContainer1 = document.getElementById('CP1a_SC3_quiz1');
-var CP1a_SC3_resultsContainer1 = document.getElementById('CP1a_SC3_results1');
-var CP1a_SC3_submitButton1 = document.getElementById('CP1a_SC3_submit1');
-var CP1a_SC3_incBtn1 = 'CP1a_SC3_inc_Btn1';
-var CP1a_SC3_topic1_no = '1';
-var CP1a_SC3_question1_no = '1';
+var CP1b_SC3_quizContainer1 = document.getElementById('CP1b_SC3_quiz1');
+var CP1b_SC3_resultsContainer1 = document.getElementById('CP1b_SC3_results1');
+var CP1b_SC3_submitButton1 = document.getElementById('CP1b_SC3_submit1');
+var CP1b_SC3_incBtn1 = 'CP1b_SC3_inc_Btn1';
+var CP1b_SC3_topic1_no = '1';
+var CP1b_SC3_question1_no = '1';
 
-var CP1a_SC3_quizContainer2 = document.getElementById('CP1a_SC3_quiz2');
-var CP1a_SC3_resultsContainer2 = document.getElementById('CP1a_SC3_results2');
-var CP1a_SC3_submitButton2 = document.getElementById('CP1a_SC3_submit2');
-var CP1a_SC3_incBtn2 = 'CP1a_SC3_inc_Btn2';
-var CP1a_SC3_topic1_no = '1';
-var CP1a_SC3_question2_no = '2';
+var CP1b_SC3_quizContainer2 = document.getElementById('CP1b_SC3_quiz2');
+var CP1b_SC3_resultsContainer2 = document.getElementById('CP1b_SC3_results2');
+var CP1b_SC3_submitButton2 = document.getElementById('CP1b_SC3_submit2');
+var CP1b_SC3_incBtn2 = 'CP1b_SC3_inc_Btn2';
+var CP1b_SC3_topic1_no = '1';
+var CP1b_SC3_question2_no = '2';
 
 var score_sum = [0];
 
 /*score_sum.push(document.getElementById('totScore').value)*/
 
-generateQuiz(CP1a_SC3_myQuestions1, CP1a_SC3_quizContainer1, CP1a_SC3_resultsContainer1, CP1a_SC3_submitButton1, score_sum, CP1a_SC3_topic1_no, CP1a_SC3_question1_no, CP1a_SC3_incBtn1);
-generateQuiz(CP1a_SC3_myQuestions2, CP1a_SC3_quizContainer2, CP1a_SC3_resultsContainer2, CP1a_SC3_submitButton2, score_sum, CP1a_SC3_topic1_no, CP1a_SC3_question2_no, CP1a_SC3_incBtn2);
+generateQuiz(CP1b_SC3_myQuestions1, CP1b_SC3_quizContainer1, CP1b_SC3_resultsContainer1, CP1b_SC3_submitButton1, score_sum, CP1b_SC3_topic1_no, CP1b_SC3_question1_no, CP1b_SC3_incBtn1);
+generateQuiz(CP1b_SC3_myQuestions2, CP1b_SC3_quizContainer2, CP1b_SC3_resultsContainer2, CP1b_SC3_submitButton2, score_sum, CP1b_SC3_topic1_no, CP1b_SC3_question2_no, CP1b_SC3_incBtn2);
 
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton, score_sum, topic_no, question_no, incBtn) {
 
@@ -65,11 +65,11 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton, 
 
                 // ...add an html radio button
                 answers.push(
-                    '<label>'
+                    '<ul>'
                     + '<input type="radio" name="question' + i + '" value="' + letter + '">'
                     + letter + ': '
                     + questions[i].answers[letter]
-                    + '</label>'
+                    + '</ul>'
                 );
             }
 
