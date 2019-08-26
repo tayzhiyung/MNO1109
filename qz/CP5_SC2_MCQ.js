@@ -15,12 +15,12 @@ var CP5_SC2_myQuestions2 = [
     {
         question: "What is the reduce of virtual loss of GM for a tanker having a tank divided by one longitudinal bulkhead? The tank has a square waterplane area with side 10m and the displacement of the ship is 20,000 tonne. Assume that the ship is floating on saltware with mass density of 1025 kg/m&#179 and the oil mass density it carries is 970 kg/m&#179.",
         answers: {
-            a: '0.00010 m',
-            b: '0.12125 m',
-            c: '0.12813 m',
-            d: '0.48500 m'
+            a: '0.01010 m',
+            b: '0.01213 m',
+            c: '0.01281 m',
+            d: '0.04850 m'
         },
-        correctAnswer: 'b'
+        correctAnswer: 'a'
     },
 
 ];
