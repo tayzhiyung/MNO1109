@@ -14,7 +14,7 @@ var CP1a_SC2_myQuestions1 = [
 
 var CP1a_SC2_myQuestions2 = [
     {
-        question: "What is  the CM for a ship with a length of 100m, breadth of 20m and draft of 20m?",
+        question: "What is  the CM for a ship with a length of 100m, breadth of 20m and draft of 20m? The ship has a midship cross section of 300m2 and a waterplane area of 1600m2.",
         answers: {
             a: '0.80',
             b: '0.75',
