@@ -9,7 +9,7 @@ CP1a_SC3_click_no3 = document.getElementById("CP1a_SC3_click_no3").value;
 CP1a_SC3_click_no4 = document.getElementById("CP1a_SC3_click_no4").value;
 
 var CP1a_SC3_answer_list3 =
-    ['hull weight', 'outfitting', 'machinery']
+    ['hull weight', 'machinery', 'outfitting']
 var CP1a_SC3_answer_list4 =
     ['cargo', 'crew', 'water']
 
