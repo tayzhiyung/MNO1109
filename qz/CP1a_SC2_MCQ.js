@@ -31,12 +31,12 @@ var CP1a_SC2_myQuestions5 = [
     {
         question: "A ship has a block coefficeint of 0.8 and a midship area coefficeint of 0.6. What is the Midship Area of the ship if the length of the ship is 150m and the displacement volume is 42,000m&#179?",
         answers: {
-            a: '223.3m&#178',
+            a: '210.0m&#178',
             b: '262.5m&#178',
             c: '300.2m&#178',
             d: '350.4m&#178'
         },
-        correctAnswer: 'c'
+        correctAnswer: 'a'
     },
 
 ];
